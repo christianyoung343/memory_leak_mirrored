@@ -1,1 +1,1 @@
-# memory_leak
+Capstone final project created by Michael Bauer, Christian Young, Kody Kimberl, and Andrew Palmer
