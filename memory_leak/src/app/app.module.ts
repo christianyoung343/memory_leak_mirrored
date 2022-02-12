@@ -13,6 +13,29 @@ import { QuestionViewParentComponent } from './containers/question-view/question
 import { SearchResultsParentComponent } from './containers/search-results/search-results-parent/search-results-parent.component';
 import { SignUpParentComponent } from './containers/sign-up/sign-up-parent/sign-up-parent.component';
 
+
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+
+// Import the functions you need from the SDKs you need
+// import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAXwvR6Ax0ntJ7maFfqKVrjI28MYzaHjsQ",
+  authDomain: "memory-leak-spring2022.firebaseapp.com",
+  projectId: "memory-leak-spring2022",
+  storageBucket: "memory-leak-spring2022.appspot.com",
+  messagingSenderId: "800244229837",
+  appId: "1:800244229837:web:60c44fbdf6686cf53e6b84",
+  measurementId: "G-X5RNZS658W"
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +51,9 @@ import { SignUpParentComponent } from './containers/sign-up/sign-up-parent/sign-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent]
