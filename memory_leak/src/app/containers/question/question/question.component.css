@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+#card-flow-section{
+    flex: 1;
+}
+section.card-section{
+    padding: 1em;
+}
+
+.card{
+    flex: 0 0 375px;
+    background-color: #498eaf;
+    margin: .5rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+    align-content: center;
+}
+#questionCards { 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width:320px){
+    .card{
+		flex: 0 0 315px;
+	}
+}
+
+@media (min-width:325px) and (max-width: 375px){
+	.card{
+		flex: 0 0 350px;
+	}
+}

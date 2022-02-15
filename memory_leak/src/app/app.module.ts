@@ -13,10 +13,12 @@ import { QuestionViewParentComponent } from './containers/question-view/question
 import { SearchResultsParentComponent } from './containers/search-results/search-results-parent/search-results-parent.component';
 import { SignUpParentComponent } from './containers/sign-up/sign-up-parent/sign-up-parent.component';
 
-
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
+//import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+// { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { QuestionComponent } from './containers/question/question/question.component';
 
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
@@ -47,13 +49,16 @@ const firebaseConfig = {
     QuestionCreationParentComponent,
     QuestionViewParentComponent,
     SearchResultsParentComponent,
-    SignUpParentComponent
+    SignUpParentComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
+    //provideFirebaseApp(() => initializeApp(environment.firebase)),
+    //provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent]

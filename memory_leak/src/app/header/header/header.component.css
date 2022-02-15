@@ -1,0 +1,15 @@
+
+.navbar-brand img {
+    max-width: 75px;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* #user {
+    display: flex;
+    float:right;
+} */
+
+#nav{
+    background-color: aqua;
+}

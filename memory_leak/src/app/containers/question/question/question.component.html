@@ -1,0 +1,41 @@
+<section id="card-flow-section" class="card-section">
+  <div id="questionCards">
+    <!-- <div class="container-fluid"> -->
+    <ng-container *ngIf="questions && questions.length > 0; then hasQuestions else noQuestions">
+    </ng-container>  
+    <ng-template #hasQuestions>
+      <ng-container *ngFor="let q of questions">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">{{q.title}}</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{q.body}}</p>
+            <div class="card-comment-body">
+              <h3 class="card-comment-title">Comments</h3>
+              <p class="card-comment-text">Here is a comment on this question</p>
+              <!--loop through the comments on the question-->
+            </div>
+            <!-- <app-answer></app-answer> potentially looping through the answers from the question -->
+            <div class="flag-container">
+              <label>Problem with this question?</label><span></span>
+              <button (click)="alertFunction()">Submit</button>
+              <!--handle actual logic for what happens when the question in flagged -->
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-template>
+
+    <ng-template #noQuestions>
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">There are no questions.</p>
+          </div>
+        </div>
+    </ng-template>
+    <!-- </div> -->
+  </div>
+
+
+</section>
