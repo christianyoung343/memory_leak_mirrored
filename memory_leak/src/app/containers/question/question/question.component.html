@@ -4,6 +4,7 @@
     <ng-container *ngIf="questions && questions.length > 0; then hasQuestions else noQuestions">
     </ng-container>  
     <ng-template #hasQuestions>
+      <!--FIXME: Get a specific question for this-->
       <ng-container *ngFor="let q of questions">
         <div class="card">
           <div class="card-header">
@@ -19,7 +20,7 @@
             <!-- <app-answer></app-answer> potentially looping through the answers from the question -->
             <div class="flag-container">
               <label>Problem with this question?</label><span></span>
-              <button (click)="alertFunction()">Submit</button>
+              <button (click)="alertFunction(q.uid)">Submit</button>
               <!--handle actual logic for what happens when the question in flagged -->
             </div>
           </div>
