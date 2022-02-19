@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore'
 import { Observable } from 'rxjs';
 import { Question } from 'src/models/question';
@@ -6,7 +6,7 @@ import { Question } from 'src/models/question';
 @Injectable({
   providedIn: 'root'
 })
-export class QuestionCreationService implements OnInit {
+export class QuestionCreationService {
   private questionCollection: AngularFirestoreCollection<Question>;
   private questions: Observable<Question[]>;
 
@@ -17,9 +17,5 @@ export class QuestionCreationService implements OnInit {
 
   addQuestion(question: Question) {
     this.questionCollection.add(question);
-  }
-
-  ngOnInit(): void {
-
   }
 }
