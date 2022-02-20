@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, InjectionToken } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore'
 import { Observable } from 'rxjs';
 import { Question } from 'src/models/question';
@@ -19,3 +19,5 @@ export class QuestionCreationService {
     this.questionCollection.add(question);
   }
 }
+
+export const QUESTION_CREATION_SERVICE = new InjectionToken<QuestionCreationService>('QuestionCreationService');

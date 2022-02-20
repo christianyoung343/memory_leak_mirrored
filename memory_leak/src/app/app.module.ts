@@ -17,6 +17,8 @@ import { SignUpParentComponent } from './containers/sign-up/sign-up-parent/sign-
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { QuestionCreationService, QUESTION_CREATION_SERVICE } from './services/question-creation.service';
 
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
@@ -55,7 +57,10 @@ const firebaseConfig = {
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [{
+    provide: QUESTION_CREATION_SERVICE,
+    useClass: QuestionCreationService,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

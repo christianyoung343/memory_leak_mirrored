@@ -1,7 +1,8 @@
 //TODO: fix NullInjectionError somehow
 
-import { Component, OnInit } from '@angular/core';
-import { QuestionCreationService } from 'src/app/services/question-creation.service'
+import { Component, InjectionToken, Injector, Input, OnInit } from '@angular/core';
+import { QuestionCreationService } from 'src/app/services/question-creation.service';
+import { Question } from 'src/models/question';
 
 @Component({
   selector: 'app-question-creation-parent',
@@ -9,13 +10,20 @@ import { QuestionCreationService } from 'src/app/services/question-creation.serv
   styleUrls: ['./question-creation-parent.component.css']
 })
 export class QuestionCreationParentComponent implements OnInit {
-  private creationService: QuestionCreationService;
+  @Input()
+  source!: InjectionToken<QuestionCreationService>;
 
-  constructor(private qcs: QuestionCreationService) { 
-    this.creationService = qcs;
+  private qcs!: QuestionCreationService;
+
+  constructor(private injector: Injector) {
+     
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.qcs = this.injector.get<QuestionCreationService>(this.source);
   }
 
+  addQuestion(question: Question) {
+    this.qcs.addQuestion(question);
+  }
 }
