@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,11 @@ import { SignUpParentComponent } from './containers/sign-up/sign-up-parent/sign-
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { UserService } from './services/user.service';
+import { User } from 'src/models/user';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AuthenticateService } from './services/authenticate.service';
+import { AngularFireModule } from '@angular/fire/compat';
 
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
@@ -54,8 +59,9 @@ const firebaseConfig = {
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [],
+  providers: [AngularFirestore, UserService, AuthenticateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

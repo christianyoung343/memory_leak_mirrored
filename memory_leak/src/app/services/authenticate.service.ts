@@ -16,7 +16,7 @@ export class AuthenticateService implements CanActivate {
       take(1), map(userObj => !!userObj), tap(login => {
         if (!login) {
           console.log('Not Logged In. Access Denied')
-          this.router.navigate(['/about'])
+          this.router.navigate(['/'])
         }
       })
     )
