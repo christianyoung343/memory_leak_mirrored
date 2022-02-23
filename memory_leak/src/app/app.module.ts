@@ -62,8 +62,8 @@ const firebaseConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
+  //  provideFirebaseApp(() => initializeApp(environment.firebase)),
+  //  provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     FormsModule,

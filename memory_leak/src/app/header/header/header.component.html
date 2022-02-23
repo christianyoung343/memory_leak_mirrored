@@ -1,5 +1,5 @@
 <nav id="nav" class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" routerLink="home"><img src="../../../assets/img/memoryleaklogo.jpg"></a>
+    <a class="navbar-brand" routerLink="/"><img src="../../../assets/img/memoryleaklogo.jpg"></a>
     <button id="navbutton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -15,31 +15,25 @@
             <li class="nav-item">
                 <a class="nav-link" routerLink="/profile"></a>
             </li>
-            <li id="user" class="nav-item dropdown">
-                <a class="nav-link" routerLink="/exercise" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    User Dashboard
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" routerLink="/profile">Profile</a>
-                    <a class="dropdown-item" routerLink="/home">Log In/Log Out</a>
-                </div>
-            </li>
-        </ul>
-        <!-- <span class="navbar-text">
-            <div class="container">
+            <ng-container>
                 <div *ngIf="uServ.user$ | async; then authenticated">
-                     template will replace this div
+                    <!-- template will replace this div -->
                 </div>
 
-                 User logged in 
-                 <ng-template #authenticated>
-                    <div *ngIf="uServ.user$ | async as user" class="alr">
-                        <span class="nav-logout" (click)="uServ.signOut()">Logout</span>
-                    </div>
+                <ng-template #authenticated>
+                    <li id="user" class="nav-item dropdown">
+                        <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                                User Dashboard
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" routerLink="/profile">Profile</a>
+                            <a class="dropdown-item" class="nav-logout" (click)="uServ.signOut()">Log Out</a>
+                        </div>
+                    </li>
                 </ng-template>
-            </div>
-        </span> -->
+            </ng-container>
+        </ul>
     </div>
 </nav>
 

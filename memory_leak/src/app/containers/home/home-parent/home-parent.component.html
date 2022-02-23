@@ -1,5 +1,53 @@
-<p>home-parent works!</p>
-<!--NOTHING UNLESS A USER IS LOGGED IN
-    THEN HAVE THE LIST OF QUESTIONS THAT
-    ARE UNANSWERED 
-    ** QUESTION COMPONENTS** -->
+<ng-container>
+    <div *ngIf="uServ.user$ | async; then authenticated else guest">
+        <!-- template will replace this div -->
+    </div>
+    <ng-template #authenticated>
+        <div *ngIf="uServ.user$ | async as user" class="alr">
+            <ng-container>
+                <section id="card-flow-section" class="card-section">
+                    <div id="questionCards">
+                        <!-- <div class="container-fluid"> -->
+                        <ng-container *ngIf="questions && questions.length > 0; then hasQuestions else noQuestions">
+                        </ng-container>
+                        <ng-template #hasQuestions>
+                            <!--FIXME: Get a specific question for this-->
+                            <ng-container *ngFor="let q of questions">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">{{q.title}}</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-text">{{q.body}}</p>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </ng-template>
+
+                        <ng-template #noQuestions>
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text">There are no questions.</p>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <!-- </div> -->
+                    </div>
+
+
+                </section>
+            </ng-container>
+
+        </div>
+    </ng-template>
+    <ng-template #guest>
+        <div class="alr">
+            <h1>THERE IS NO USER RIGHT NOW</h1>
+            <button class="btn btn-primary" routerlink="/signup" (click)="goToSignUp()">Sign up</button>
+        </div>
+        <button class=btnGoogle (click)="uServ.googleSignIn()">
+            <i class="fa fa-google"></i> Log in with Google
+        </button>
+    </ng-template>
+
+</ng-container>
