@@ -1,1 +1,12 @@
-<p>question-creation-parent works!</p>
+<!--TODO aria-->
+
+<h3>Ask a Question</h3>
+<form [formGroup]="questionForm" (ngSubmit)="onSubmit(questionForm.value)">
+    <label for="inputTitle">Title:</label><br>
+    <input type="text" id="inputTitle" name="title" formControlName="title"><br>
+    <label for="inputBody">Body:</label><br>
+    <input type="text" id="inputBody" name="body" formControlName="body"><br>
+    <label for="inputAnon">Post as Anonymous?</label><br>
+    <input type="checkbox" id="inputAnon" name="anonymous" formControlName="anonymous"><br>
+    <button type="submit">Submit</button>
+</form>

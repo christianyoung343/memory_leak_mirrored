@@ -1,5 +1,6 @@
 import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,11 +19,11 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 //import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { QuestionCreationService, QUESTION_CREATION_SERVICE } from './services/question-creation.service';
 import { UserService } from './services/user.service';
 import { User } from 'src/models/user';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthenticateService } from './services/authenticate.service';
-import { AngularFireModule } from '@angular/fire/compat';
 // { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { QuestionComponent } from './containers/question/question/question.component';
 
@@ -64,11 +65,14 @@ const firebaseConfig = {
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule,
+    ReactiveFormsModule
     //provideFirebaseApp(() => initializeApp(environment.firebase)),
     //provideFirestore(() => getFirestore()),
   ],
-  providers: [AngularFirestore, UserService, AuthenticateService],
+  providers: [AngularFirestore, UserService, AuthenticateService, 
+              {provide: QUESTION_CREATION_SERVICE, useClass: QuestionCreationService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
