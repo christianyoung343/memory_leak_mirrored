@@ -1,5 +1,5 @@
 <nav id="nav" class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" routerLink="/">Memory Leak</a>
+    <a class="navbar-brand" routerLink="home"><img src="../../../assets/img/memoryleaklogo.jpg"></a>
     <button id="navbutton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -7,16 +7,23 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" routerLink="/home">Home</a>
+                <a class="nav-link" routerLink="/ask">Have a Question?</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/admin">Admin</a>
+                <a class="nav-link" routerLink="/search">Search Questions</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/profile">Profile</a>
+                <a class="nav-link" routerLink="/profile"></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/ask">Ask a Question</a>
+            <li id="user" class="nav-item dropdown">
+                <a class="nav-link" routerLink="/exercise" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    User Dashboard
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" routerLink="/profile">Profile</a>
+                    <a class="dropdown-item" routerLink="/home">Log In/Log Out</a>
+                </div>
             </li>
         </ul>
         <!-- <span class="navbar-text">
@@ -35,3 +42,5 @@
         </span> -->
     </div>
 </nav>
+
+<!-- okay, starting with publishing the dev branch -->
