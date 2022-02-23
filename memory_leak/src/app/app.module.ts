@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,12 @@ import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 //import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { UserService } from './services/user.service';
+import { User } from 'src/models/user';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AuthenticateService } from './services/authenticate.service';
+import { AngularFireModule } from '@angular/fire/compat';
 // { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { QuestionComponent } from './containers/question/question/question.component';
 
@@ -55,12 +61,14 @@ const firebaseConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
     //provideFirebaseApp(() => initializeApp(environment.firebase)),
     //provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [AngularFirestore, UserService, AuthenticateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
