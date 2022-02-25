@@ -3,7 +3,7 @@ export class User {
     public uid: string;
     public email: string;
     public displayName: string;
-    public askedQuestionIDs?: Array<string>[];
+    public askedQuestionIDs?: Array<string>;
 
     constructor(userObj:any) {
         this.uid = userObj.uid;

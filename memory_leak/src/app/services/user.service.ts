@@ -7,6 +7,7 @@ import firebase from 'firebase/compat/app';
 import { doc } from 'firebase/firestore';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { Question } from 'src/models/question';
 import { User } from '../../models/user';
 
 @Injectable()
@@ -40,5 +41,9 @@ export class UserService {
   async signOut() {
     await this.afAuth.signOut()
     this.router.navigate(['/'])
+  }
+
+  getUser() {
+    return this.user$
   }
 }

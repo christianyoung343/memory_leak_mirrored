@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { QUESTION_CREATION_SERVICE } from 'src/app/services/question-creation.service'
 
 @Component({
   selector: 'app-root',
@@ -8,5 +7,4 @@ import { QUESTION_CREATION_SERVICE } from 'src/app/services/question-creation.se
 })
 export class AppComponent {
   title = 'memory_leak';
-  qcs = QUESTION_CREATION_SERVICE;
 }
