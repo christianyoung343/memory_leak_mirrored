@@ -1,0 +1,7 @@
+footer {
+    background-color: var(--ml-dark-blue);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: white;    
+}

@@ -5,11 +5,10 @@
     border-radius: 50%;
 }
 
-/* #user {
-    display: flex;
-    float:right;
-} */
+.nav-link {
+    color: black;
+}
 
 #nav{
-    background-color: aqua;
+    background-color: var(--ml-light-blue);
 }
