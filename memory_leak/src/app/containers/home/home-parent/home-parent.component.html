@@ -13,14 +13,16 @@
                         <ng-template #hasQuestions>
                             <!--FIXME: Get a specific question for this-->
                             <ng-container *ngFor="let q of questions">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title">{{q.title}}</h5>
+                                <a routerLink="question">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="card-title">{{q.title}}</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">{{q.body}}</p>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <p class="card-text">{{q.body}}</p>
-                                    </div>
-                                </div>
+                                </a>
                             </ng-container>
                         </ng-template>
 

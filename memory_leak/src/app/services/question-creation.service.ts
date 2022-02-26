@@ -18,21 +18,38 @@ export class QuestionCreationService {
   private userCollection: AngularFirestoreCollection<User>;
   private emptyArray: Array<string> = [];
   public qNum: string = '';
+  private user!: User | null | undefined;
 
-  constructor(private afs: AngularFirestore, private us: UserService) { 
+  constructor(private afs: AngularFirestore, private us: UserService) {
     this.questionCollection = afs.collection<Question>('questions');
     this.questions = this.questionCollection.valueChanges();
     this.userCollection = afs.collection<User>('users');
+    this.us.getUser().subscribe((user) => {
+      this.user = user;
+    })
     //this.user$ = us.getUser().subscribe(u => {
-      //this.user = u;
+    //this.user = u;
     //});
   }
 
   addQuestion(question: Question) {
-    
+    console.log(this.user);
+
     //console.log(question.uid);
     this.questionCollection.add(question).then((s) => {
       s.get().then((q) => {
+        this.questionCollection.doc<Question>(q.id).update({
+          uid: q.id
+        })
+
+        this.emptyArray = [];
+        if (this.user) {
+          //this.user.toPromise<User | null | undefined>().then((u) => {
+          if (this.user.askedQuestionIDs) {
+            this.emptyArray = this.user.askedQuestionIDs
+          }
+          //})
+        }
         this.qNum = q.id;
         this.emptyArray.push(q.id);
         let userRef: AngularFirestoreDocument<User> = this.afs.collection('users').doc<User>(question.askerID);
@@ -56,7 +73,7 @@ export class QuestionCreationService {
     //   },
     //   {merge: true})
 
-    
+
   }
 }
 
