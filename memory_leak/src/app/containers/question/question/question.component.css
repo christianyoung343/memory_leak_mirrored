@@ -16,6 +16,10 @@ section.card-section{
     justify-content: center;
 }
 
+.card-body {
+    color: white;
+}
+
 @media (max-width:320px){
     .card{
 		flex: 0 0 315px;

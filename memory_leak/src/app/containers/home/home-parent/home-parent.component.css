@@ -10,6 +10,9 @@ section.card-section{
     padding: 1em;
 }
 
+.card-text {
+    color: white;
+}
 .card {
     flex: 0 0 375px;
     /* background-color: #498eaf; */

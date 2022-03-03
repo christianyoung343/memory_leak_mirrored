@@ -16,6 +16,15 @@ section.card-section{
     justify-content: center;
 }
 
+.inputBox {
+    width: 100%;
+    background-color: #858585;
+}
+
+label {
+    color: white;
+}
+
 @media (max-width:320px){
     .card{
 		flex: 0 0 315px;

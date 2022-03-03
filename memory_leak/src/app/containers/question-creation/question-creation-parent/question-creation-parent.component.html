@@ -9,9 +9,9 @@
                         <div class="card-body">
                             <form [formGroup]="questionForm" (ngSubmit)="addQuestion(questionForm.value)">
                                 <label for="inputTitle">Title:</label><br>
-                                <input type="text" id="inputTitle" name="title" formControlName="title"><br>
+                                <input type="text" class="inputBox" id="inputTitle" name="title" formControlName="title"><br>
                                 <label for="inputBody">Body:</label><br>
-                                <input type="text" id="inputBody" name="body" formControlName="body"><br>
+                                <input type="text" class="inputBox" id="inputBody" name="body" formControlName="body"><br>
                                 <label for="inputAnon">Post as Anonymous?</label><br>
                                 <input type="checkbox" id="inputAnon" name="anonymous" formControlName="anonymous"><br>
                                 <button type="submit">Submit</button>
