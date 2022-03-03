@@ -20,7 +20,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { QuestionCreationService, QUESTION_CREATION_SERVICE } from './services/question-creation.service';
+import { QuestionCreationService } from './services/question-creation.service';
 import { UserService } from './services/user.service';
 import { User } from 'src/models/user';
 import { AuthenticateService } from './services/authenticate.service';
@@ -71,8 +71,7 @@ const firebaseConfig = {
     //provideFirebaseApp(() => initializeApp(environment.firebase)),
     //provideFirestore(() => getFirestore()),
   ],
-  providers: [AngularFirestore, UserService, AuthenticateService, 
-              {provide: QUESTION_CREATION_SERVICE, useClass: QuestionCreationService}],
+  providers: [AngularFirestore, UserService, AuthenticateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

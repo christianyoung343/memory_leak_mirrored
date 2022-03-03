@@ -1,7 +1,7 @@
 <!--TODO aria-->
 
 <h3>Ask a Question</h3>
-<form [formGroup]="questionForm" (ngSubmit)="onSubmit(questionForm.value)">
+<form [formGroup]="questionForm" (ngSubmit)="addQuestion(questionForm.value)">
     <label for="inputTitle">Title:</label><br>
     <input type="text" id="inputTitle" name="title" formControlName="title"><br>
     <label for="inputBody">Body:</label><br>
