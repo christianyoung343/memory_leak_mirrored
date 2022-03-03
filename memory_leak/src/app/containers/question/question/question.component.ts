@@ -13,6 +13,7 @@ export class QuestionComponent implements OnInit {
   public uid: string | any;
   
   @Input() public question: Question | any;
+  @Input() public comments!: string[];
 
   constructor(private questionsService: QuestionService, private route: ActivatedRoute) { }
 
@@ -29,6 +30,7 @@ export class QuestionComponent implements OnInit {
       for(let i = 0; i<this.questions.length;i++){
         if(this.questions[i].uid ===this.uid){
           this.question = this.questions[i];
+          this.comments = this.question.comments;
         }
       }
       console.log(this.questions);

@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+
+#card-flow-section{
+    flex: 1;
+}
+
+section.card-section{
+    padding: 1em;
+}
+
+#questionCards { 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width:320px){
+    .card{
+		flex: 0 0 315px;
+	}
+}
+
+@media (min-width:325px) and (max-width: 375px){
+	.card{
+		flex: 0 0 350px;
+	}
+}
