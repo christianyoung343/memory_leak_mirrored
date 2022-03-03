@@ -66,6 +66,7 @@ export class QuestionComponent implements OnInit {
         if (response) {
           this.question.flag = Number(response);
           //FIXME: does this update stored version?
+          this.questionsService.updateQuestion(this.question.uid, this.question)
         }
       }
     }
