@@ -17,7 +17,8 @@ const routes: Routes = [
   {path:'ask', component: QuestionCreationParentComponent, canActivate:[AuthenticateService]},
   {path:'search', component: SearchResultsParentComponent, canActivate:[AuthenticateService]},
   {path:'profile',component: ProfileParentComponent, canActivate:[AuthenticateService]},
-  {path:'question', component: QuestionViewParentComponent},
+//  {path:'question/:id', component: QuestionComponent},
+  {path:'question/:id', component: QuestionViewParentComponent},
   {path:'**', redirectTo: ''},
 ];
 

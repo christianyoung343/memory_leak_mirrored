@@ -11,6 +11,7 @@ section.card-section{
 
 .card{
     flex: 0 0 375px;
+    width: 100%;
     background-color: var(--ml-light-blue);
     margin: .5rem;
     border-radius: 10px;
@@ -20,8 +21,14 @@ section.card-section{
 
 .card>.card-header{
     background-color: var(--ml-light-blue);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
-
+.card-body {
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
 #questionCards { 
     display: flex;
     flex-wrap: wrap;

@@ -7,7 +7,7 @@ import { Question } from 'src/models/question';
   providedIn: 'root'
 })
 export class QuestionService implements OnInit {
-  public questionsList$: Observable<any[]>;
+  public questionsList$: Observable<Question[] | any[]>;
   public question :any;
 
 
