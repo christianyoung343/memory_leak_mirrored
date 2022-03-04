@@ -32,6 +32,17 @@ section.card-section{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: transparent;
+}
+
+section#card-flow-section.card-section {
+    background-color:transparent;
+    /* padding: 1px; */
+}
+div.alr {
+    background-color:transparent;
+    /* width: max-content;
+    align-content: center; */
 }
 
 a, a:hover, a:focus, a:active {
