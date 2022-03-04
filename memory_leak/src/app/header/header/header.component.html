@@ -44,7 +44,15 @@
     </div>
     <ng-template #authenticated>
         <nav class="navbar navbar-expand-lg">
-            <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
+            <div id="logo" class="mx-auto my-2 position-relative order-md-1">
+                <a class="mx-auto" href="#">
+                    <img src="../../../assets/img/memoryleaklogo.jpg" alt="Memory Leak" class="rounded-circle">
+                </a>
+                <button class="navbar-toggler" type="button" (click)="toggleNavCollapsed()"> <!-- data-toggle="collapse" data-target=".dual-collapse2" > -->
+                    <span class="navbar-toggler-icon">Home</span>
+                </button>
+            </div>
+            <div *ngIf="!isScreenSmall && navCollapsed" class="navbar-collapse w-100 dual-collapse2 order-md-0 collapse">
                 <ul class="navbar-nav ml-auto text-center">
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/ask">Have a Question?</a>
@@ -54,15 +62,47 @@
                     </li>
                 </ul>
             </div>
-            <div class="mx-auto my-2 order-0 order-md-1 position-relative">
-                <a class="mx-auto" href="#">
-                    <img src="../../../assets/img/memoryleaklogo.jpg" class="rounded-circle">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <div *ngIf="isScreenSmall && navCollapsed" class="navbar-collapse w-100 dual-collapse2 order-md-2 collapse">
+                <ul class="navbar-nav ml-auto text-center">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/ask">Have a Question?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/search">Search Questions</a>
+                    </li>
+                </ul>
             </div>
-            <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
+            <div *ngIf="!isScreenSmall && !navCollapsed" class="navbar-collapse w-100 dual-collapse2 order-md-0 collapse show">
+                <ul class="navbar-nav ml-auto text-center">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/ask">Have a Question?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/search">Search Questions</a>
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="isScreenSmall && !navCollapsed" class="navbar-collapse w-100 dual-collapse2 order-md-2 collapse show">
+                <ul class="navbar-nav ml-auto text-center">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/ask">Have a Question?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/search">Search Questions</a>
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="navCollapsed" class="navbar-collapse w-100 dual-collapse2 order-md-3 collapse">
+                <ul class="navbar-nav mr-auto text-center">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/profile">User Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="uServ.signOut()">Account Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="!navCollapsed" class="navbar-collapse w-100 dual-collapse2 order-md-3 collapse show">
                 <ul class="navbar-nav mr-auto text-center">
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/profile">User Profile</a>
@@ -76,14 +116,24 @@
     </ng-template>
     <ng-template #guest>
         <nav class="navbar navbar-expand-lg">
-            <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
+            <div class="navbar-collapse dual-collapse2 order-1 order-md-0">
+                <ul class="navbar-nav mr-auto text-center">
+                    <li class="nav-item">
+                        <br />
+                    </li>
+                </ul>
             </div>
-            <div class="mx-auto my-2 order-0 order-md-1 position-relative">
+            <div class="mx-auto order-0 order-md-1 position-relative">
                 <a class="mx-auto" href="#">
                     <img src="../../../assets/img/memoryleaklogo.jpg" class="rounded-circle">
                 </a>
             </div>
-            <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
+            <div class="navbar-collapse dual-collapse2 order-2 order-md-2">
+                <ul class="navbar-nav mr-auto text-center">
+                    <li class="nav-item">
+                        <br />
+                    </li>
+                </ul>
             </div>
         </nav>
     </ng-template>

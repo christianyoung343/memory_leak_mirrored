@@ -2,6 +2,8 @@
 :root {
     --ml-dark-blue: #154d9a80;
     --ml-light-blue: #359de180;
+    --ml-dark-accent: #545454;
+    --ml-light-accent: #e0ffff;
     /* background-color: #383838; */
 }
 
@@ -22,7 +24,7 @@
 }
 
 .card-body {
-    background-color:#545454;
+    background-color:var(--ml-light-accent);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
