@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <h4>Answers</h4>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="comments" *ngFor="let a of answers">
+                <p>{{a.body}}</p>
+            </div>
+            <form>
+                <textarea rows="3" class="inputBox" id="newCommentText" name="comment"></textarea><br>
+                <button type="submit">Add Comment</button>
+            </form>
+        </div>
+    </div>
+</div>

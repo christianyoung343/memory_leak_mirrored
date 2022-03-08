@@ -12,12 +12,13 @@ img.rounded-circle {
 nav.navbar {
     /* background-color: var(--ml-light-blue); */
     /* background-color: var(--ml-light-blue); */
-    background-color: var(--ml-light-accent);
+    /* background-color: var(--ml-light-accent); */
+    background-color: transparent;
     color:black;
     text-shadow: 2px 2px 3px #0e3d69;
     /* box-shadow: 0px 2px 5px #0e3d69; */
     /* height:85px; */
-    border-bottom: 2px solid var(--ml-light-blue);
+    /* border-bottom: 2px solid var(--ml-light-blue); */
     z-index: 0;
 }
 

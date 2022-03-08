@@ -26,6 +26,8 @@ import { User } from 'src/models/user';
 import { AuthenticateService } from './services/authenticate.service';
 // { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { QuestionComponent } from './containers/question/question/question.component';
+import { AnswerParentComponent } from './containers/answer/answer-parent/answer-parent.component';
+import { CommentComponent } from './containers/comment/comment/comment.component';
 
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
@@ -57,7 +59,9 @@ const firebaseConfig = {
     QuestionViewParentComponent,
     SearchResultsParentComponent,
     SignUpParentComponent,
-    QuestionComponent
+    QuestionComponent,
+    AnswerParentComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

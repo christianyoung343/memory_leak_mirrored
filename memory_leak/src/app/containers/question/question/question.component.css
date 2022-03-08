@@ -6,6 +6,14 @@
     flex: 1;
 }
 
+.card {
+    background-color:#54545431;
+}
+
+.col {
+    background-color: transparent;
+}
+
 section.card-section{
     padding: 1em;
 }
@@ -14,11 +22,16 @@ section.card-section{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: transparent;
 }
 
 .card-body {
-    color: white;
+    color: black;
     background-color: #54545428;
+}
+
+section#card-flow-section.card-section {
+    background-color:transparent;
 }
 
 @media (max-width:320px){

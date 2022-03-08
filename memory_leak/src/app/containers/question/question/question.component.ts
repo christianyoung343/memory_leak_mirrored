@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AnswerService } from 'src/app/services/answer.service';
 import { QuestionService } from 'src/app/services/question.service';
+import { Answer } from 'src/models/answer';
 import { Question } from 'src/models/question';
 
 @Component({
@@ -11,11 +13,14 @@ import { Question } from 'src/models/question';
 export class QuestionComponent implements OnInit {
   public questions: Question[] = [];
   public uid: string | any;
-  
-  @Input() public question: Question | any;
-  @Input() public comments!: string[];
+  public allAnswers : Answer[] = [];
 
-  constructor(private questionsService: QuestionService, private route: ActivatedRoute) { }
+  @Input() public question!: Question;
+  @Input() public comments!: [string,string][][];
+  //@Input() public answers!: Answer[];
+  @Input() public answers: Answer[]= [];
+
+  constructor(private questionsService: QuestionService, private answerService:AnswerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -33,8 +38,24 @@ export class QuestionComponent implements OnInit {
           this.comments = this.question.comments;
         }
       }
-      console.log(this.questions);
-      console.log(this.question.title);
+ //     console.log(this.questions);
+ //     console.log(this.question.title);
+    });
+
+    this.answerService.getAnswers().subscribe(a => {
+      this.allAnswers = a;
+      console.log(this.allAnswers.length);
+    //  console.log(this.question.uid);
+      for(let j = 0; j<this.allAnswers.length; j++){
+        console.log(this.allAnswers[j].uid);
+        console.log(this.question.acceptedAnswerID);
+        console.log(typeof this.answers);
+        if(this.allAnswers[j].uid == this.question.acceptedAnswerID){
+          this.answers.push(this.allAnswers[j]);
+          console.log(this.allAnswers);
+        }
+      }
+      console.log(this.answers);
     });
 
     

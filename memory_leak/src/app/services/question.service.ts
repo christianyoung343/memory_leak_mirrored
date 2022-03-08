@@ -26,4 +26,5 @@ export class QuestionService implements OnInit {
   updateQuestion(id: string, question: Question) {
     this.afs.collection('questions').doc(id).set(question)
   }
+  
 }
