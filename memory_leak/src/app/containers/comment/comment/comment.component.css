@@ -1,3 +1,21 @@
 textarea {
-    width: 50%;
+    width: 75%;
+    margin: .25rem;
+    resize: none;
+    word-wrap: normal;
   }
+
+.card p {
+    margin: .5rem;
+    width: 80%;
+    /* padding: 10px; */
+    /* height:auto; */
+    /* align-content: center; */
+    /* text-align: center; */
+    /* font-size: 5px; */
+}
+
+input {
+    width: 75%;
+    word-wrap: normal;
+}

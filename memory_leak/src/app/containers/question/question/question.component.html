@@ -17,12 +17,15 @@
 
               <div class="card-body">
                 <p class="card-text">{{question.body}}</p>
-
-                <div class="comment-body">
-                  <app-comment [comments]="comments"></app-comment>
-                </div><br>
-                <div class="answer-body">
-                  <app-answer-parent [answers]="answers"></app-answer-parent>
+                <div class="card">
+                  <div class="card-body">
+                    <app-comment [comments]="comments"></app-comment>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <app-answer-parent [answers]="answers"></app-answer-parent>
+                  </div>
                 </div>
                 <br>
                 <br>

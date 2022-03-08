@@ -5,12 +5,20 @@
     <div class="row">
         <div class="col">
             <div class="comments" *ngFor="let c of comments">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <p>{{c.commentText}}</p> 
+                        </div>
+
+                    </div>
+                </div>
                 <!-- <b>{{c.userID}}</b> -->
-                <p>{{c.commentText}}</p>
+
             </div>
             <form>
-                <textarea rows = "3" class="inputBox" id="newCommentText" name="comment">
-                </textarea>
+                <textarea rows = "1" class="inputBox" id="newCommentText" name="comment"></textarea>
+                <!-- <input type="text" class="inputBox" id="inputTitle" name="comment"> -->
                 <br>
                 <button type="submit">Add Comment</button>
             </form>
