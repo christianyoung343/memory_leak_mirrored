@@ -1,16 +1,13 @@
 <section id="card-flow-section" class="card-section">
   <div id="questionCards">
-    <!-- <div class="container-fluid"> -->
     <ng-container *ngIf="question; then hasQuestion else noQuestion">
     </ng-container>
 
     <ng-template #hasQuestion>
-      <!--FIXME: Get a specific question for this-->
       <div class="container">
         <div class="row">
           <div class="col">
             <div class="card">
-
               <div class="card-header">
                 <h5 class="card-title">{{question.title}}</h5>
               </div>
@@ -19,28 +16,25 @@
                 <p class="card-text">{{question.body}}</p>
                 <div class="card">
                   <div class="card-body">
-                    <app-comment [comments]="comments"></app-comment>
+                    <app-comment [comments]="comments" [question]="question"></app-comment>
                   </div>
                 </div>
                 <div class="card">
                   <div class="card-body">
-                    <app-answer-parent [answers]="answers"></app-answer-parent>
+                    <app-answer-parent [answers]="answers" [question]="question"></app-answer-parent>
                   </div>
                 </div>
                 <br>
                 <br>
-                <!-- <app-answer></app-answer> potentially looping through the answers from the question -->
                 <div class="flag-container">
                   <label>Problem with this question?</label><span></span>
-                  <button (click)="alertFunction()">Submit</button>
+                  <button id="flag" (click)="alertFunction()">Submit</button>
                   <!--handle actual logic for what happens when the question in flagged -->
                 </div>
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
 
     </ng-template>

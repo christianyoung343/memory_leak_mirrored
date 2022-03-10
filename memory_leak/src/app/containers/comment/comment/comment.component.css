@@ -8,14 +8,4 @@ textarea {
 .card p {
     margin: .5rem;
     width: 80%;
-    /* padding: 10px; */
-    /* height:auto; */
-    /* align-content: center; */
-    /* text-align: center; */
-    /* font-size: 5px; */
-}
-
-input {
-    width: 75%;
-    word-wrap: normal;
 }

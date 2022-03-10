@@ -34,6 +34,10 @@ section#card-flow-section.card-section {
     background-color:transparent;
 }
 
+#flag {
+    margin-left: 10px;
+}
+
 @media (max-width:320px){
     .card{
 		flex: 0 0 315px;

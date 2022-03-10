@@ -27,9 +27,6 @@ export class QuestionCreationService {
     this.us.getUser().subscribe((user) => {
       this.user = user;
     })
-    //this.user$ = us.getUser().subscribe(u => {
-    //this.user = u;
-    //});
   }
 
   addQuestion(question: Question) {
@@ -60,21 +57,5 @@ export class QuestionCreationService {
     });
     console.log(this.qNum);
     // this.emptyArray.push(question.uid);
-
-    // 
-    // //let user = this.afs.collection('users')
-    // // userRef.collection('askedQuestionIDs').add
-    // 
-    // let userRef: AngularFirestoreDocument<User> = this.afs.collection('users').doc<User>(this.user.uid)
-    //   return userRef.set({
-    //     uid: userObj.uid,
-    //     email: userObj.email,
-    //     displayName: userObj.displayName
-    //   },
-    //   {merge: true})
-
-
   }
 }
-
-//export const QUESTION_CREATION_SERVICE = new InjectionToken<QuestionCreationService>('QuestionCreationService');

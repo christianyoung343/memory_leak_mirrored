@@ -5,11 +5,17 @@
     <div class="row">
         <div class="col">
             <div class="comments" *ngFor="let a of answers">
-                <p>{{a.body}}</p>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <p>{{a.body}}</p> 
+                        </div>
+                    </div>
+                </div>
             </div>
             <form>
-                <textarea rows="3" class="inputBox" id="newCommentText" name="comment"></textarea><br>
-                <button type="submit">Add Comment</button>
+                <textarea rows="3" class="inputBox" [(ngModel)]="newAnswerText" name="comment"></textarea><br>
+                <button type="submit" (click)="updateAnswer(newAnswerText)">Add Answer</button>
             </form>
         </div>
     </div>

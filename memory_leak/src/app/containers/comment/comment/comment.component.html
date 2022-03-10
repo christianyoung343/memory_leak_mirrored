@@ -8,19 +8,16 @@
                 <div class="row">
                     <div class="col">
                         <div class="card">
-                            <p>{{c.commentText}}</p> 
+                            <p>{{c.comment}}</p> 
                         </div>
 
                     </div>
                 </div>
-                <!-- <b>{{c.userID}}</b> -->
-
             </div>
             <form>
-                <textarea rows = "1" class="inputBox" id="newCommentText" name="comment"></textarea>
-                <!-- <input type="text" class="inputBox" id="inputTitle" name="comment"> -->
+                <textarea rows = "1" class="inputBox" [(ngModel)]="newCommentText" name="comment"></textarea>
                 <br>
-                <button type="submit">Add Comment</button>
+                <button type="submit" (click)="addComment(newCommentText)">Add Comment</button>
             </form>
         </div>
     </div>

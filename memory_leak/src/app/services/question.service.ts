@@ -1,6 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-// { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Question } from 'src/models/question';
 @Injectable({
@@ -21,6 +20,13 @@ export class QuestionService implements OnInit {
 
   getQuestions(){
     return this.questionsList$;
+  }
+
+  addCommentToQuestion(comment: string, question:Question, userID: string){
+    question.comments.push({
+      "userID": userID,
+      "comment": comment})
+    this.updateQuestion(question.uid,question);
   }
 
   updateQuestion(id: string, question: Question) {
