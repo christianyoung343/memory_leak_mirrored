@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentSnapshot } from '@angular/fire/compat/firestore'
+import { Router } from '@angular/router'
 import { Observable } from 'rxjs';
 import { Question } from 'src/models/question';
 import { User } from 'src/models/user';
@@ -20,7 +21,7 @@ export class QuestionCreationService {
   public qNum: string = '';
   private user!: User | null | undefined;
 
-  constructor(private afs: AngularFirestore, private us: UserService) {
+  constructor(private afs: AngularFirestore, private us: UserService, private router: Router) {
     this.questionCollection = afs.collection<Question>('questions');
     this.questions = this.questionCollection.valueChanges();
     this.userCollection = afs.collection<User>('users');
@@ -33,11 +34,13 @@ export class QuestionCreationService {
     console.log(this.user);
 
     //console.log(question.uid);
-    this.questionCollection.add(question).then((s) => {
-      s.get().then((q) => {
+    return this.questionCollection.add(question).then((s) => {
+      return s.get().then((q) => {
         this.questionCollection.doc<Question>(q.id).update({
           uid: q.id
         })
+		
+		console.log('q.id: ' + q.id)
 
         this.emptyArray = [];
         if (this.user) {
@@ -48,6 +51,7 @@ export class QuestionCreationService {
           //})
         }
         this.qNum = q.id;
+		console.log('qNum: ' + this.qNum)
         this.emptyArray.push(q.id);
         let userRef: AngularFirestoreDocument<User> = this.afs.collection('users').doc<User>(question.askerID);
         userRef.update({
@@ -55,7 +59,12 @@ export class QuestionCreationService {
         })
       });
     });
-    console.log(this.qNum);
+    //console.log(this.qNum);
+	//return this.qNum
     // this.emptyArray.push(question.uid);
+  }
+
+  getQNum() {
+	  return this.qNum
   }
 }
