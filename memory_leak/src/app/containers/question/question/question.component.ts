@@ -39,6 +39,7 @@ export class QuestionComponent implements OnInit {
         });
 
         this.answerService.getAnswers().subscribe(a => {
+            this.answers = [];
             this.allAnswers = a;
             for (let j = 0; j < this.allAnswers.length; j++) {
                 if (this.allAnswers[j].questionID == this.question.uid) {
