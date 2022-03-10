@@ -61,3 +61,9 @@ a, a:hover, a:focus, a:active {
 		flex: 0 0 350px;
 	}
 }
+
+@media (min-width:2300px) {
+    #questionCards {
+        flex-direction: column;
+    }
+}

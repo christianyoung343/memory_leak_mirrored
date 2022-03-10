@@ -2,11 +2,14 @@
     background-color:transparent;
 }
 
-/* header {
-    position: top;
-    position: sticky;
+ footer {
+    margin-top: auto;
+    width: 100%;
 }
 
-footer {
-    position: bottom;
-} */
+main {
+    min-height:100vh;
+    display:flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
