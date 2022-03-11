@@ -49,6 +49,17 @@ a, a:hover, a:focus, a:active {
     text-decoration: none;
     color: inherit;
 }
+div>.card>.card-body {
+    background-color:  #54545431;
+    align-content: center;
+}
+h4 {
+    text-align: center;
+}
+
+button {
+    align-self: center;
+}
 
 @media (max-width:320px){
     .card{

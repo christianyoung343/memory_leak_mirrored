@@ -2,7 +2,7 @@ img.rounded-circle {
     max-width: 100px;
     height: auto;
     border-radius: -50%;
-    background-color: var(--ml-light-blue);
+    /* background-color: var(--ml-light-blue); */
 }
 
 .nav-link {

@@ -15,16 +15,16 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col">
-                                        <a routerLink="question/{{q.uid}}">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h5 class="card-title">{{q.title}}</h5>
+                                            <a routerLink="question/{{q.uid}}">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5 class="card-title">{{q.title}}</h5>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">{{q.body}}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="card-body">
-                                                    <p class="card-text">{{q.body}}</p>
-                                                </div>
-                                            </div>
-                                        </a>                                            
+                                            </a>
                                         </div>
 
                                     </div>
@@ -47,12 +47,21 @@
 
     <ng-template #guest>
         <div class="alr">
-            <h1>THERE IS NO USER RIGHT NOW</h1>
-            <button class="btn btn-primary" routerlink="/signup" (click)="goToSignUp()">Sign up</button>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Please Sign in with your UWF Gmail account</h4>
+                                <button class=btnGoogle (click)="uServ.googleSignIn()">
+                                    <i class="fa fa-google"></i> Log in with Google
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button class=btnGoogle (click)="uServ.googleSignIn()">
-            <i class="fa fa-google"></i> Log in with Google
-        </button>
     </ng-template>
 
 </ng-container>
