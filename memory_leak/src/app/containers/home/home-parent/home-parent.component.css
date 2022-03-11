@@ -57,6 +57,15 @@ h4 {
     text-align: center;
 }
 
+.centered {
+    margin: 0;
+    padding-top: 5%;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
 button {
     align-self: center;
 }
