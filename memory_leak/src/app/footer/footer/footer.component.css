@@ -1,7 +1,5 @@
 footer {
-    background-color: var(--ml-dark-blue);
-    position: fixed;
-    bottom: 0;
+    background-color: var(--ml-dark-blue-solid);
     width: 100%;
     color: white;    
 }

@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <h4>Comments</h4>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="comments" *ngFor="let c of comments">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <p>{{c.comment}}</p> 
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <form>
+                <textarea rows = "1" class="inputBox" [(ngModel)]="newCommentText" name="comment"></textarea>
+                <br>
+                <button type="submit" (click)="addComment(newCommentText)">Add Comment</button>
+            </form>
+        </div>
+    </div>
+</div>

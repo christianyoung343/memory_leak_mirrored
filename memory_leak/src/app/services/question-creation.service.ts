@@ -27,20 +27,19 @@ export class QuestionCreationService {
     this.us.getUser().subscribe((user) => {
       this.user = user;
     })
-    //this.user$ = us.getUser().subscribe(u => {
-    //this.user = u;
-    //});
   }
 
   addQuestion(question: Question) {
     console.log(this.user);
 
     //console.log(question.uid);
-    this.questionCollection.add(question).then((s) => {
-      s.get().then((q) => {
+    return this.questionCollection.add(question).then((s) => {
+      return s.get().then((q) => {
         this.questionCollection.doc<Question>(q.id).update({
           uid: q.id
         })
+		
+		console.log('q.id: ' + q.id)
 
         this.emptyArray = [];
         if (this.user) {
@@ -51,6 +50,7 @@ export class QuestionCreationService {
           //})
         }
         this.qNum = q.id;
+		console.log('qNum: ' + this.qNum)
         this.emptyArray.push(q.id);
         let userRef: AngularFirestoreDocument<User> = this.afs.collection('users').doc<User>(question.askerID);
         userRef.update({
@@ -58,23 +58,12 @@ export class QuestionCreationService {
         })
       });
     });
-    console.log(this.qNum);
+    //console.log(this.qNum);
+	//return this.qNum
     // this.emptyArray.push(question.uid);
+  }
 
-    // 
-    // //let user = this.afs.collection('users')
-    // // userRef.collection('askedQuestionIDs').add
-    // 
-    // let userRef: AngularFirestoreDocument<User> = this.afs.collection('users').doc<User>(this.user.uid)
-    //   return userRef.set({
-    //     uid: userObj.uid,
-    //     email: userObj.email,
-    //     displayName: userObj.displayName
-    //   },
-    //   {merge: true})
-
-
+  getQNum() {
+	  return this.qNum
   }
 }
-
-//export const QUESTION_CREATION_SERVICE = new InjectionToken<QuestionCreationService>('QuestionCreationService');
