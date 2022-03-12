@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentSnapshot } from '@angular/fire/compat/firestore'
-import { Router } from '@angular/router'
 import { Observable } from 'rxjs';
 import { Question } from 'src/models/question';
 import { User } from 'src/models/user';
@@ -21,7 +20,7 @@ export class QuestionCreationService {
   public qNum: string = '';
   private user!: User | null | undefined;
 
-  constructor(private afs: AngularFirestore, private us: UserService, private router: Router) {
+  constructor(private afs: AngularFirestore, private us: UserService) {
     this.questionCollection = afs.collection<Question>('questions');
     this.questions = this.questionCollection.valueChanges();
     this.userCollection = afs.collection<User>('users');
