@@ -7,9 +7,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install modules
       run: npm install
-    - name: Change directory
-      run: cd memory_leak
     - name: Install subdirectory
+      working-directory: ./memory_leak
       run: npm install
     - name: Run tests
+      working-directory: ./memory_leak
       run: npm test
