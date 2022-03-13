@@ -1,13 +1,12 @@
-import { TestBed } from '@angular/core/testing';
-
 import { UserService } from './user.service';
+import TestBedExtended from 'src/test_helpers/testBedExtend';
 
 describe('UserService', () => {
   let service: UserService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(UserService);
+    TestBedExtended.preConfigure();
+    service = TestBedExtended.inject(UserService);
   });
 
   it('should be created', () => {

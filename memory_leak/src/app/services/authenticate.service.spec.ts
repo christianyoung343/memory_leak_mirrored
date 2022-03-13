@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import TestBedExtended from 'src/test_helpers/testBedExtend';
 
 import { AuthenticateService } from './authenticate.service';
 
@@ -6,7 +7,7 @@ describe('AuthenticateService', () => {
   let service: AuthenticateService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBedExtended.preConfigure();
     service = TestBed.inject(AuthenticateService);
   });
 

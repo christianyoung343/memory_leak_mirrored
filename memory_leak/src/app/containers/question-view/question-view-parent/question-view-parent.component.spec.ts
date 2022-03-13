@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import TestBedExtended from 'src/test_helpers/testBedExtend';
+import { QuestionComponent } from '../../question/question/question.component';
 
 import { QuestionViewParentComponent } from './question-view-parent.component';
 
@@ -8,13 +10,14 @@ describe('QuestionViewParentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QuestionViewParentComponent ]
+      declarations: [ QuestionViewParentComponent, QuestionComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QuestionViewParentComponent);
+    TestBedExtended.preConfigure()
+    fixture = TestBedExtended.createComponent(QuestionViewParentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

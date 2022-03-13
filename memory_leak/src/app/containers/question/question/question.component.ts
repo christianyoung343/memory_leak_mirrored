@@ -25,7 +25,7 @@ export class QuestionComponent implements OnInit {
     ngOnInit(): void {
         this.route.paramMap.subscribe(params => {
             this.uid = (params.get('id'));
-            console.log("Question UID: " + this.uid);
+            //console.log("Question UID: " + this.uid);
         });
 
         this.questionsService.getQuestions().subscribe(q => {
