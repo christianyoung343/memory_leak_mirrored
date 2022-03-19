@@ -5,27 +5,37 @@
 #card-flow-section{
     flex: 1;
 }
+
+.card {
+    background-color:#54545431;
+}
+
+.col {
+    background-color: transparent;
+}
+
 section.card-section{
     padding: 1em;
-}
-
-.card{
-    flex: 0 0 375px;
-    background-color: var(--ml-light-blue);
-    margin: .5rem;
-    border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
-    align-content: center;
-}
-
-.card>.card-header{
-    background-color: var(--ml-light-blue);
 }
 
 #questionCards { 
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: transparent;
+}
+
+.card-body {
+    color: black;
+    background-color: #54545428;
+}
+
+section#card-flow-section.card-section {
+    background-color:transparent;
+}
+
+#flag {
+    margin-left: 10px;
 }
 
 @media (max-width:320px){

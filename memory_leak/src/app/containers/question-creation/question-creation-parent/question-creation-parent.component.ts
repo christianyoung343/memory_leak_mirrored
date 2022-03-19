@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 import { FormGroup, FormControl } from '@angular/forms';
 import { QuestionCreationService } from 'src/app/services/question-creation.service';
 import { UserService } from 'src/app/services/user.service';
@@ -16,7 +17,7 @@ export class QuestionCreationParentComponent implements OnInit {
   questionForm: any;
   user: any;
 
-  constructor(private qcs: QuestionCreationService, private us: UserService) {
+  constructor(private qcs: QuestionCreationService, private us: UserService, private router: Router) {
       this.questionForm = new FormGroup ({
       title: new FormControl(""),
       body: new FormControl(""),
@@ -47,8 +48,13 @@ export class QuestionCreationParentComponent implements OnInit {
     };
 
     console.log(question);
-    this.qcs.addQuestion(question);
+
+	
+
     //console.log(this.user.uid);
-    //his.qcs.addQuestion(question);
+    this.qcs.addQuestion(question).then(() => {}).then(() => {
+		console.log('qid after: ' + this.qcs.getQNum())
+		this.router.navigateByUrl('/question/' + this.qcs.getQNum())
+	})
   }
 }

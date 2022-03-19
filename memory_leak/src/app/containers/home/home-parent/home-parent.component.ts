@@ -12,13 +12,14 @@ import { Question } from 'src/models/question';
 export class HomeParentComponent implements OnInit {
   @Input() public uServ!: UserService
   @Input() public questions: Question[] = [];
+    public allQuestions: Question[] = [];
   constructor(private userService:UserService, private router: Router, private qs: QuestionService) { }
 
   ngOnInit(): void {
     this.uServ = this.userService;
     this.qs.getQuestions().subscribe(q => {
-      this.questions = q;
-      console.log(this.questions);
+      this.allQuestions = q;
+      this.questions = this.allQuestions.filter(q => q.acceptedAnswerID === "");
     });
   }
 
