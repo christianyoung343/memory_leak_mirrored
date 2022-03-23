@@ -4,7 +4,26 @@
   "description": "Capstone 2022 project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupJest.ts"
+    ],
+    "modulePaths": [
+      "<rootDir>"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "<rootDir>/tsconfig.spec.json",
+        "stringifyContentPathRegex": "\\.html$"
+      }
+    }
   },
   "repository": {
     "type": "git",
@@ -17,7 +36,9 @@
   },
   "homepage": "https://github.com/Mbauer-6/memory_leak#readme",
   "dependencies": {
-    "@angular/cli": "^13.2.0"
+    "@angular/cli": "^13.2.0",
+    "@firebase/rules-unit-testing": "^2.0.2",
+    "firebase-functions-test": "^0.3.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^13.2.4",
@@ -26,6 +47,9 @@
     "@angular/forms": "^13.2.3",
     "@angular/platform-browser": "^13.2.3",
     "@angular/router": "^13.2.3",
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "jest-preset-angular": "^11.1.1",
     "rxfire": "^6.0.3",
     "tslib": "^2.3.1"
   }

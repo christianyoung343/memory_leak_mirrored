@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { QuestionService } from 'src/app/services/question.service';
+import { UserService } from 'src/app/services/user.service';
+import TestBedExtended from 'src/test_helpers/testBedExtend';
 
 import { AnswerParentComponent } from './answer-parent.component';
 
@@ -14,7 +17,8 @@ describe('AnswerParentComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AnswerParentComponent);
+    TestBedExtended.preConfigure()
+    fixture = TestBedExtended.createComponent(AnswerParentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

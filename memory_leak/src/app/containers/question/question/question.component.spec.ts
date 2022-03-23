@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import TestBedExtended from 'src/test_helpers/testBedExtend';
 
 import { QuestionComponent } from './question.component';
 
@@ -14,7 +15,8 @@ describe('QuestionComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QuestionComponent);
+    TestBedExtended.preConfigure()
+    fixture = TestBedExtended.createComponent(QuestionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

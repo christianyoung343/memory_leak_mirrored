@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UserService } from 'src/app/services/user.service';
+import TestBedExtended from 'src/test_helpers/testBedExtend';
 
 import { HeaderComponent } from './header.component';
 
@@ -8,12 +10,17 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ HeaderComponent ],
+      imports: [],
+      providers: [
+        UserService
+      ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
+    TestBedExtended.preConfigure()
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
