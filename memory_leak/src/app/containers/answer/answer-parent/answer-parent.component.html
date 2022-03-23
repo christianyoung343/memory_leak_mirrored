@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <h4>Answers</h4>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="comments" *ngFor="let a of answers">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <p>{{a.body}}</p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form>
+                <textarea rows="3" class="inputBox" [(ngModel)]="newAnswerText" name="comment"></textarea><br>
+                <button type="submit" (click)="updateAnswer(newAnswerText)">Add Answer</button>
+            </form>
+        </div>
+    </div>
+</div>

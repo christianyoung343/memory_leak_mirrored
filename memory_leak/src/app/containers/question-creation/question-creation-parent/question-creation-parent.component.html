@@ -1,12 +1,25 @@
 <!--TODO aria-->
-
-<h3>Ask a Question</h3>
-<form [formGroup]="questionForm" (ngSubmit)="onSubmit(questionForm.value)">
-    <label for="inputTitle">Title:</label><br>
-    <input type="text" id="inputTitle" name="title" formControlName="title"><br>
-    <label for="inputBody">Body:</label><br>
-    <input type="text" id="inputBody" name="body" formControlName="body"><br>
-    <label for="inputAnon">Post as Anonymous?</label><br>
-    <input type="checkbox" id="inputAnon" name="anonymous" formControlName="anonymous"><br>
-    <button type="submit">Submit</button>
-</form>
+<section id="card-flow-section" class="card-section">
+    <div id="questionCards">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3 class="card-header">Ask a Question</h3>
+                        <div class="card-body">
+                            <form [formGroup]="questionForm" (ngSubmit)="addQuestion(questionForm.value)">
+                                <label for="inputTitle">Title:</label><br>
+                                <input type="text" class="inputBox" id="inputTitle" name="title" formControlName="title"><br>
+                                <label for="inputBody">Body:</label><br>
+                                <input type="text" class="inputBox" id="inputBody" name="body" formControlName="body"><br>
+                                <label for="inputAnon">Post as Anonymous?</label><br>
+                                <input type="checkbox" id="inputAnon" name="anonymous" formControlName="anonymous"><br>
+                                <button type="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -11,14 +11,22 @@
                         <ng-container *ngIf="questions && questions.length > 0; then hasQuestions else noQuestions">
                         </ng-container>
                         <ng-template #hasQuestions>
-                            <!--FIXME: Get a specific question for this-->
                             <ng-container *ngFor="let q of questions">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title">{{q.title}}</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="card-text">{{q.body}}</p>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a routerLink="question/{{q.uid}}">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5 class="card-title">{{q.title}}</h5>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">{{q.body}}</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
                                     </div>
                                 </div>
                             </ng-container>
@@ -27,27 +35,35 @@
                         <ng-template #noQuestions>
                             <div class="card">
                                 <div class="card-body">
-                                    <p class="card-text">There are no questions.</p>
+                                    <p class="card-text">All questions have been answered.</p>
                                 </div>
                             </div>
                         </ng-template>
-                        <!-- </div> -->
                     </div>
-
-
                 </section>
             </ng-container>
-
         </div>
     </ng-template>
+
     <ng-template #guest>
         <div class="alr">
-            <h1>THERE IS NO USER RIGHT NOW</h1>
-            <button class="btn btn-primary" routerlink="/signup" (click)="goToSignUp()">Sign up</button>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body" style="padding-bottom: 7%;">
+                                <h4>Please Sign in with your UWF Gmail account</h4>
+                                <div class="centered">
+                                    <button class=btnGoogle (click)="uServ.googleSignIn()">
+                                        <i class="fa fa-google"></i>Log in with Google
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button class=btnGoogle (click)="uServ.googleSignIn()">
-            <i class="fa fa-google"></i> Log in with Google
-        </button>
     </ng-template>
 
 </ng-container>

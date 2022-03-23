@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { QuestionService } from 'src/app/services/question.service';
+import { UserService } from 'src/app/services/user.service';
+import TestBedExtended from 'src/test_helpers/testBedExtend';
 
 import { HomeParentComponent } from './home-parent.component';
 
@@ -14,7 +18,8 @@ describe('HomeParentComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeParentComponent);
+    TestBedExtended.preConfigure()
+    fixture = TestBedExtended.createComponent(HomeParentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

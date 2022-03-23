@@ -1,7 +1,10 @@
-import { Component, InjectionToken, Injector, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 import { FormGroup, FormControl } from '@angular/forms';
 import { QuestionCreationService } from 'src/app/services/question-creation.service';
+import { UserService } from 'src/app/services/user.service';
 import { Question } from 'src/models/question';
+import { User } from 'src/models/user';
 
 @Component({
   selector: 'app-question-creation-parent',
@@ -10,12 +13,12 @@ import { Question } from 'src/models/question';
 })
 export class QuestionCreationParentComponent implements OnInit {
   @Input()
-  source!: InjectionToken<QuestionCreationService>;
-  private qcs!: QuestionCreationService;
+  //private qcs!: QuestionCreationService;
   questionForm: any;
+  user: any;
 
-  constructor(private injector: Injector) {
-     this.questionForm = new FormGroup ({
+  constructor(private qcs: QuestionCreationService, private us: UserService, private router: Router) {
+      this.questionForm = new FormGroup ({
       title: new FormControl(""),
       body: new FormControl(""),
       anonymous: new FormControl(false)
@@ -23,16 +26,35 @@ export class QuestionCreationParentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.qcs = this.injector.get<QuestionCreationService>(this.source);
-    
+    //this.qcs = this.injector.get<QuestionCreationService>(this.source);
+    this.us.getUser().subscribe(u => {
+      this.user = u;
+    })
   }
 
-  onSubmit(data: any) {
-    //TODO pass in data to addQuestion + get askerID
-    console.log("title: " + data.title + "\nbody: " + data.body + "\nanonymous?: " + data.anonymous);
-  }
+  addQuestion(data: any) {
+   //this.questionForm = data;
 
-  addQuestion(question: Question) {
-    this.qcs.addQuestion(question);
+    let question: Question = {
+      //TODO get user id for askerID
+      acceptedAnswerID: '',
+      anonymous: data.anonymous,
+      askerID: this.user.uid,
+      body: data.body,      
+      comments: [],
+      flag: 0,
+      title: data.title,
+      uid: ''
+    };
+
+    console.log(question);
+
+	
+
+    //console.log(this.user.uid);
+    this.qcs.addQuestion(question).then(() => {}).then(() => {
+		console.log('qid after: ' + this.qcs.getQNum())
+		this.router.navigateByUrl('/question/' + this.qcs.getQNum())
+	})
   }
 }

@@ -20,12 +20,14 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { QuestionCreationService, QUESTION_CREATION_SERVICE } from './services/question-creation.service';
+import { QuestionCreationService } from './services/question-creation.service';
 import { UserService } from './services/user.service';
 import { User } from 'src/models/user';
 import { AuthenticateService } from './services/authenticate.service';
 // { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { QuestionComponent } from './containers/question/question/question.component';
+import { AnswerParentComponent } from './containers/answer/answer-parent/answer-parent.component';
+import { CommentComponent } from './containers/comment/comment/comment.component';
 
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
@@ -57,7 +59,9 @@ const firebaseConfig = {
     QuestionViewParentComponent,
     SearchResultsParentComponent,
     SignUpParentComponent,
-    QuestionComponent
+    QuestionComponent,
+    AnswerParentComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
@@ -71,8 +75,7 @@ const firebaseConfig = {
     //provideFirebaseApp(() => initializeApp(environment.firebase)),
     //provideFirestore(() => getFirestore()),
   ],
-  providers: [AngularFirestore, UserService, AuthenticateService, 
-              {provide: QUESTION_CREATION_SERVICE, useClass: QuestionCreationService}],
+  providers: [AngularFirestore, UserService, AuthenticateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
