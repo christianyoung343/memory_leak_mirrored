@@ -15,7 +15,7 @@ export class CommentComponent implements OnInit {
 
   @Input() comments!: any[];
   @Input() question!: Question;
-  public user!: User;
+  @Input() user!: User;
   public uid: string | undefined;
 
   constructor(private qs:QuestionService, private us: UserService) { }

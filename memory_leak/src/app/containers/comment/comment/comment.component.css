@@ -9,3 +9,7 @@ textarea {
     margin: .5rem;
     width: 80%;
 }
+
+#user {
+    text-align: right;
+}
