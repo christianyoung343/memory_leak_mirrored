@@ -13,11 +13,13 @@ export class IndividualAnswerComponent implements OnInit {
   @Input() public text!: string;
   @Input() public isAnonymous!: boolean;
   @Input() public answer!: Answer;
+  @Input() public comments!: any[]
 
   constructor(private us: UserService) { }
 
   ngOnInit(): void {
     this.text = this.answer.body;
+    this.comments = this.answer.comments;
     this.us.getNameById(this.answer.answererID).then(name => {this.displayName = name});
   }
 

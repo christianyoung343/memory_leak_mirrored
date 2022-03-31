@@ -43,6 +43,19 @@ export class AnswerService implements OnInit {
         });
     }
 
+    addCommentToQuestion(comment: string, answer:Answer, userID: string){
+        answer.comments.push({
+          "userID": userID,
+          "comment": comment})
+        if (answer.uid) {
+            this.updateAnswer(answer.uid,answer);
+        }
+      }
+    
+      updateAnswer(id: string, answer: Answer) {
+        this.afs.collection('answers').doc(id).set(answer)
+      }
+
     deleteAnswer() {
         //needs to delete an answer from the database
     }

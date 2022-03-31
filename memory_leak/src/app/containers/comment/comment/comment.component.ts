@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { QuestionService } from 'src/app/services/question.service';
 import { UserService } from 'src/app/services/user.service';
+import { Answer } from 'src/models/answer';
 import { Question } from 'src/models/question';
 import { User } from 'src/models/user';
 
@@ -15,7 +16,9 @@ export class CommentComponent implements OnInit {
 
   @Input() comments!: any[];
   @Input() question!: Question;
+  @Input() answer!: Answer;
   @Input() user!: User;
+  @Input() commentOnAnswer!: boolean;
   public uid: string | undefined;
 
   constructor(private qs:QuestionService, private us: UserService) { }
@@ -29,7 +32,11 @@ export class CommentComponent implements OnInit {
   }
 
   addComment(comment: string){
-    this.qs.addCommentToQuestion(comment,this.question,this.user.uid);
-    this.newCommentText="";
+    if (this.commentOnAnswer) {
+
+    } else {
+      this.qs.addCommentToQuestion(comment,this.question,this.user.uid);
+      this.newCommentText="";
+    }
   }
 }
