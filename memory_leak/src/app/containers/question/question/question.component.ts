@@ -35,9 +35,8 @@ export class QuestionComponent implements OnInit {
             for (let i = 0; i < this.questions.length; i++) {
                 if (this.questions[i].uid === this.uid) {
                     this.question = this.questions[i];
-                    this.userService.getUserDisplayNameById(this.question.askerID).then(name => {
+                    this.userService.getNameById(this.question.askerID).then(name => {
                         this.userDisplayName = name;
-                        console.log(this.userDisplayName);
                     });
                     
                     this.comments = this.question.comments;

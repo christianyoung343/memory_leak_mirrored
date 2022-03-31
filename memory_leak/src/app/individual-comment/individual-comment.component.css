@@ -1,0 +1,15 @@
+textarea {
+    width: 75%;
+    margin: .25rem;
+    resize: none;
+    word-wrap: normal;
+  }
+
+.card p {
+    margin: .5rem;
+    width: 80%;
+}
+
+#user {
+    text-align: right;
+}

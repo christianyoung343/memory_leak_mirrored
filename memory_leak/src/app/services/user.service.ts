@@ -49,6 +49,22 @@ export class UserService {
         return this.user$
     }
 
+    async getNameById(userID: string): Promise<string> {
+        let val: string
+        val = await this.afs.collection<User>('users').doc(userID).ref.get().then(doc => {
+            let data = doc.data()
+            if (data) {
+                return data.displayName
+            } else {
+                return "User Not Found"
+            }
+        }).catch(() => {
+            return "User Not Found"
+        })
+        return val;
+
+    }
+
     async getUserDisplayNameById(userID: string): Promise<string> {
         let name: string ="";
         await this.afs.collection<User>('users').valueChanges().subscribe(u => {
