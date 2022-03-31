@@ -16,8 +16,10 @@ export class IndividualCommentComponent implements OnInit {
   constructor(private us: UserService) { }
 
   ngOnInit(): void {
-    this.text = this.comment.comment;
-    this.us.getNameById(this.comment.userID).then(name => {this.displayName = name});
+    if (this.comment) {
+      this.text = this.comment.comment;
+      this.us.getNameById(this.comment.userID).then(name => {this.displayName = name});
+    }
   }
 
 }

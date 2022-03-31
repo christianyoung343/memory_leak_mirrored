@@ -18,9 +18,11 @@ export class IndividualAnswerComponent implements OnInit {
   constructor(private us: UserService) { }
 
   ngOnInit(): void {
-    this.text = this.answer.body;
-    this.comments = this.answer.comments;
-    this.us.getNameById(this.answer.answererID).then(name => {this.displayName = name});
+    if (this.answer) {
+      this.text = this.answer.body;
+      this.comments = this.answer.comments;
+      this.us.getNameById(this.answer.answererID).then(name => {this.displayName = name});
+    }
   }
 
 }

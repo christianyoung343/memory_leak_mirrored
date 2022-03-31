@@ -15,6 +15,7 @@ describe('IndividualAnswerComponent', () => {
   });
 
   beforeEach(() => {
+    TestBedExtended.preConfigure()
     fixture = TestBedExtended.createComponent(IndividualAnswerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
