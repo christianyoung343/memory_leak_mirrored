@@ -64,24 +64,4 @@ export class UserService {
         return val;
 
     }
-
-    async getUserDisplayNameById(userID: string): Promise<string> {
-        let name: string ="";
-        await this.afs.collection<User>('users').valueChanges().subscribe(u => {
-            for(let i = 0; i< u.length;i++){
-                console.log("Display Name: " + u[i].displayName);
-                if(u[i].uid === userID){
-                   this.displayName = u[i].displayName;
-                   console.log(this.displayName);
-                   name = this.displayName;
-                }
-            }
-            console.log(name);
-            return name;
-        });
-        
-        console.log(name);
-        return name;
-        
-    }
 }
