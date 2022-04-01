@@ -13,3 +13,7 @@ textarea {
 #user {
     text-align: right;
 }
+
+.card.answer {
+    background-color: #58585860;
+}

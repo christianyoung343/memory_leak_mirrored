@@ -25,7 +25,8 @@ export class AnswerParentComponent implements OnInit {
             if(u != undefined && u != null){
                 this.user = u;
             }
-        })
+        });
+        
     }
 
     updateAnswer(answer: string) {
