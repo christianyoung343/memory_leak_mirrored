@@ -28,6 +28,8 @@ import { AuthenticateService } from './services/authenticate.service';
 import { QuestionComponent } from './containers/question/question/question.component';
 import { AnswerParentComponent } from './containers/answer/answer-parent/answer-parent.component';
 import { CommentComponent } from './containers/comment/comment/comment.component';
+import { IndividualCommentComponent } from './individual-comment/individual-comment.component';
+import { IndividualAnswerComponent } from './individual-answer/individual-answer.component';
 
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
@@ -61,7 +63,9 @@ const firebaseConfig = {
     SignUpParentComponent,
     QuestionComponent,
     AnswerParentComponent,
-    CommentComponent
+    CommentComponent,
+    IndividualCommentComponent,
+    IndividualAnswerComponent
   ],
   imports: [
     BrowserModule,

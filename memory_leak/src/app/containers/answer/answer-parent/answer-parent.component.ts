@@ -16,14 +16,17 @@ export class AnswerParentComponent implements OnInit {
     @Input() answers!: Answer[];
     @Input() question!: Question;
     public newAnswerText: string = "";
-    public user: User | null | undefined;
+    @Input() public user!: User;
 
     constructor(private as: AnswerService, private us: UserService, private qs: QuestionService) { }
 
     ngOnInit(): void {
         this.us.getUser().subscribe(u => {
-            this.user = u;
-        })
+            if(u != undefined && u != null){
+                this.user = u;
+            }
+        });
+        
     }
 
     updateAnswer(answer: string) {

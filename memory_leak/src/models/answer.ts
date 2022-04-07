@@ -2,7 +2,7 @@ export class Answer {
 
     public uid?: string;
     public body: string;
-    public comments: Array<[string,string]>[];
+    public comments: Array<{ userID: string, comment: string }>;
     public answererID: string; //User ID
     public questionID: string;
 

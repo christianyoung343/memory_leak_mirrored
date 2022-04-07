@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AnswerService } from 'src/app/services/answer.service';
 import { QuestionService } from 'src/app/services/question.service';
+import { UserService } from 'src/app/services/user.service';
 import { Answer } from 'src/models/answer';
 import { Question } from 'src/models/question';
 
@@ -15,17 +16,18 @@ export class QuestionComponent implements OnInit {
     public uid: string | any;
     public allAnswers: Answer[] = [];
 
+    @Input() public userDisplayName!: string;
+
     @Input() public question!: Question;
     @Input() public comments!: Array<{ userID: string, comment: string }>;
     @Input() public answers: Answer[] = [];
 
-    constructor(private questionsService: QuestionService, private answerService: AnswerService,
+    constructor(private questionsService: QuestionService, private answerService: AnswerService, private userService: UserService,
         private route: ActivatedRoute) { }
 
     ngOnInit(): void {
         this.route.paramMap.subscribe(params => {
             this.uid = (params.get('id'));
-            //console.log("Question UID: " + this.uid);
         });
 
         this.questionsService.getQuestions().subscribe(q => {
@@ -33,6 +35,10 @@ export class QuestionComponent implements OnInit {
             for (let i = 0; i < this.questions.length; i++) {
                 if (this.questions[i].uid === this.uid) {
                     this.question = this.questions[i];
+                    this.userService.getNameById(this.question.askerID).then(name => {
+                        this.userDisplayName = name;
+                    });
+                    
                     this.comments = this.question.comments;
                 }
             }
@@ -44,10 +50,12 @@ export class QuestionComponent implements OnInit {
             for (let j = 0; j < this.allAnswers.length; j++) {
                 if (this.allAnswers[j].questionID == this.question.uid) {
                     this.answers.push(this.allAnswers[j]);
-                    console.log(this.answers);
+                    // console.log(this.answers);
                 }
             }
         });
+
+        // this.userDisplayName = this.userService.getUserDisplayNameById(this.question.askerID);
     }
 
     alertFunction(): void {
