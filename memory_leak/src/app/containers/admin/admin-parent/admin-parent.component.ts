@@ -44,7 +44,6 @@ export class AdminParentComponent implements OnInit {
 	removeQuestion(questionToRemove: Question) {
 		//! it is outside the scope of this component to deal with firestore; the question service must remove
 		this.questionService.removeQuestion(questionToRemove);
-		this.userService.removeQuestionFromUser(questionToRemove.uid);
 	}
 
 	notifyUser() {
