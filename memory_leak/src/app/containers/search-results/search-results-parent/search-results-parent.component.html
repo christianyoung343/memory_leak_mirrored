@@ -1,1 +1,40 @@
-<p>search-results-parent works!</p>
+<section id="card-flow-section" class="card-section">
+    <div id="questionCards">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <form [formGroup]="searchForm" (ngSubmit)="searchQuestions(searchForm.value)">
+                                <label for="term">Search:</label>
+                                <input type="text" class="inputBox" id="term" name="term" formControlName="term"><br>
+                                <label for="inputAnswered">Answered?</label>
+                                <input type="checkbox" id="inputAnswered" name="inputAnswered"
+                                    formControlName="inputAnswered"><br>
+                                <button type="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div *ngFor="let q of filteredQuestions">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a routerLink="../question/{{q.uid}}">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">{{q.title}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{q.body}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
