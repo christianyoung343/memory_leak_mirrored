@@ -2,8 +2,11 @@ import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
+import { UserService } from 'src/app/services/user.service'
+
 import { Answer } from 'src/models/answer';
 import { Question } from 'src/models/question';
+import { User } from 'src/models/user'
 
 
 @Injectable({
@@ -12,7 +15,7 @@ import { Question } from 'src/models/question';
 export class AnswerService implements OnInit {
     public answerList$: Observable<Answer[] | any[]>;
 
-    constructor(private afs: AngularFirestore) {
+    constructor(private afs: AngularFirestore, private userService: UserService) {
         this.answerList$ = this.afs.collection('answers').valueChanges();
     }
 
@@ -56,7 +59,17 @@ export class AnswerService implements OnInit {
         this.afs.collection('answers').doc(id).set(answer)
       }
 
-    deleteAnswer() {
+    removeAnswersFromQuestion(question: Question) {
         //needs to delete an answer from the database
+		
+		this.answerList$.subscribe(answers => {
+			//loop through answers, and only delete the document if its questionID matches the flagged question's ID
+			answers.forEach(answer => {
+				if(answer.questionID === question.uid) {
+					this.afs.collection('answers').doc<Answer>(answer.uid).delete();
+				}
+			})
+		})
+
     }
 }

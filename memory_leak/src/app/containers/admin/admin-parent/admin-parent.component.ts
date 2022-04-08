@@ -14,15 +14,15 @@ import flags from 'src/app/services/flags.json'
 	styleUrls: ['./admin-parent.component.css']
 })
 export class AdminParentComponent implements OnInit {
-	@Input() userService!: UserService;
-	
 	user$: User | null | undefined;
 
 	allQuestions: Question[] = [];
 	@Input() flaggedQuestions: Question[] = [];
 	@Input() reasons: string[] = [];
 
-	constructor(private userServ: UserService, private questionService: QuestionService) { }
+	@Input() userService!: UserService;
+
+	constructor(private questionService: QuestionService, private userServ: UserService) { }
 
 	ngOnInit(): void {
 		this.userService = this.userServ;
@@ -43,10 +43,11 @@ export class AdminParentComponent implements OnInit {
 
 	removeQuestion(questionToRemove: Question) {
 		//! it is outside the scope of this component to deal with firestore; the question service must remove
-		
+		this.questionService.removeQuestion(questionToRemove);
+		this.userService.removeQuestionFromUser(questionToRemove.uid);
 	}
 
 	notifyUser() {
-
+		//TODO have notifications for users
 	}
 }
