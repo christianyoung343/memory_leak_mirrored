@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { QuestionService } from 'src/app/services/question.service'
-import { UserService } from 'src/app/services/user.service'
+import { QuestionService } from 'src/app/services/question.service';
+import { UserService } from 'src/app/services/user.service';
 
-import { Question } from 'src/models/question'
+import { Question } from 'src/models/question';
 import { User } from 'src/models/user';
+
+import flags from 'src/app/services/flags.json'
 
 @Component({
 	selector: 'app-admin-parent',
@@ -18,6 +20,7 @@ export class AdminParentComponent implements OnInit {
 
 	allQuestions: Question[] = [];
 	@Input() flaggedQuestions: Question[] = [];
+	@Input() reasons: string[] = [];
 
 	constructor(private userServ: UserService, private questionService: QuestionService) { }
 
@@ -32,6 +35,18 @@ export class AdminParentComponent implements OnInit {
 			this.allQuestions = questions;
 			this.flaggedQuestions = this.allQuestions.filter(question => question.flag > 0);
 		})
+
+		for(let flag of flags.flags) {
+			this.reasons.push(flag.reason);
+		}
 	}
 
+	removeQuestion(questionToRemove: Question) {
+		//! it is outside the scope of this component to deal with firestore; the question service must remove
+		
+	}
+
+	notifyUser() {
+
+	}
 }
