@@ -45,13 +45,15 @@ export class SearchResultsParentComponent implements OnInit {
 					newStr += str.charAt(i);
 				}
 			}
-			newList.push(newStr.toLowerCase());
+			if (!newList.includes(newStr)) {
+				newList.push(newStr.toLowerCase());
+			}
 		})
 		return newList;
 	}
 
 	searchQuestions(searchTerm: { term: string, inputAnswered: Boolean }) {
-		let finalizedTerms: Array<string> = [];
+		let finalizedTerms: Array<string> = []; // List of cleaned search terms
 		let userTerm = this.cleanQuestions(searchTerm.term.split(' '));
 		userTerm.forEach(word => {
 			if (!this.keywords.includes(word) && !finalizedTerms.includes(word)) {
@@ -59,9 +61,25 @@ export class SearchResultsParentComponent implements OnInit {
 			}
 		});
 		this.filteredQuestions = [];
+		let intersectionKV: Array<{ index: number, numIntersections: number }> = [];
 		for (let i = 0; i < this.allQuestions.length; ++i) {
-			if (this.allQuestions[i].title.toLowerCase().includes(searchTerm.term.toLowerCase())) {
-				this.filteredQuestions.push(this.allQuestions[i]);
+			let cleanTitle = this.cleanQuestions(this.allQuestions[i].title.split(' ')); // Question title after clean
+			let intersection: Array<string> = finalizedTerms.filter(fTerm => cleanTitle.includes(fTerm));
+			if (searchTerm.inputAnswered && !this.allQuestions[i].acceptedAnswerID) {
+				continue;
+			}
+			intersectionKV.push({ index: i, numIntersections: intersection.length });
+		}
+		intersectionKV.sort((a, b) => b.numIntersections - a.numIntersections);
+		let j = 0;
+		for (let i = finalizedTerms.length; i >= 1; --i) {
+			for (; j < intersectionKV.length; j++) {
+				if (intersectionKV[j].numIntersections >= i) {
+					this.filteredQuestions.push(this.allQuestions[intersectionKV[j].index]);
+				}
+				else {
+					break;
+				}
 			}
 		}
 	}

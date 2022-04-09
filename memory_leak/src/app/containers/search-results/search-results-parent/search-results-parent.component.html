@@ -20,21 +20,34 @@
         </div>
     </div>
 </section>
-<div *ngFor="let q of filteredQuestions">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <a routerLink="../question/{{q.uid}}">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">{{q.title}}</h5>
+<ng-container *ngIf="filteredQuestions && filteredQuestions.length > 0; then hasQuestions else noQuestions">
+</ng-container>
+<ng-template #hasQuestions>
+    <div *ngFor="let q of filteredQuestions">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <a routerLink="../question/{{q.uid}}">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">{{q.title}}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{{q.body}}</p>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">{{q.body}}</p>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>
+<ng-template #noQuestions>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">No Results Found</p>
+            </div>
+        </div>
+    </div>
+</ng-template>
