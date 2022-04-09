@@ -9,6 +9,7 @@ import { FooterComponent } from "src/app/footer/footer/footer.component";
 import { HeaderComponent } from "src/app/header/header/header.component";
 import { UserService } from "src/app/services/user.service";
 import { BlankComponent } from "./blankComponent";
+import { HttpClient, HttpHandler } from '@angular/common/http'
 import FireauthMock from "./fireauthMock";
 import FirestoreMock from "./firestoreMock";
 
@@ -28,6 +29,8 @@ export default class TestBedExtended extends TestBed {
               HeaderComponent,
               FooterComponent,
               QuestionComponent,
+              HttpClient,
+              HttpHandler,
               { provide: AngularFireAuth, useClass: FireauthMock },
               { provide: AngularFirestore, useClass: FirestoreMock }
             ]
