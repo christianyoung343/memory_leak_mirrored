@@ -4,6 +4,7 @@
 
 .card-text {
     color: black;
+    background-color: white;
 }
 
 a, a:hover, a:focus, a:active {
@@ -12,7 +13,7 @@ a, a:hover, a:focus, a:active {
 }
 
 div>.card>.card-body {
-    background-color:  #54545431;
+    background-color: #c8c8c8;
     align-content: center;
 }
 
@@ -21,6 +22,9 @@ h4 {
     /* width: fit-content; */
     padding: 5px 12px 2px;
 }
+#question {
+    background-color: white;
+}
 
 #userLetter {
     font-size: 4rem;
@@ -28,7 +32,7 @@ h4 {
 
 #user {
     width: fit-content;
-    background-color: aqua;
+    background-color: white;
     border-radius: 50%;
 }
 #spacer {
@@ -39,6 +43,7 @@ h4 {
 }
 
 .card-header {
+    background-color: var(--ml-light-blue);
     align-content: center;
 }
 
@@ -52,7 +57,9 @@ h4 {
 }
 
 button {
-    align-self: center;
+    align-self: right;
+    margin-right: .5rem;
+    background-color: #a3a3a3;
 }
 
 @media (max-width:320px){

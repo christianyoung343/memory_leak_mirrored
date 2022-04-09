@@ -14,25 +14,30 @@ export class ProfileParentComponent implements OnInit {
     @Input() public questions: Question[] = [];
     @Input() public userFirstLetter!: string;
 
-    constructor(private us: UserService, private qs: QuestionService) { }
-
-    ngOnInit(): void {
+    constructor(private us: UserService, private qs: QuestionService) {
         this.us.getUser().subscribe(user => {
             if (user) {
                 this.user = user;
                 this.userFirstLetter = this.user.displayName.charAt(0);
+                this.qs.getQuestions().subscribe(questions => {
+                    this.questions = [];
+                    questions.forEach(q => {
+                        if (q.askerID == this.user.uid) {
+                            this.questions.push(q);
+                        }
+                    })
+                });
             }
-        });
-
-        this.qs.getQuestions().subscribe(questions => {
-            questions.forEach(q => {
-               // console.log(this.user.uid);
-                if (q.askerID == this.user.uid) {
-                    this.questions.push(q);
-                }
-            })
         });
     }
 
+    ngOnInit(): void {
+
+    }
+
+    deleteQuestion(question: Question) {
+        this.qs.removeQuestion(question);
+        // this.questions = [];
+    }
 }
 

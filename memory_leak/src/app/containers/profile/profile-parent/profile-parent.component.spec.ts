@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import TestBedExtended from 'src/test_helpers/testBedExtend';
 
 import { ProfileParentComponent } from './profile-parent.component';
 
@@ -14,7 +15,8 @@ describe('ProfileParentComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfileParentComponent);
+    TestBedExtended.preConfigure();  
+    fixture = TestBedExtended.createComponent(ProfileParentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
