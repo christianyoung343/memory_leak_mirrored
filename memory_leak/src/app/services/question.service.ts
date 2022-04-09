@@ -10,12 +10,12 @@ import { Question } from 'src/models/question';
 	providedIn: 'root'
 })
 export class QuestionService implements OnInit {
-	public questionsList$: Observable<Question[] | any[]>;
+	public questionsList$: Observable<Question[]>;
 	public question: any;
 
 
 	constructor(private angularFirestore: AngularFirestore, private answerService: AnswerService, private userService: UserService) {
-		this.questionsList$ = this.angularFirestore.collection('questions').valueChanges();
+		this.questionsList$ = this.angularFirestore.collection<Question>('questions').valueChanges();
 	}
 
 	ngOnInit(): void {

@@ -2,21 +2,17 @@ import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
-import { UserService } from 'src/app/services/user.service'
-
 import { Answer } from 'src/models/answer';
 import { Question } from 'src/models/question';
-import { User } from 'src/models/user'
-
 
 @Injectable({
     providedIn: 'root'
 })
 export class AnswerService implements OnInit {
-    public answerList$: Observable<Answer[] | any[]>;
+    public answerList$: Observable<Answer[]>;
 
-    constructor(private afs: AngularFirestore, private userService: UserService) {
-        this.answerList$ = this.afs.collection('answers').valueChanges();
+    constructor(private afs: AngularFirestore) {
+        this.answerList$ = this.afs.collection<Answer>('answers').valueChanges();
     }
 
     ngOnInit(): void {
