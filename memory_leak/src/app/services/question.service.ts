@@ -16,7 +16,7 @@ export class QuestionService implements OnInit {
     constructor(private angularFirestore: AngularFirestore, private answerService: AnswerService, private userService: UserService) {
         this.questionsList$ = this.angularFirestore.collection<Question>('questions').valueChanges();
     }
-
+    
     ngOnInit(): void {
         throw new Error('Method not implemented.');
     }
@@ -38,10 +38,8 @@ export class QuestionService implements OnInit {
     }
 
 	removeQuestion(question: Question) {
-		//TODO this; should remove answers and their comments, and then the question itself and its comments, then unlink from users
 		this.answerService.removeAnswersFromQuestion(question);
 		this.userService.removeQuestionFromUser(question.uid);
 		this.angularFirestore.collection('questions').doc<Question>(question.uid).delete();
-	}
-
+  }
 }
