@@ -1,22 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import TestBedExtended from 'src/test_helpers/testBedExtend';
 
-import { ProfileParentComponent } from './profile-parent.component';
+import { IndividualAnswerComponent } from './individual-answer.component';
 
-describe('ProfileParentComponent', () => {
-  let component: ProfileParentComponent;
-  let fixture: ComponentFixture<ProfileParentComponent>;
+describe('IndividualAnswerComponent', () => {
+  let component: IndividualAnswerComponent;
+  let fixture: ComponentFixture<IndividualAnswerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileParentComponent ]
+      declarations: [ IndividualAnswerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    TestBedExtended.preConfigure();  
-    fixture = TestBedExtended.createComponent(ProfileParentComponent);
+    TestBedExtended.preConfigure()
+    fixture = TestBedExtended.createComponent(IndividualAnswerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

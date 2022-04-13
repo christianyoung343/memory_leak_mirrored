@@ -18,6 +18,6 @@ section#card-flow-section.card-section {
     padding:0%;
 }
 
-.card.body {
-    /* background-color: var(--ml-light-blue); */
-}
+/* .card.body {
+    background-color: var(--ml-light-blue);
+} */

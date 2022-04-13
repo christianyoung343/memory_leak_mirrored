@@ -1,0 +1,39 @@
+<div *ngIf="isAnswer; then answer else question">
+</div>
+<ng-template #answer>
+    <div class="card answer">
+        <div class="row">
+            <div class="col-9">
+                <p>{{text}}</p>
+            </div>
+            <div id="user" class="col-3">
+                <div *ngIf="isAnonymous; then anonymous else userName"></div>
+                <ng-template #userName>
+                    <p>{{displayName}}</p>
+                </ng-template>
+                <ng-template #anonymous>
+                    <p>Anonymous User</p>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #question>
+    <div class="card">
+        <div class="row">
+            <div class="col-9">
+                <p>{{text}}</p>
+            </div>
+            <div id="user" class="col-3">
+                <div *ngIf="isAnonymous; then anonymous else userName"></div>
+                <ng-template #userName>
+                    <p>{{displayName}}</p>
+                </ng-template>
+                <ng-template #anonymous>
+                    <p>Anonymous User</p>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</ng-template>

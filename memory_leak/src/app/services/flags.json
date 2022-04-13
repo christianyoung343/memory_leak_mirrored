@@ -1,0 +1,20 @@
+{
+"flags": [
+		{
+			"number": 1,
+			"reason": "Question is rude/inappropriate"
+		},
+		{
+			"number": 2,
+			"reason": "Question encourages academic misconduct"
+		},
+		{
+			"number": 3,
+			"reason": "Question has been answered previously"
+		},
+		{
+			"number": 4,
+			"reason": "An answer for this question is rude, inappropriate, and/or encourages academic misconduct"
+		}
+	]
+}

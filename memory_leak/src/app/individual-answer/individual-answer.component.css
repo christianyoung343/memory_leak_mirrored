@@ -1,0 +1,44 @@
+textarea {
+    width: 75%;
+    margin: .25rem;
+    resize: none;
+    word-wrap: normal;
+    padding: 5px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+  }
+  
+.card p {
+    margin: .5rem;
+    width: 80%;
+}
+
+#user {
+    text-align: right;
+}
+
+.com {
+    margin: .5rem;
+    width: fit-content;
+}
+.commentCard {
+    flex: 0 0 375px;
+    background-color: #c8c8c8c0;
+    margin: .5rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+    align-content: center;
+    width: auto;
+    color: black;
+}
+
+button {
+    margin: .5rem;
+}
+
+div.accepted {
+   background-color: green;
+   color: white;
+}
