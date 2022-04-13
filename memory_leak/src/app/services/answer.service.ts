@@ -8,15 +8,15 @@ import { Answer } from 'src/models/answer';
 import { Question } from 'src/models/question';
 import { User } from 'src/models/user'
 
-
 @Injectable({
     providedIn: 'root'
 })
 export class AnswerService implements OnInit {
-    public answerList$: Observable<Answer[] | any[]>;
+    public answerList$: Observable<Answer[]>;
 
-    constructor(private afs: AngularFirestore, private userService: UserService) {
-        this.answerList$ = this.afs.collection('answers').valueChanges();
+    constructor(private afs: AngularFirestore) {
+        this.answerList$ = this.afs.collection<Answer>('answers').valueChanges();
+
     }
 
     ngOnInit(): void {

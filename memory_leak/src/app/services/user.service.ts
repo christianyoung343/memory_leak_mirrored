@@ -48,30 +48,36 @@ export class UserService {
         return this.user$;
     }
 
-    removeQuestionFromUser(questionID: string) {
-        let userList$: Observable<User[] | any[]> = this.afs.collection<User>('users').valueChanges();
+	getUsers() {
+		return this.afs.collection<User>('users').valueChanges();
+	}
 
-        userList$.subscribe(users => {
-            users.forEach(user => {
-                for (let id of user.askedQuestionIDs) {
-                    if (id === questionID) {
-                        let idArray = user.askedQuestionIDs;
-                        let idIndex = idArray.indexOf(questionID, 0);
+	removeQuestionFromUser(questionID: string) {
+		let userList$: Observable<User[]> = this.afs.collection<User>('users').valueChanges();
 
-                        if (idIndex >= 0) {
-                            idArray.splice(idIndex, 1);
-                        }
+		userList$.subscribe(users => {
+			users.forEach(user => {
+				if(user.askedQuestionIDs) {
+					for(let id of user.askedQuestionIDs) {
+						if(id === questionID) {
+							let idArray = user.askedQuestionIDs;
+							let idIndex = idArray.indexOf(questionID, 0);
 
-                        let userRef: AngularFirestoreDocument<User> = this.afs.collection('users').doc<User>(user.uid);
+							if(idIndex >= 0) {
+								idArray.splice(idIndex, 1);
+							}
 
-                        userRef.update({
-                            askedQuestionIDs: idArray
-                        })
-                    }
-                }
-            })
-        });
-    }
+							let userRef: AngularFirestoreDocument<User> = this.afs.collection('users').doc<User>(user.uid);
+
+							userRef.update({
+								askedQuestionIDs: idArray
+							})
+						}
+					}
+				}
+			})
+		});
+	}
 
     async getNameById(userID: string): Promise<string> {
         let val: string;

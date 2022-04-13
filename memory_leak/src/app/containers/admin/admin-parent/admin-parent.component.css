@@ -1,0 +1,91 @@
+* {
+	box-sizing: border-box;
+}
+
+section.card-section {
+	padding: 1em;
+}
+
+.centered {
+	margin: 0;
+	padding-top: 5%;
+	position: absolute;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.card {
+	flex: 0 0 375px;
+	width: 100%;
+	margin: .5rem;
+	border-radius: 10px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+	align-content: center;
+}
+
+.card-text {
+	color: black;
+}
+
+.card>.card-header {
+	background-color: var(--ml-light-blue);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+#card-flow-section {
+	flex: 1;
+}
+
+#questionCards { 
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	background-color: transparent;
+}
+
+section#card-flow-section.card-section {
+	background-color:transparent;
+}
+
+a, a:hover, a:focus, a:active {
+	text-decoration: none;
+	color: inherit;
+}
+
+button {
+	align-self: center;
+	margin: .5rem;
+}
+
+div.alr {
+	background-color:transparent;
+}
+
+div>.card>.card-body {
+	background-color:  #54545431;
+	align-content: center;
+}
+
+h4 {
+	text-align: center;
+}
+
+@media(max-width:320px) {
+	.card {
+		flex: 0 0 315px;
+	}
+}
+
+@media(min-width:325px) and (max-width: 375px) {
+	.card {
+		flex: 0 0 350px;
+	}
+}
+
+@media(min-width:2300px) {
+	#questionCards {
+		flex-direction: column;
+	}
+}
