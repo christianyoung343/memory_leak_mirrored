@@ -6,13 +6,15 @@ import { AnswerService } from 'src/app/services/answer.service'
 import { UserService } from 'src/app/services/user.service'
 
 import { Question } from 'src/models/question';
+import { AnswerService } from './answer.service';
+import { UserService } from './user.service';
+
 @Injectable({
-	providedIn: 'root'
+    providedIn: 'root'
 })
 export class QuestionService implements OnInit {
-	public questionsList$: Observable<Question[]>;
-	public question: any;
-
+    public questionsList$: Observable<Question[]>;
+    public question: any;
 
 	constructor(private angularFirestore: AngularFirestore, private answerService: AnswerService, private userService: UserService) {
 		this.questionsList$ = this.angularFirestore.collection<Question>('questions').valueChanges();
@@ -39,7 +41,6 @@ export class QuestionService implements OnInit {
 	}
 
 	removeQuestion(question: Question) {
-		//TODO this; should remove answers and their comments, and then the question itself and its comments, then unlink from users
 		this.answerService.removeAnswersFromQuestion(question);
 		this.userService.removeQuestionFromUser(question.uid);
 		this.angularFirestore.collection('questions').doc<Question>(question.uid).delete();
