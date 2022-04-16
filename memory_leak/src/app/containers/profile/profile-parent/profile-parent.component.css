@@ -19,8 +19,6 @@ div>.card>.card-body {
 
 h4 {
     text-align: center;
-    /* width: fit-content; */
-    padding: 5px 12px 2px;
 }
 #question {
     background-color: white;
@@ -28,6 +26,9 @@ h4 {
 
 #userLetter {
     font-size: 4rem;
+    font-family: "Andale Mono", AndaleMono, monospace;
+    /* width: fit-content; */
+    padding: 2px 25px 0px;
 }
 
 #user {
