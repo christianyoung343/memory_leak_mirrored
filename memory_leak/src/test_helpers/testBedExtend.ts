@@ -5,6 +5,7 @@ import { FormsModule, NgControl, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterTestingModule } from "@angular/router/testing";
 import { QuestionComponent } from "src/app/containers/question/question/question.component";
+import { CommentComponent } from "src/app/containers/comment/comment/comment.component";
 import { FooterComponent } from "src/app/footer/footer/footer.component";
 import { HeaderComponent } from "src/app/header/header/header.component";
 import { UserService } from "src/app/services/user.service";
@@ -29,6 +30,7 @@ export default class TestBedExtended extends TestBed {
               HeaderComponent,
               FooterComponent,
               QuestionComponent,
+              CommentComponent,
               HttpClient,
               HttpHandler,
               { provide: AngularFireAuth, useClass: FireauthMock },

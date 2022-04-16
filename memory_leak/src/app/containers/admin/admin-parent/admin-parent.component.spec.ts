@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import TestBedExtended from 'src/test_helpers/testBedExtend';
 
 import { AdminParentComponent } from './admin-parent.component';
 
@@ -7,7 +8,8 @@ describe('AdminParentComponent', () => {
   let fixture: ComponentFixture<AdminParentComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    TestBedExtended.preConfigure();
+    await TestBedExtended.configureTestingModule({
       declarations: [ AdminParentComponent ]
     })
     .compileComponents();
