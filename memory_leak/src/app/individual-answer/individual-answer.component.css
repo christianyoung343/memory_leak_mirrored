@@ -15,10 +15,6 @@ textarea {
     width: 80%;
 }
 
-#user {
-    text-align: right;
-}
-
 .com {
     margin: .5rem;
     width: fit-content;
@@ -41,4 +37,24 @@ button {
 div.accepted {
    background-color: green;
    color: white;
+}
+
+#userDesktop {
+    text-align: right;
+    display: block;
+}
+
+#userMobile {
+    text-align: right;
+    display: none;
+}
+
+@media (max-width:800px) {
+    #userDesktop {
+        display: none;
+    }
+    #userMobile {
+        display: block;
+    }
+    
 }

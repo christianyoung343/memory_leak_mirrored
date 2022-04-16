@@ -10,10 +10,24 @@ textarea {
     width: 80%;
 }
 
-#user {
-    text-align: right;
-}
-
 .card.answer {
     background-color: #58585860;
+}
+
+#userDesktop {
+    text-align: right;
+    display: block;
+}
+#userMobile {
+    text-align: right;
+    display: none;
+}
+
+@media (max-width:800px) {
+    #userDesktop {
+        display: none;
+    }
+    #userMobile {
+        display: block;
+    }
 }

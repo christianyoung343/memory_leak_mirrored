@@ -2,10 +2,6 @@
     box-sizing: border-box;
 }
 
-#user {
-    text-align: right;
-}
-
 #card-flow-section{
     flex: 1;
 }
@@ -52,4 +48,22 @@ section#card-flow-section.card-section {
 	.card{
 		flex: 0 0 350px;
 	}
+}
+
+#userDesktop {
+    text-align: right;
+    display: block;
+}
+#userMobile {
+    text-align: right;
+    display: none;
+}
+
+@media (max-width:800px) {
+    #userDesktop {
+        display: none;
+    }
+    #userMobile {
+        display: block;
+    }
 }
