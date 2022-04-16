@@ -6,8 +6,6 @@ import { AnswerService } from 'src/app/services/answer.service'
 import { UserService } from 'src/app/services/user.service'
 
 import { Question } from 'src/models/question';
-import { AnswerService } from './answer.service';
-import { UserService } from './user.service';
 
 @Injectable({
     providedIn: 'root'

@@ -36,8 +36,10 @@ export class AdminParentComponent implements OnInit {
 			this.flaggedQuestions = this.allQuestions.filter(question => question.flag > 0);
 		})
 
-		for(let flag of flags.flags) {
-			this.reasons.push(flag.reason);
+		if (flags) {
+			for(let flag of flags.flags) {
+				this.reasons.push(flag.reason);
+			}
 		}
 	}
 
