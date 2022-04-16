@@ -13,7 +13,8 @@
     flex: 0 0 375px;
     width: 100%;
     background-color: var(--ml-light-blue);
-    margin: .5rem;
+    /* margin: .5rem; */
+    margin: 1vw;
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
     align-content: center;
@@ -29,6 +30,8 @@
     background-color: #54545460;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    padding: max(1vw, 1vh);
+    padding-right: max(2vw, 2vh);
 }
 
  html {
