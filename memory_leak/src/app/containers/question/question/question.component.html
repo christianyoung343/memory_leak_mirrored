@@ -11,6 +11,9 @@
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-9">
+										<button (click)="voteQuestion(1)">^</button>
+										<h5 class="card-title">{{ getQuestionScore(question) }}</h5>
+										<button (click)="voteQuestion(0)">v</button>
                                         <h5 class="card-title">{{question.title}}</h5>
                                     </div>
                                     <div class="col-3">

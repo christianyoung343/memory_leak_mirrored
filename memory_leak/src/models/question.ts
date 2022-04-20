@@ -8,7 +8,8 @@ export class Question {
     public comments: Array<{ userID: string, comment: string }>,
     public askerID: string, //ID of user that asked the question
     public acceptedAnswerID: string, 
-    public flag: number
+    public flag: number,
+	public votes?: Array<{ userID: string, voteType: number }>
     ){ }
     
     //  constructor(questionObj:any) {
