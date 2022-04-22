@@ -3,6 +3,9 @@
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">&copy; 2022 Copyright: M.A.C.K
     </div>
+	<div *ngIf="user.admin" class="text-center py-3">
+		<a routerLink="/admin">Flagged Questions</a>
+	</div>
     <!-- Copyright -->
 </footer>
 <!-- Footer -->

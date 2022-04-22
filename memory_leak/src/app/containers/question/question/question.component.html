@@ -28,6 +28,9 @@
 
                                     <div class="col-7">	
                                         <h5 class="card-title">{{question.title}}</h5>
+										<ng-container *ngIf="user.admin">
+											<button class="btn">Remove</button>
+										</ng-container>
                                     </div>
 
                                     <div class="col-3">
