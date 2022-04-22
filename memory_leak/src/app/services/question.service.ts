@@ -45,34 +45,41 @@ export class QuestionService implements OnInit {
 	}
 
 	voteQuestion(question: Question, userID: string, voteType: number) {
-		if(question.votes) {
-			//voteType: can be 0 or 1; 0 is downvote, 1 is upvote
-			for(let voteInfo of question.votes) {
-				//for when the user has already voted on this question
-				if(voteInfo.userID === userID) {
-					//for when the vote types are the same
-					if(voteInfo.voteType === voteType) {
-						//don't allow a double vote
-						alert("You cannot vote more than once");
-						return;
+		if(!question.votes) {
+			question.votes = [];
+		}
+
+		//voteType: can be 0 or 1; 0 is downvote, 1 is upvote
+		for(let voteInfo of question.votes) {
+			//for when the user has already voted on this question
+			if(voteInfo.userID === userID) {
+				//for when the vote types are the same
+				if(voteInfo.voteType === voteType) {
+					//allow user to undo their vote
+					let voteIndex = question.votes.indexOf(voteInfo, 0);
+
+					if(voteIndex > -1) {
+						question.votes.splice(voteIndex, 1);
 					}
-					//allow changing vote type
-					else {
-						voteInfo.voteType = voteType;
-						this.updateQuestion(question.uid, question);
-						return;
-					}
+					
+					return;
+				}
+				//allow changing vote type
+				else {
+					voteInfo.voteType = voteType;
+					this.updateQuestion(question.uid, question);
+					return;
 				}
 			}
-
-			//will only get here if the user has not voted on this question before
-			question.votes.push({
-				"userID": userID,
-				"voteType": voteType
-			});
-		
-			this.updateQuestion(question.uid, question);
 		}
+
+		//will only get here if the user has not voted on this question before
+		question.votes.push({
+			"userID": userID,
+			"voteType": voteType
+		});
+		
+		this.updateQuestion(question.uid, question);
 	}
 
 	getScore(question: Question): number {
