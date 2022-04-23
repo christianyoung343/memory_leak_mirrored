@@ -14,12 +14,17 @@
                                         <h5 class="card-title">{{question.title}}</h5>
                                     </div>
                                     <div class="col-3">
-                                        <div id="user">
+                                        <div id="userDesktop">
                                             <div *ngIf="question.anonymous; then anonymous else userName"></div>
                                             <ng-template #userName><h5>{{userDisplayName}}</h5></ng-template>
                                             <ng-template #anonymous><h5>Anonymous User</h5></ng-template>
                                         </div>
                                     </div>
+                                </div>
+                                <div id="userMobile">
+                                    <div *ngIf="question.anonymous; then anonymous else userName"></div>
+                                    <ng-template #userName><h5>{{userDisplayName}}</h5></ng-template>
+                                    <ng-template #anonymous><h5>Anonymous User</h5></ng-template>
                                 </div>
                             </div>
 

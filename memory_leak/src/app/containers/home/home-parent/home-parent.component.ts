@@ -5,26 +5,35 @@ import { UserService } from 'src/app/services/user.service';
 import { Question } from 'src/models/question';
 
 @Component({
-  selector: 'app-home-parent',
-  templateUrl: './home-parent.component.html',
-  styleUrls: ['./home-parent.component.css']
+	selector: 'app-home-parent',
+	templateUrl: './home-parent.component.html',
+	styleUrls: ['./home-parent.component.css']
 })
 export class HomeParentComponent implements OnInit {
-  @Input() public uServ!: UserService
-  @Input() public questions: Question[] = [];
-    public allQuestions: Question[] = [];
-  constructor(private userService:UserService, private router: Router, private qs: QuestionService) { }
+	@Input() public uServ!: UserService
+	@Input() public questions: Question[] = [];
+	public allQuestions: Question[] = [];
+	constructor(private userService: UserService, private router: Router, private qs: QuestionService) { }
 
-  ngOnInit(): void {
-    this.uServ = this.userService;
-    this.qs.getQuestions().subscribe(q => {
-      this.allQuestions = q;
-      this.questions = this.allQuestions.filter(q => q.acceptedAnswerID === "");
-    });
-  }
+	ngOnInit(): void {
+		this.uServ = this.userService;
+		this.qs.getQuestions().subscribe(q => {
+			this.allQuestions = q;
+			this.questions = this.allQuestions.filter(q => q.acceptedAnswerID === "");
+		});
+	}
 
-  goToSignUp(){
-    this.router.navigate(['signup']);
-  }
+	goToSignUp() {
+		this.router.navigate(['signup']);
+	}
+
+	signIn() {
+		this.uServ.googleSignIn().then(none => {
+			this.qs.getQuestions().subscribe(q => {
+				this.allQuestions = q;
+				this.questions = this.allQuestions.filter(q => q.acceptedAnswerID === "");
+			});
+		});
+	}
 
 }
