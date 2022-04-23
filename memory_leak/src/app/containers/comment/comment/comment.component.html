@@ -9,7 +9,7 @@
                 [isAnonymous]="questionAnonymous&&(askerID==c.userID)"></app-individual-comment>
         </ng-template>
         <ng-template #questionComment>
-            <app-individual-comment [comment]="c" [isAnonymous]="question.anonymous&&(question.askerID==c.userID)" [isAdmin]="isAdmin">
+            <app-individual-comment [comment]="c" [question]="question" [isAnonymous]="question.anonymous&&(question.askerID==c.userID)" [isAdmin]="isAdmin">
             </app-individual-comment>
         </ng-template>
     </div>

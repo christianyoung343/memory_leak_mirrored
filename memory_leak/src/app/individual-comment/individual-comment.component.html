@@ -15,7 +15,7 @@
                     <p>Anonymous User</p>
                 </ng-template>
                 <ng-container *ngIf="isAdmin">
-                    <button class="btn">Remove</button>
+                    <button class="btn bi bi-trash">Hello</button>
                 </ng-container>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     <p>Anonymous User</p>
                 </ng-template>
                 <ng-container *ngIf="isAdmin">
-                    <button class="btn">Remove</button>
+                    <button class="btn" (click)="deleteComment(this, comment.comment)"><i class="bi bi-trash"></i></button>
                 </ng-container>
             </div>
         </div>
