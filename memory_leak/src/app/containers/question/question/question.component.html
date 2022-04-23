@@ -28,7 +28,7 @@
 
                                     <div class="col-7">	
                                         <h5 class="card-title">{{question.title}}</h5>
-										<ng-container *ngIf="user.admin">
+										<ng-container *ngIf="user && user.admin">
 											<button class="btn">Remove</button>
 										</ng-container>
                                     </div>
@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
-                                        <app-answer-parent [answers]="answers" [question]="question">
+                                        <app-answer-parent *ngIf="user" [answers]="answers" [question]="question" [isAdmin]="!!user.admin">
                                         </app-answer-parent>
                                     </div>
                                 </div>

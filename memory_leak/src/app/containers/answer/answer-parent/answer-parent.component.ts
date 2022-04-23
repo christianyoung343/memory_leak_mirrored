@@ -17,6 +17,7 @@ export class AnswerParentComponent implements OnInit {
     @Input() question!: Question;
     public newAnswerText: string = "";
     @Input() public user!: User;
+    @Input() public isAdmin!: boolean;
 
     constructor(private as: AnswerService, private us: UserService, private qs: QuestionService) { }
 

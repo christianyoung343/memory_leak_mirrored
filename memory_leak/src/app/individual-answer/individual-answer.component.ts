@@ -22,6 +22,7 @@ export class IndividualAnswerComponent implements OnInit {
     @Input() public accepted!: boolean;
     @Input() public userID!: string;
     @Input() public question!: Question;
+    @Input() public isAdmin!: boolean;
 
     constructor(private us: UserService, private qs: QuestionService) { }
 

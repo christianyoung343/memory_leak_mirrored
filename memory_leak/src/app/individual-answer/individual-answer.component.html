@@ -27,6 +27,9 @@
         <ng-template #acceptBtn>
             <button class="btn" (click)="unacceptAnswer()">Unaccept The Above Answer</button>
         </ng-template>
+        <ng-container *ngIf="isAdmin">
+            <button class="btn">Remove</button>
+        </ng-container>
     </div>
 </ng-template>
 
@@ -58,5 +61,8 @@
         <ng-template #acceptBtn>
             <button class="btn" (click)="updateAcceptedAnswer()">Accept The Above Answer</button>
         </ng-template>
+        <ng-container *ngIf="isAdmin">
+            <button class="btn">Remove</button>
+        </ng-container>
     </div>
 </ng-template>
