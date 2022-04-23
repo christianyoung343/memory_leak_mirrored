@@ -47,7 +47,7 @@
                                 <p class="card-text">{{question.body}}</p>
                                 <div class="card">
                                     <div class="card-body">
-                                        <app-comment [comments]="comments" [question]="question" [commentOnAnswer]="false"></app-comment>
+                                        <app-comment *ngIf="user" [comments]="comments" [question]="question" [commentOnAnswer]="false" [isAdmin]="!!user.admin"></app-comment>
                                     </div>
                                 </div>
                                 <div class="card">

@@ -13,6 +13,7 @@ export class IndividualCommentComponent implements OnInit {
     @Input() public isAnonymous!: boolean;
     @Input() public comment!: { userID: string, comment: string };
     @Input() public isAnswer!: boolean;
+    @Input() public isAdmin!: boolean;
     
     constructor(private us: UserService) { }
 
