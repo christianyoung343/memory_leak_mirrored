@@ -13,5 +13,6 @@ export class Answer {
         this.comments = answerObj.comments;
         this.answererID = answerObj.answererID;
         this.questionID = answerObj.questionID;
+		this.votes = answerObj.votes;
     }
 }

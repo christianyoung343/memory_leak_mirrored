@@ -127,10 +127,18 @@ export class AnswerService implements OnInit {
 	}
 
 	getScore(answer: Answer): number {
+		if(!answer) {
+			return 0;
+		}
+
+		if(!answer.votes) {
+			answer.votes = [];
+		}
+
 		let upvotes: number = 0;
 		let downvotes: number = 0;
 
-		if(answer.votes) {
+		//if(answer.votes) {
 			for(let voteInfo of answer.votes) {
 				if(voteInfo.voteType === 0) {
 					downvotes++;
@@ -139,7 +147,7 @@ export class AnswerService implements OnInit {
 					upvotes++;
 				}
 			}
-		}
+		//}
 
 		return upvotes - downvotes;
 	}

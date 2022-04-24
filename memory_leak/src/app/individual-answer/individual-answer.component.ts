@@ -48,8 +48,8 @@ export class IndividualAnswerComponent implements OnInit {
         this.qs.updateQuestion(this.question.uid, this.question);
     }
 
-	getAnswerScore(answer: Answer): number {
-		return this.as.getScore(answer);
+	getAnswerScore(): number {
+		return this.as.getScore(this.answer);
 	}
 
 	voteAnswer(voteType: number) {
