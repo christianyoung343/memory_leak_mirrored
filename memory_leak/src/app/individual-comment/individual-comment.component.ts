@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Answer } from 'src/models/answer';
 import { Question } from 'src/models/question';
+import { AnswerService } from '../services/answer.service';
 import { QuestionService } from '../services/question.service';
 import { UserService } from '../services/user.service';
 
@@ -17,8 +19,9 @@ export class IndividualCommentComponent implements OnInit {
     @Input() public isAnswer!: boolean;
     @Input() public isAdmin!: boolean;
     @Input() public question!: Question;
+    @Input() public answer!: Answer;
 
-    constructor(private us: UserService, private questionService: QuestionService) { }
+    constructor(private us: UserService, private questionService: QuestionService, private answerService: AnswerService) { }
 
     ngOnInit(): void {
         if (this.comment) {
@@ -27,18 +30,22 @@ export class IndividualCommentComponent implements OnInit {
         }
     }
 
-    deleteComment(question: any, comment: string){
+    deleteComment(question: any, comment: string) {
         let q: Question = question.question;
-    //    console.log(question.question);
-        for(let i =0; i< q.comments.length; i++){
-            if(q.comments[i].comment === comment){
-                console.log("You found the comment");
-               // console.log(typeof q.comments[i]);
+        for (let i = 0; i < q.comments.length; i++) {
+            if (q.comments[i].comment === comment) {
                 this.questionService.removeCommentFromQuestion(q, q.comments[i].comment, q.comments[i].userID);
             }
         }
-        
-        
+    }
+
+    deleteAnswerComment(question: any, comment: string) {
+        for (let i = 0; i < question.answer.comments.length; i++) {
+            if (question.answer.comments[i].comment === comment) {
+                this.answerService.removeCommentFromAnswer(question.answer,
+                    question.answer.comments[i].comment,question.answer.comments[i].userID);
+            }
+        }
     }
 
 }

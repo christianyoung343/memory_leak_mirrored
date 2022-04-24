@@ -15,7 +15,7 @@
                     <p>Anonymous User</p>
                 </ng-template>
                 <ng-container *ngIf="isAdmin">
-                    <button class="btn bi bi-trash">Hello</button>
+                    <button class="btn bi bi-trash"(click)="deleteAnswerComment(this,comment.comment)"></button>
                 </ng-container>
             </div>
         </div>

@@ -53,12 +53,23 @@ export class AnswerService implements OnInit {
         if (answer.uid) {
             this.updateAnswer(answer.uid,answer);
         }
-      }
+    }
     
-      updateAnswer(id: string, answer: Answer) {
+    updateAnswer(id: string, answer: Answer) {
         this.afs.collection('answers').doc(id).set(answer)
-      }
+    }
 
+    removeCommentFromAnswer(answer: Answer, comment: string, userID: string){
+        for(let i =0; i<answer.comments.length;i++){
+            if(answer.comments[i].comment == comment && answer.comments[i].userID == userID){
+                answer.comments.splice(i,1);
+            }
+        }
+
+        if (answer.uid) {
+            this.updateAnswer(answer.uid, answer)
+        }
+    }
     removeAnswersFromQuestion(question: Question) {
         //needs to delete an answer from the database
 		

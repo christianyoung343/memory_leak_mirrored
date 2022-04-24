@@ -3,7 +3,7 @@
         <h4>Answers</h4>
     </div>
     <div class="comments" *ngFor="let a of answers">
-        <app-individual-answer [userID]="user.uid" [accepted]="a.uid==question.acceptedAnswerID" [questionAnonymous]="question.anonymous"
+        <app-individual-answer *ngIf="user" [userID]="user.uid" [accepted]="a.uid==question.acceptedAnswerID" [questionAnonymous]="question.anonymous"
             [answer]="a" [isAnonymous]="question.anonymous&&(question.askerID==a.answererID)"
             [askerID]="question.askerID" [question]="question" [isAdmin]="isAdmin"></app-individual-answer>
     </div>
