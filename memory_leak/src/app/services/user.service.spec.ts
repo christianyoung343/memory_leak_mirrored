@@ -41,17 +41,17 @@ describe('UserService', () => {
 		expect(collection.doc("uid").data).toStrictEqual(userObj)
 	})
 
-	// it('should perform google auth', async () => {
-	// 	let mock = jest.fn(() => { service.googleSignIn() })
-	// 	await mock()
-	// 	expect(mock).toHaveReturned()
-	// })
+	it('should perform google auth', async () => {
+		let mock = jest.fn(() => { service.googleSignIn() })
+		await mock()
+		expect(mock).toHaveReturned()
+	})
 
-	// it('should sign out users', async () => {
-	// 	let mock = jest.fn(() => { service.signOut() })
-	// 	await mock()
-	// 	expect(mock).toHaveReturned()
-	// })
+	it('should sign out users', async () => {
+		let mock = jest.fn(() => { service.signOut() })
+		await mock()
+		expect(mock).toHaveReturned()
+	})
 
 	it('should remove a question from a user', () => {
 		let userObj = {
