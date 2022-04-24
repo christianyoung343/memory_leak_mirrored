@@ -1,53 +1,57 @@
 export default class MockDoc<T> {
-    public data: any | undefined;
-    public id: string
+	public data: any | undefined;
+	public id: string
 
-    constructor(data: T) {
-        this.data = data;
-        let idfunc = () => { if (this.data && this.data["uid"]) { return this.data["uid"] } else { return "noIDDound" } }
-        this.id = idfunc();
-        
-    }
+	constructor(data: T) {
+		this.data = data;
+		let idfunc = () => { if (this.data && this.data["uid"]) { return this.data["uid"] } else { return "noIDFound" } }
+		this.id = idfunc();
 
-    public get() {
-        return this.fullPromiseBuilder();
-    }
+	}
 
-    public set(data: T) {
-        this.data = data;
-    }
+	public get() {
+		return this.fullPromiseBuilder();
+	}
 
-    public delete() {
-        this.data = undefined;
-    }
+	public set(data: T) {
+		this.data = data;
+	}
 
-    public update(changes: Object) {
-        for (const [k, v] of Object.entries(changes)) {
-            if (this.data&& this.data[k]) {
-                this.data[k] = v;
-            }
-        }
-    }
+	public delete() {
+		this.data = undefined;
+	}
 
-    public valueChanges() {
-        return this;
-    }
+	public update(changes: Object) {
+		for (const [k, v] of Object.entries(changes)) {
+			if (this.data && this.data[k]) {
+				this.data[k] = v;
+			}
+		}
+	}
 
-    public subscribe() {
-        return this;
-    }
+	public valueChanges() {
+		return this;
+	}
 
-    private async fullPromiseBuilder() : Promise<MockDoc<T>> {
-        let val = await this;
-        return val;
-    }
+	public subscribe(todo?: (param: any) => any) {
+		if (todo) {
+			return todo(this)
+		} else {
+			return this;
+		}
+	}
 
-    private async dataPromiseBuilder() : Promise<T> {
-        let val = await this.data;
-        return val;
-    }
+	private async fullPromiseBuilder(): Promise<MockDoc<T>> {
+		let val = await this;
+		return val;
+	}
 
-    public toPromise() {
-        return this.fullPromiseBuilder()
-    }
+	private async dataPromiseBuilder(): Promise<T> {
+		let val = await this.data;
+		return val;
+	}
+
+	public toPromise() {
+		return this.fullPromiseBuilder()
+	}
 }
