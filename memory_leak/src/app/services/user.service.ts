@@ -82,14 +82,16 @@ export class UserService {
     async getNameById(userID: string): Promise<string> {
         let val: string;
         val = await this.afs.collection<User>('users').doc(userID).ref.get().then(doc => {
+            console.log(doc);
             let data = doc.data();
+            console.log("data")
             if (data) {
                 return data.displayName;
             } else {
                 return "User Not Found";
             }
         }).catch(() => {
-            return "User Not Found";
+            return "Error: User Not Found";
         })
         return val;
 

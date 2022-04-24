@@ -1,9 +1,14 @@
+import MockDocRef from "./mockDocRef";
+
 export default class MockDoc<T> {
 	public data: any | undefined;
 	public id: string
+	public ref: any
 
 	constructor(data: T) {
 		this.data = data;
+		let refFunc = () => { return new MockDocRef<T>(this)}
+		this.ref = refFunc();
 		let idfunc = () => { if (this.data && this.data["uid"]) { return this.data["uid"] } else { return "noIDFound" } }
 		this.id = idfunc();
 
@@ -13,8 +18,12 @@ export default class MockDoc<T> {
 		return this.fullPromiseBuilder();
 	}
 
-	public set(data: T) {
-		this.data = data;
+	public set(data: T, options?: {merge: boolean}) {
+		if (options && options.merge) {
+			this.update(data)
+		} else {
+			this.data = data;
+		}
 	}
 
 	public delete() {
@@ -22,8 +31,12 @@ export default class MockDoc<T> {
 	}
 
 	public update(changes: Object) {
+		let val = typeof this.data;
+		if (val == "string") {
+			this.data = {};
+		}
 		for (const [k, v] of Object.entries(changes)) {
-			if (this.data && this.data[k]) {
+			if (this.data) { //&& this.data[k]
 				this.data[k] = v;
 			}
 		}
