@@ -32,6 +32,12 @@ export default class MockCollection<T> {
         }
     }
 
+    add(data: any) {
+        let newId = "Add" + this.mockDocs.size
+        this.mockDocs.set(newId, new MockDoc(data))
+        return this.mockDocs.get(newId)?.toPromise()
+    }
+
     subscribe() {
         return this
     }
