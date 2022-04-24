@@ -2,6 +2,21 @@
 <ng-template #acceptedAnswer>
     <div class="card accepted">
         <div class="row">
+			<div class="col-2">
+				<div class="row">
+					<div class="col">
+						<button class="btn votes" (click)="voteAnswer(1)">+</button>
+					</div>
+	
+					<div class="col">
+						<p class="voteNum">{{ getAnswerScore(answer) }}</p>
+					</div>
+	
+					<div class="col">
+						<button class="btn votes" (click)="voteAnswer(0)">-</button>
+					</div>
+				</div>
+			</div>
             <div class="col-9">
                 <p>{{text}}</p>
             </div>
@@ -36,6 +51,21 @@
 <ng-template #unaccepted>
     <div class="card">
         <div class="row">
+			<div class="col-2">
+				<div class="row">
+					<div class="col">
+						<button class="btn votes" (click)="voteAnswer(1)">+</button>
+					</div>
+	
+					<div class="col">
+						<p class="voteNum">{{ getAnswerScore(answer) }}</p>
+					</div>
+	
+					<div class="col">
+						<button class="btn votes" (click)="voteAnswer(0)">-</button>
+					</div>
+				</div>
+			</div>
             <div class="col-9">
                 <p>{{text}}</p>
             </div>

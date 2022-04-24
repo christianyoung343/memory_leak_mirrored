@@ -34,6 +34,16 @@ textarea {
     color: black;
 }
 
+.votes {
+	font-size: 18px;
+	margin: 0;
+}
+
+.col>.voteNum {
+	font-size: 20px;
+	margin: 0;
+}
+
 button {
     margin: .5rem;
 }

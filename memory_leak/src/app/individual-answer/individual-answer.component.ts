@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Answer } from 'src/models/answer';
 import { Question } from 'src/models/question';
 import { User } from 'src/models/user';
+import { AnswerService } from '../services/answer.service';
 import { QuestionService } from '../services/question.service';
 import { UserService } from '../services/user.service';
 
@@ -24,7 +25,7 @@ export class IndividualAnswerComponent implements OnInit {
     @Input() public question!: Question;
     @Input() public isAdmin!: boolean;
 
-    constructor(private us: UserService, private qs: QuestionService) { }
+    constructor(private us: UserService, private qs: QuestionService, private as: AnswerService) { }
 
     ngOnInit(): void {
         if (this.answer) {
@@ -46,4 +47,16 @@ export class IndividualAnswerComponent implements OnInit {
         this.question.acceptedAnswerID = "";
         this.qs.updateQuestion(this.question.uid, this.question);
     }
+
+	getAnswerScore(answer: Answer): number {
+		return this.as.getScore(answer);
+	}
+
+	voteAnswer(voteType: number) {
+		this.us.getUser().subscribe(user => {
+			if(user) {
+				this.as.voteAnswer(this.answer, user.uid, voteType);
+			}
+		})
+	}
 }

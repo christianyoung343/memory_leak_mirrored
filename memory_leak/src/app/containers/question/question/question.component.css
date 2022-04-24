@@ -34,15 +34,6 @@ section.card-section{
     background-color: #54545428;
 }
 
-.votes {
-	font-size: 18px;
-}
-
-.col>.voteNum {
-	font-size: 20px;
-	margin: 0;
-}
-
 section#card-flow-section.card-section {
     background-color:transparent;
 }

@@ -96,16 +96,4 @@ export class QuestionComponent implements OnInit {
     showUID(): void {
         console.log(this.uid);
     }
-
-	getQuestionScore(question: Question): number {
-		return this.questionsService.getScore(question);
-	}
-
-	voteQuestion(voteType: number) {
-		this.userService.getUser().subscribe(user => {
-			if(user) {
-				this.questionsService.voteQuestion(this.question, user.uid, voteType);
-			}
-		})
-	}
 }

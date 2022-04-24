@@ -81,6 +81,66 @@ export class AnswerService implements OnInit {
 				}
 			})
 		})
-
     }
+
+	voteAnswer(answer: Answer, userID: string, voteType: number) {
+		if(!answer.votes) {
+			answer.votes = [];
+		}
+
+		//voteType: can be 0 or 1; 0 is downvote, 1 is upvote
+		for(let voteInfo of answer.votes) {
+			//for when the user has already voted on this question
+			if(voteInfo.userID === userID) {
+				//for when the vote types are the same
+				if(voteInfo.voteType === voteType) {
+					//allow user to undo their vote
+					let voteIndex = answer.votes.indexOf(voteInfo, 0);
+
+					if(voteIndex > -1) {
+						answer.votes.splice(voteIndex, 1);
+					}
+
+					return;
+				}
+				//allow changing vote type
+				else {
+					voteInfo.voteType = voteType;
+					if(answer.uid) {
+						this.updateAnswer(answer.uid, answer);
+					}
+					return;
+				}
+			}
+		}
+
+		//will only get here if the user has not voted on this question before
+		answer.votes.push({
+			"userID": userID,
+			"voteType": voteType
+		});
+		
+		if(answer.uid) {
+			this.updateAnswer(answer.uid, answer);
+		}
+		
+	}
+
+	getScore(answer: Answer): number {
+		let upvotes: number = 0;
+		let downvotes: number = 0;
+
+		if(answer.votes) {
+			for(let voteInfo of answer.votes) {
+				if(voteInfo.voteType === 0) {
+					downvotes++;
+				}
+				else {
+					upvotes++;
+				}
+			}
+		}
+
+		return upvotes - downvotes;
+	}
 }

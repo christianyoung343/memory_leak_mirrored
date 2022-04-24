@@ -7,6 +7,7 @@
             [answer]="a" [isAnonymous]="question.anonymous&&(question.askerID==a.answererID)"
             [askerID]="question.askerID" [question]="question" [isAdmin]="isAdmin"></app-individual-answer>
     </div>
+	
     <form>
         <textarea rows="3" class="inputBox" [(ngModel)]="newAnswerText" name="comment"></textarea><br>
         <button type="submit" (click)="updateAnswer(newAnswerText)">Add Answer</button>
