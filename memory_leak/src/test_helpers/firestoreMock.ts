@@ -1,5 +1,10 @@
+import MockCollection from "./mockCollection"
+import MockDoc from "./mockDoc"
+
 //https://stackoverflow.com/questions/52043886/how-do-you-mock-firebase-firestore-methods-using-jest
 export default class FirestoreMock {
+    mockDocs: Map<string, MockDoc<any>>
+    mockCollections: Map<string, MockCollection<any>>
     mockCollection: any
     mockValueChanges: any
     mockSubscribe: any
@@ -12,6 +17,10 @@ export default class FirestoreMock {
     private _mockGetReturn: any
     private _mockOnSnaptshotSuccess: any
     constructor() {
+        //contains mocked documents that are returned
+        this.mockDocs = new Map<string, MockDoc<any>>()
+        this.mockCollections = new Map<string, MockCollection<any>>()
+
         // mocked methods that return the class
         this.mockCollection = jest.fn(() => this)
         this.mockValueChanges = jest.fn(() => this)
@@ -32,6 +41,17 @@ export default class FirestoreMock {
         this.mockOnSnaptshotSuccess = null
     }
 
+    doc(id: string) : MockDoc<any> {
+        if (this.mockDocs.get(id)) {
+            let temp = this.mockDocs.get(id)?.data
+            return new MockDoc(temp)
+        } else {
+            let temp = new MockDoc(id)
+            this.mockDocs.set(id, temp)
+            return temp
+        }
+    }
+
     valueChanges() {
         return this.mockValueChanges()
     }
@@ -40,8 +60,16 @@ export default class FirestoreMock {
         return this.mockSubscribe()
     }
 
-    collection(c: any) {
-        return this.mockCollection(c)
+    collection(id: string) : MockCollection<any>{
+        let temp = this.mockCollections.get(id)
+        if (temp) {
+            return temp;
+        }
+        temp = new MockCollection()
+        this.mockCollections.set(id, temp)
+        return temp;
+
+        // return this.mockCollection(c)
     }
 
     where(...args: any[]) {
