@@ -154,6 +154,11 @@ export class AnswerService implements OnInit {
 
 	getNumVotes(answer: Answer, voteType: number): number {
 		let numVotes = 0;
+
+		if(!answer) {
+			return 0;
+		}
+		
 		if(!answer.votes) {
 			answer.votes = [];
 		}
