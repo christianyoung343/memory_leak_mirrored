@@ -35,7 +35,7 @@ export class IndividualAnswerComponent implements OnInit {
         }
     }
 
-    updateAcceptedAnswer(){
+    updateAcceptedAnswer() {
         if(this.answer.uid){
             this.question.acceptedAnswerID = this.answer.uid;            
         }
@@ -43,10 +43,14 @@ export class IndividualAnswerComponent implements OnInit {
         this.qs.updateQuestion(this.question.uid, this.question);
     }
 
-    unacceptAnswer(){
+    unacceptAnswer() {
         this.question.acceptedAnswerID = "";
         this.qs.updateQuestion(this.question.uid, this.question);
     }
+
+	getNumVotes(voteType: number) {
+		return this.as.getNumVotes(this.answer, voteType);
+	}
 
 	getAnswerScore(): number {
 		return this.as.getScore(this.answer);
