@@ -39,14 +39,26 @@ section#card-flow-section.card-section {
 }
 
 @media (max-width:320px){
-    .card{
+    .card {
 		flex: 0 0 315px;
+	}
+	.votes {
+		font-size: 12px;
+	}
+	button {
+		font-size: 3px;
 	}
 }
 
 @media (min-width:325px) and (max-width: 375px){
-	.card{
+	.card {
 		flex: 0 0 350px;
+	}
+	.votes {
+		font-size: 14px;
+	}
+	button {
+		font-size: 5px;
 	}
 }
 

@@ -7,6 +7,7 @@ import { Question } from 'src/models/question';
 import { User } from 'src/models/user';
 
 import flags from 'src/app/services/flags.json'
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-admin-parent',
@@ -22,13 +23,16 @@ export class AdminParentComponent implements OnInit {
 
 	@Input() userService!: UserService;
 
-	constructor(private questionService: QuestionService, private userServ: UserService) { }
+	constructor(private questionService: QuestionService, private userServ: UserService, private router: Router) { }
 
 	ngOnInit(): void {
 		this.userService = this.userServ;
 
 		this.userService.getUser().subscribe(user => {
 			this.user$ = user;
+			if (this.user$ && !this.user$.admin) {
+				this.router.navigate(['/']);
+			}
 		})
 
 		this.questionService.getQuestions().subscribe(questions => {

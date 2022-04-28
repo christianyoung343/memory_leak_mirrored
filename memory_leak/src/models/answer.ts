@@ -5,6 +5,7 @@ export class Answer {
     public comments: Array<{ userID: string, comment: string }>;
     public answererID: string; //User ID
     public questionID: string;
+	public votes?: Array<{ userID: string, voteType: number }>;
 
     constructor(answerObj:any) {
         this.uid = answerObj.uid;
@@ -12,5 +13,6 @@ export class Answer {
         this.comments = answerObj.comments;
         this.answererID = answerObj.answererID;
         this.questionID = answerObj.questionID;
+		this.votes = answerObj.votes;
     }
 }

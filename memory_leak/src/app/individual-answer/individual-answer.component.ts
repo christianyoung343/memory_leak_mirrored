@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Answer } from 'src/models/answer';
 import { Question } from 'src/models/question';
 import { User } from 'src/models/user';
+import { AnswerService } from '../services/answer.service';
 import { QuestionService } from '../services/question.service';
 import { UserService } from '../services/user.service';
 
@@ -22,8 +23,9 @@ export class IndividualAnswerComponent implements OnInit {
     @Input() public accepted!: boolean;
     @Input() public userID!: string;
     @Input() public question!: Question;
+    @Input() public isAdmin!: boolean;
 
-    constructor(private us: UserService, private qs: QuestionService) { }
+    constructor(private us: UserService, private qs: QuestionService, private as: AnswerService) { }
 
     ngOnInit(): void {
         if (this.answer) {
@@ -33,7 +35,7 @@ export class IndividualAnswerComponent implements OnInit {
         }
     }
 
-    updateAcceptedAnswer(){
+    updateAcceptedAnswer() {
         if(this.answer.uid){
             this.question.acceptedAnswerID = this.answer.uid;            
         }
@@ -41,8 +43,24 @@ export class IndividualAnswerComponent implements OnInit {
         this.qs.updateQuestion(this.question.uid, this.question);
     }
 
-    unacceptAnswer(){
+    unacceptAnswer() {
         this.question.acceptedAnswerID = "";
         this.qs.updateQuestion(this.question.uid, this.question);
     }
+
+	getNumVotes(voteType: number) {
+		return this.as.getNumVotes(this.answer, voteType);
+	}
+
+	getAnswerScore(): number {
+		return this.as.getScore(this.answer);
+	}
+
+	voteAnswer(voteType: number) {
+		this.us.getUser().subscribe(user => {
+			if(user) {
+				this.as.voteAnswer(this.answer, user.uid, voteType);
+			}
+		})
+	}
 }

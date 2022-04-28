@@ -5,6 +5,7 @@ import { QuestionService } from 'src/app/services/question.service';
 import { UserService } from 'src/app/services/user.service';
 import { Answer } from 'src/models/answer';
 import { Question } from 'src/models/question';
+import { User } from 'src/models/user';
 
 @Component({
     selector: 'app-question',
@@ -21,6 +22,8 @@ export class QuestionComponent implements OnInit {
     @Input() public question!: Question;
     @Input() public comments!: Array<{ userID: string, comment: string }>;
     @Input() public answers: Answer[] = [];
+
+	@Input() public user!: User;
 
     constructor(private questionsService: QuestionService, private answerService: AnswerService, private userService: UserService,
         private route: ActivatedRoute) { }
@@ -56,6 +59,11 @@ export class QuestionComponent implements OnInit {
         });
 
         // this.userDisplayName = this.userService.getUserDisplayNameById(this.question.askerID);
+		this.userService.getUser().subscribe(user => {
+			if(user) {
+				this.user = user;
+			}
+		});
     }
 
     alertFunction(): void {
@@ -88,5 +96,4 @@ export class QuestionComponent implements OnInit {
     showUID(): void {
         console.log(this.uid);
     }
-
 }

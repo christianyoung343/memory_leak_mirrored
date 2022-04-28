@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import TestBedExtended from 'src/test_helpers/testBedExtend';
 
 import { FooterComponent } from './footer.component';
 
@@ -7,14 +8,15 @@ describe('FooterComponent', () => {
   let fixture: ComponentFixture<FooterComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    TestBedExtended.preConfigure();
+    await TestBedExtended.configureTestingModule({
       declarations: [ FooterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FooterComponent);
+    fixture = TestBedExtended.createComponent(FooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
