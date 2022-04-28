@@ -22,6 +22,4 @@ The **app** directory contains two main directories **containers** and **service
 
 **services** houses the service files used for communications between the components and Firebase/Firestore
 
-Installation/Deployment instructions and manuals are in the **manuals** directory
-
-All reports and worklogs are in the **documentation** directory
+All reports, worklogs, and instructions are in the **documentation** directory
