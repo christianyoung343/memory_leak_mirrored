@@ -24,4 +24,4 @@ The **app** directory contains two main directories **containers** and **service
 
 Installation/Deployment instructions and manuals are in the **manuals** directory
 
-All reports and worklogs are in the **reports** directory
+All reports and worklogs are in the **documentation** directory
