@@ -26,7 +26,7 @@
             <div class="col-9">
                 <p>{{text}}</p>
             </div>
-            <div id="user" class="col-3">
+            <div id="userDesktop" class="col-3">
                 <div *ngIf="isAnonymous; then anonymous else userName"></div>
                 <ng-template #userName>
                     <p>{{displayName}}</p>
@@ -35,6 +35,16 @@
                     <p>Anonymous User</p>
                 </ng-template>
             </div>
+        </div>
+        
+        <div id="userMobile">
+            <div *ngIf="isAnonymous; then anonymous else userName"></div>
+            <ng-template #userName>
+                <p>{{displayName}}</p>
+            </ng-template>
+            <ng-template #anonymous>
+                <p>Anonymous User</p>
+            </ng-template>
         </div>
         <div class="commentCard">
             <div class="row">
@@ -81,7 +91,7 @@
             <div class="col-9">
                 <p>{{text}}</p>
             </div>
-            <div id="user" class="col-3">
+            <div id="userDesktop" class="col-3">
                 <div *ngIf="isAnonymous; then anonymous else userName"></div>
                 <ng-template #userName>
                     <p>{{displayName}}</p>
@@ -90,6 +100,16 @@
                     <p>Anonymous User</p>
                 </ng-template>
             </div>
+        </div>
+        
+        <div id="userMobile">
+            <div *ngIf="isAnonymous; then anonymous else userName"></div>
+            <ng-template #userName>
+                <p>{{displayName}}</p>
+            </ng-template>
+            <ng-template #anonymous>
+                <p>Anonymous User</p>
+            </ng-template>
         </div>
         <div class="commentCard">
             <div class="row">

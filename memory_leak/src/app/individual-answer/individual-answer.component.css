@@ -15,10 +15,6 @@ textarea {
     width: 80%;
 }
 
-#user {
-    text-align: right;
-}
-
 .com {
     margin: .5rem;
     width: fit-content;
@@ -26,7 +22,7 @@ textarea {
 .commentCard {
     flex: 0 0 375px;
     background-color: #c8c8c8c0;
-    margin: .5rem;
+    margin: max(1vh, 1vw);
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
     align-content: center;
@@ -41,4 +37,24 @@ button {
 div.accepted {
    background-color: green;
    color: white;
+}
+
+#userDesktop {
+    text-align: right;
+    display: block;
+}
+
+#userMobile {
+    text-align: right;
+    display: none;
+}
+
+@media (max-width:800px) {
+    #userDesktop {
+        display: none;
+    }
+    #userMobile {
+        display: block;
+    }
+    
 }
