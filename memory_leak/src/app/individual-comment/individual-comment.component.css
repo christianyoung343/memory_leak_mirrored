@@ -1,8 +1,10 @@
 .card p {
-	margin: 0.5rem;
-	width: 80%;
+    margin: 1rem;
 }
 
+button {
+    margin: .5rem;
+}
 .card.answer {
 	background-color: #58585860;
 }

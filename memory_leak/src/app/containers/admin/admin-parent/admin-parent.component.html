@@ -18,38 +18,39 @@
 										<div class="card">
 											<a routerLink="../question/{{ question.uid }}">
 												<div class="card-header">
-													<h5 class="card-title">{{ question.title }}</h5>
+													<h5 class="card-title">
+														{{ question.title }}
+													</h5>
 												</div>
 											</a>
 											<div class="card-body">
-												<p class="card-text">{{ question.body }}</p>
-											</div>
-
-											<div class="card">
-												<div class="card-header">
-													<h5 class="card-title">
-														Reason for flagging:
-													</h5>
-												</div>
-
+												<p class="card-text">
+													{{ question.body }}
+												</p>
+												<hr>
+												<h5 class="card-title">
+													Reason for flagging:
+												</h5>
 												<ng-container *ngIf="reasons">
-													<div class="card-body">
-														<p class="card-text">
-															{{ reasons[question.flag - 1] }}
-														</p>
-													</div>
+													<p class="card-text">
+														{{ reasons[question.flag - 1] }}
+													</p>
+													<hr>
 												</ng-container>
 												<div class="row">
-													<div class="col">
+													<div class="col-6">
 														<button class="btn" (click)="removeQuestion(question)">
 															Remove
 														</button>
+													</div>
+													<div class="col-6">
 														<button class="btn" (click)="unflagQuestion(question)">
 															Unflag
 														</button>
 													</div>
 												</div>
 											</div>
+
 										</div>
 									</div>
 								</div>
@@ -60,7 +61,9 @@
 					<ng-template #noQuestions>
 						<div class="card">
 							<div class="card-body">
-								<p class="card-text">There are no flagged questions.</p>
+								<p class="card-text">
+									There are no flagged questions.
+								</p>
 							</div>
 						</div>
 					</ng-template>
@@ -68,4 +71,4 @@
 			</section>
 		</ng-container>
 	</div>
-</ng-container>
+	<ng-container>

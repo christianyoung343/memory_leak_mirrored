@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnswerService } from 'src/app/services/answer.service';
 import { QuestionService } from 'src/app/services/question.service';
 import { UserService } from 'src/app/services/user.service';
@@ -27,8 +26,8 @@ export class QuestionComponent implements OnInit {
 
 	@Input() user!: User;
 
-	constructor(private questionService: QuestionService, private answerService: AnswerService, private userService: UserService,
-		private route: ActivatedRoute) { }
+    constructor(private questionService: QuestionService, private answerService: AnswerService, private userService: UserService,
+        private route: ActivatedRoute, private router:Router) { }
 
 	ngOnInit(): void {
 		this.route.paramMap.subscribe(params => {
@@ -89,7 +88,7 @@ export class QuestionComponent implements OnInit {
 					}
 				}
 				while (invalid && response);
-
+				
 				if (response) {
 					this.question.flag = Number(response);
 					this.questionService.updateQuestion(this.question.uid, this.question);
@@ -98,7 +97,10 @@ export class QuestionComponent implements OnInit {
 		}
 	}
 
-	showUID(): void {
-		console.log(this.uid);
-	}
+    removeQuestion(){
+        if(this.question){
+            this.questionService.removeQuestion(this.question);          
+        }
+        this.router.navigate(['/']);
+    }
 }

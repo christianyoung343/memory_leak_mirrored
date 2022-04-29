@@ -2,9 +2,25 @@
 	box-sizing: border-box;
 }
 
+.card-body {
+	background-color: #c8c8c8;
+}
+
+#inputAnon {
+	height: 1.25rem;
+	width: 1.25rem;
+	vertical-align: middle;
+}
+
 .inputBox {
-	background-color: #858585;
-	width: 100%;
+	border: 2px solid #ccc;
+	border-radius: 10px;
+	box-sizing: border-box;
+	margin: .25rem;
+	padding: 12px 20px;
+	resize: none;
+	width: 99%;
+	word-wrap: normal;
 }
 
 #card-flow-section {
@@ -18,7 +34,7 @@
 }
 
 label {
-	color: white;
+	color: black;
 }
 
 section.card-section {

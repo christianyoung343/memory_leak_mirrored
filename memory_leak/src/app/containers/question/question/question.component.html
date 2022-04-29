@@ -3,88 +3,74 @@
 		<ng-container *ngIf="question; then hasQuestion; else noQuestion"> </ng-container>
 
 		<ng-template #hasQuestion>
-			<div class="container">
-				<div class="card">
-					<div class="row">
-						<div class="col">
-							<div class="card-header">
-								<div class="row">
-									<div class="col-7">
-										<h5 class="card-title">{{ question.title }}</h5>
+            <div class="container">
+                <div class="card">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <h5 class="card-title">{{question.title}}</h5>
+                                    </div>
 
-										<ng-container *ngIf="user && user.admin">
-											<button class="btn"><i class="bi bi-trash"></i></button>
-										</ng-container>
-									</div>
+                                    <div class="col-3">
+                                        <div id="userDesktop">
+                                            <div *ngIf="question.anonymous; then anonymous else userName"></div>
+                                            <ng-template #userName>
+                                                <h5>{{userDisplayName}}</h5>
+                                            </ng-template>
+                                            <ng-template #anonymous>
+                                                <h5>Anonymous User</h5>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="userMobile">
+                                    <div *ngIf="question.anonymous; then anonymous else userName"></div>
+                                    <ng-template #userName>
+                                        <h5>{{userDisplayName}}</h5>
+                                    </ng-template>
+                                    <ng-template #anonymous>
+                                        <h5>Anonymous User</h5>
+                                    </ng-template>
+                                </div>
+                            </div>
 
-									<div class="col-3">
-										<div id="userDesktop">
-											<div *ngIf="question.anonymous; then anonymous; else userName"></div>
-
-											<ng-template #userName>
-												<h5>{{ userDisplayName }}</h5>
-											</ng-template>
-
-											<ng-template #anonymous>
-												<h5>Anonymous User</h5>
-											</ng-template>
-										</div>
-									</div>
-								</div>
-
-								<div id="userMobile">
-									<div *ngIf="question.anonymous; then anonymous; else userName"></div>
-
-									<ng-template #userName>
-										<h5>{{ userDisplayName }}</h5>
-									</ng-template>
-
-									<ng-template #anonymous>
-										<h5>Anonymous User</h5>
-									</ng-template>
-								</div>
-							</div>
-
-							<div class="card-body">
-								<p class="card-text">{{ question.body }}</p>
-
-								<div class="card">
-									<div class="card-body">
-										<app-comment
-											*ngIf="user"
-											[comments]="comments"
-											[question]="question"
-											[commentOnAnswer]="false"
-											[isAdmin]="!!user.admin"
-										>
-										</app-comment>
-									</div>
-								</div>
-								
-								<div class="card">
-									<div class="card-body">
-										<app-answer-parent
-											*ngIf="user"
-											[answers]="answers"
-											[question]="question"
-											[isAdmin]="!!user.admin"
-										>
-										</app-answer-parent>
-									</div>
-								</div>
-
-								<br>
-								<br>
-
-								<div class="flag-container">
-									<label>Problem with this question?</label><span></span>
-									<button id="flag" (click)="alertFunction()">Submit</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                            <div class="card-body">
+                                <p class="card-text">{{question.body}}</p>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <app-comment *ngIf="user" [comments]="comments" [question]="question"
+                                            [commentOnAnswer]="false" [isAdmin]="!!user.admin"></app-comment>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <app-answer-parent *ngIf="user" [answers]="answers" [question]="question"
+                                            [isAdmin]="!!user.admin">
+                                        </app-answer-parent>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="flag-container">
+                                            <label>Problem with this question?</label><span></span>
+                                            <button class="btn" id="flag" (click)="alertFunction()">Flag This Question</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-1">
+                                        <ng-container *ngIf="user && user.admin">
+                                            <button class="btn" (click)="removeQuestion()"><i class="bi bi-trash"></i></button>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</ng-template>
 
 		<ng-template #noQuestion>

@@ -49,13 +49,12 @@ export class AdminParentComponent implements OnInit {
 
 	removeQuestion(questionToRemove: Question) {
 		this.questionService.removeQuestion(questionToRemove);
-        alert("Question has been removed.")
+        alert("Question has been removed.");
 	}
 
     unflagQuestion(question:Question){
         question.flag = Number(0);
         this.questionService.updateQuestion(question.uid,question);
-        alert("Question has been unflagged.")
-        this.router.navigate(['/']);
+        alert("Question has been unflagged.");
     }
 }

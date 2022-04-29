@@ -17,6 +17,10 @@
 	border-top-right-radius: 10px;
 }
 
+.card-body {
+    background-color:  #c8c8c8;
+}
+
 .card-text {
 	color: black;
 }
@@ -34,6 +38,11 @@
 	flex: 1;
 }
 
+#noResults {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
 #questionCards {
 	display: flex;
 	flex-wrap: wrap;
@@ -42,7 +51,14 @@
 }
 
 #term {
-	width: 50%;
+    width: 99%;
+    margin: .25rem;
+    resize: none;
+    word-wrap: normal;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 10px;
 }
 
 a, a:active, a:focus, a:hover {
@@ -51,7 +67,7 @@ a, a:active, a:focus, a:hover {
 }
 
 button {
-	align-self: center;
+    margin: .5rem;
 }
 
 div.alr {
@@ -59,8 +75,14 @@ div.alr {
 }
 
 div > .card > .card-body {
-	background-color: #54545431;
+    background-color:  #c8c8c8;
 	align-content: center;
+}
+
+#inputAnswered {
+    height: 1.25rem;
+    width: 1.25rem;
+    vertical-align: middle;
 }
 
 form {

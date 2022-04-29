@@ -1,13 +1,16 @@
-
 .nav-link {
 	color: black;
 }
 
 .navbar-collapse {
 	background-color: var(--ml-light-blue);
+	z-index: -1;
 }
 
-a, a:active, a:focus, a:hover {
+a,
+a:active,
+a:focus,
+a:hover {
 	color: black;
 	cursor: pointer;
 	text-decoration: none;
@@ -36,7 +39,6 @@ img.rounded-circle {
 nav.navbar {
 	background-color: transparent;
 	color: black;
-	text-shadow: 2px 2px 3px #0e3d69;
 	z-index: 0;
 }
 

@@ -24,9 +24,10 @@
 			</app-individual-comment>
 		</ng-template>
 	</div>
-	<form>
-		<textarea rows="1" class="inputBox" [(ngModel)]="newCommentText" name="comment"></textarea>
-		<br />
-		<button type="submit" (click)="addComment(newCommentText)">Add Comment</button>
-	</form>
+    <form>
+        <label for="newComment">&emsp;Comment:&emsp;</label>
+        <textarea id="newComment" rows="1" class="inputBox" [(ngModel)]="newCommentText" name="comment"></textarea>
+        <br>
+        <button class="btn" type="submit" (click)="addComment(newCommentText)">Add Comment</button>
+    </form>
 </div>

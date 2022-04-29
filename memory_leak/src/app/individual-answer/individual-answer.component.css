@@ -1,6 +1,14 @@
+.voteNum {
+	font-family: "Andale Mono", AndaleMono, monospace;
+	margin-left: 30px;
+}
+
+.btn {
+	padding: 1px 6px;
+}
+
 .card p {
-	margin: 0.5rem;
-	width: 80%;
+	margin: 1rem;
 }
 
 .com {
@@ -17,6 +25,11 @@
 	flex: 0 0 375px;
 	margin: max(1vh, 1vw);
 	width: auto;
+}
+
+.voteNum {
+	font-family: "Andale Mono", AndaleMono, monospace;
+	margin-left: 30px;
 }
 
 #userDesktop {
@@ -53,6 +66,7 @@ textarea {
 	#userDesktop {
 		display: none;
 	}
+
 	#userMobile {
 		display: block;
 	}

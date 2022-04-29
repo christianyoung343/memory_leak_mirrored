@@ -48,7 +48,7 @@ a, a:hover, a:focus, a:active {
 
 button {
 	align-self: center;
-	margin: .5rem;
+    width: 100%;
 }
 
 div.alr {
@@ -57,7 +57,7 @@ div.alr {
 
 div > .card > .card-body {
 	align-content: center;
-	background-color:  #54545431;
+	background-color:  #c8c8c8;
 }
 
 h4 {

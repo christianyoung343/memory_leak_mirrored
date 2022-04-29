@@ -68,6 +68,7 @@ export class AnswerService implements OnInit {
 			this.updateAnswer(answer.uid, answer);
 		}
 	}
+	
 	removeAnswersFromQuestion(question: Question) {
 		//needs to delete an answer from the database
 		this.answerList$.subscribe(answers => {
@@ -78,7 +79,11 @@ export class AnswerService implements OnInit {
 				}
 			});
 		});
-	}
+    }
+
+    removeAnswer(answer: Answer){
+        //FINISH ME
+    }
 
 	voteAnswer(answer: Answer, userID: string, voteType: number) {
 		if (!answer.votes) {

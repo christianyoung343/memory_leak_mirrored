@@ -21,6 +21,10 @@
 	transform: translate(-50%, -50%);
 }
 
+.innerCard {
+    width: calc(100% - 30px);
+}
+
 #question {
 	background-color: white;
 }

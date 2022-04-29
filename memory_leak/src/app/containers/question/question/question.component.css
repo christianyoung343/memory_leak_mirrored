@@ -11,6 +11,10 @@
 	background-color: #54545428;
 }
 
+.card-text {
+    margin: 1rem;
+}
+
 .col {
 	background-color: transparent;
 }

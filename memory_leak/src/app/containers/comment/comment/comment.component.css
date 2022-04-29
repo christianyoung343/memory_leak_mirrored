@@ -3,6 +3,10 @@
 	width: 80%;
 }
 
+button {
+	margin: .5rem;
+}
+
 #user {
 	text-align: right;
 }
@@ -12,12 +16,14 @@ h4 {
 }
 
 textarea {
+	width: 75%;
+	margin: .25rem;
+	resize: none;
+	word-wrap: normal;
+	padding: 5px;
+	padding: 5px 10px;
+	box-sizing: border-box;
 	border: 2px solid var(--ml-light-blue-solid);
 	border-radius: 10px;
-	box-sizing: border-box;
-	margin: 0.25rem;
-	padding: 5px 10px;
-	resize: none;
-	width: 75%;
-	word-wrap: normal;
+	vertical-align: middle;
 }
