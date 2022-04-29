@@ -25,13 +25,17 @@ export class UserService {
     }
 
     refreshUser(userObj: any) {
-        let userRef: AngularFirestoreDocument<User> = this.afs.collection('users').doc<User>(userObj.uid)
-        return userRef.set({
-            uid: userObj.uid,
-            email: userObj.email,
-            displayName: userObj.displayName
-        },
-            { merge: true })
+        if (userObj) {
+            let userRef: AngularFirestoreDocument<User> = this.afs.collection('users').doc<User>(userObj.uid)
+            return userRef.set({
+                uid: userObj.uid,
+                email: userObj.email,
+                displayName: userObj.displayName
+            },
+                { merge: true })
+        } else {
+            return;
+        }
     }
 
     async googleSignIn() {
@@ -89,7 +93,7 @@ export class UserService {
                 return "User Not Found";
             }
         }).catch(() => {
-            return "User Not Found";
+            return "Error: User Not Found";
         })
         return val;
 
