@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { QuestionService } from 'src/app/services/question.service';
 import { UserService } from 'src/app/services/user.service';
@@ -7,7 +8,6 @@ import { Question } from 'src/models/question';
 import { User } from 'src/models/user';
 
 import flags from 'src/app/services/flags.json'
-import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-admin-parent',
@@ -41,7 +41,7 @@ export class AdminParentComponent implements OnInit {
 		})
 
 		if (flags) {
-			for(let flag of flags.flags) {
+			for (let flag of flags.flags) {
 				this.reasons.push(flag.reason);
 			}
 		}

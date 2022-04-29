@@ -1,9 +1,9 @@
 import MockDoc from "./mockDoc";
 
 export default class MockDocRef<T> {
-    public doc: MockDoc<T>
+	doc: MockDoc<T>
 
-    constructor(doc: MockDoc<T>) {
+	constructor(doc: MockDoc<T>) {
 		this.doc = doc;
 	}
 
@@ -11,9 +11,9 @@ export default class MockDocRef<T> {
 		return this.fullPromiseBuilder();
 	}
 
-    public data() {
-        return this.doc.data
-    }
+	public data() {
+		return this.doc.data;
+	}
 
 	private async fullPromiseBuilder(): Promise<MockDocRef<T>> {
 		let val = await this;

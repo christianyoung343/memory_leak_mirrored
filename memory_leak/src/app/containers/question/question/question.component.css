@@ -1,45 +1,54 @@
 * {
-    box-sizing: border-box;
-}
-
-#card-flow-section{
-    flex: 1;
+	box-sizing: border-box;
 }
 
 .card {
-    background-color:#54545431;
-}
-
-.col {
-    background-color: transparent;
-}
-
-section.card-section{
-    padding: 1em;
-}
-
-#questionCards { 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: transparent;
+	background-color: #54545431;
 }
 
 .card-body {
-    color: black;
-    background-color: #54545428;
+	color: black;
+	background-color: #54545428;
 }
 
-section#card-flow-section.card-section {
-    background-color:transparent;
+.col {
+	background-color: transparent;
+}
+
+#card-flow-section {
+	flex: 1;
 }
 
 #flag {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
-@media (max-width:320px){
-    .card {
+#questionCards {
+	background-color: transparent;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+#userDesktop {
+	display: block;
+	text-align: right;
+}
+#userMobile {
+	display: none;
+	text-align: right;
+}
+
+section.card-section {
+	padding: 1em;
+}
+
+section#card-flow-section.card-section {
+	background-color: transparent;
+}
+
+@media (max-width: 320px) {
+	.card {
 		flex: 0 0 315px;
 	}
 	.votes {
@@ -50,7 +59,7 @@ section#card-flow-section.card-section {
 	}
 }
 
-@media (min-width:325px) and (max-width: 375px){
+@media (min-width: 325px) and (max-width: 375px) {
 	.card {
 		flex: 0 0 350px;
 	}
@@ -62,20 +71,11 @@ section#card-flow-section.card-section {
 	}
 }
 
-#userDesktop {
-    text-align: right;
-    display: block;
-}
-#userMobile {
-    text-align: right;
-    display: none;
-}
-
-@media (max-width:800px) {
-    #userDesktop {
-        display: none;
-    }
-    #userMobile {
-        display: block;
-    }
+@media (max-width: 800px) {
+	#userDesktop {
+		display: none;
+	}
+	#userMobile {
+		display: block;
+	}
 }

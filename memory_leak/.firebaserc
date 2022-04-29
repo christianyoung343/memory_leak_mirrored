@@ -1,14 +1,14 @@
 {
-  "projects": {
-    "default": "memory-leak-spring2022"
-  },
-  "targets": {
-    "memory-leak-spring2022": {
-      "hosting": {
-        "memory_leak": [
-          "memory-leak-spring2022"
-        ]
-      }
-    }
-  }
+	"projects": {
+		"default": "memory-leak-spring2022"
+	},
+	"targets": {
+		"memory-leak-spring2022": {
+			"hosting": {
+				"memory_leak": [
+					"memory-leak-spring2022"
+				]
+			}
+		}
+	}
 }

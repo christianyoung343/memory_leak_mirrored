@@ -4,7 +4,6 @@ import { User } from 'src/models/user';
 
 import { UserService } from 'src/app/services/user.service';
 
-
 @Component({
 	selector: 'app-footer',
 	templateUrl: './footer.component.html',
@@ -17,9 +16,9 @@ export class FooterComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.userService.getUser().subscribe(user => {
-			if(user) {
+			if (user) {
 				this.user = user;
 			}
-		})
+		});
 	}
 }

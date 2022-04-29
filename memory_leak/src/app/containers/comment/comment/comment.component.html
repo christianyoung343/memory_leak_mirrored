@@ -1,21 +1,32 @@
 <div class="container">
-    <div class="row">
-        <h4>Comments</h4>
-    </div>
-    <div class="comments" *ngFor="let c of comments">
-        <div *ngIf="commentOnAnswer; then answerComment else questionComment"></div>
-        <ng-template #answerComment>
-            <app-individual-comment [isAnswer]="true" [comment]="c" [answer]="answer" [isAdmin]="isAdmin"
-                [isAnonymous]="questionAnonymous&&(askerID==c.userID)"></app-individual-comment>
-        </ng-template>
-        <ng-template #questionComment>
-            <app-individual-comment [comment]="c" [question]="question" [isAnonymous]="question.anonymous&&(question.askerID==c.userID)" [isAdmin]="isAdmin">
-            </app-individual-comment>
-        </ng-template>
-    </div>
-    <form>
-        <textarea rows="1" class="inputBox" [(ngModel)]="newCommentText" name="comment"></textarea>
-        <br>
-        <button type="submit" (click)="addComment(newCommentText)">Add Comment</button>
-    </form>
+	<div class="row">
+		<h4>Comments</h4>
+	</div>
+	<div class="comments" *ngFor="let c of comments">
+		<div *ngIf="commentOnAnswer; then answerComment; else questionComment"></div>
+		<ng-template #answerComment>
+			<app-individual-comment
+				[isAnswer]="true"
+				[comment]="c"
+				[answer]="answer"
+				[isAdmin]="isAdmin"
+				[isAnonymous]="questionAnonymous && askerID == c.userID"
+			>
+			</app-individual-comment>
+		</ng-template>
+		<ng-template #questionComment>
+			<app-individual-comment
+				[comment]="c"
+				[question]="question"
+				[isAnonymous]="question.anonymous && question.askerID == c.userID"
+				[isAdmin]="isAdmin"
+			>
+			</app-individual-comment>
+		</ng-template>
+	</div>
+	<form>
+		<textarea rows="1" class="inputBox" [(ngModel)]="newCommentText" name="comment"></textarea>
+		<br />
+		<button type="submit" (click)="addComment(newCommentText)">Add Comment</button>
+	</form>
 </div>

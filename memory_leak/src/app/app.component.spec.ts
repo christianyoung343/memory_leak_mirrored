@@ -6,36 +6,40 @@ import { FooterComponent } from './footer/footer/footer.component';
 import { HeaderComponent } from './header/header/header.component';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent,
-        HeaderComponent,
-        FooterComponent
-      ]
-    }).compileComponents();
-    TestBedExtended.preConfigure()
-  });
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
+			imports: [
+				RouterTestingModule
+			],
+			declarations: [
+				AppComponent,
+				HeaderComponent,
+				FooterComponent
+			]
+		}).compileComponents();
+		TestBedExtended.preConfigure();
+	});
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+	it('should create the app', () => {
+		const fixture = TestBed.createComponent(AppComponent);
+		const app = fixture.componentInstance;
 
-  it(`should have as title 'memory_leak'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('memory_leak');
-  });
+		expect(app).toBeTruthy();
+	});
 
-  it('should render content', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('body')).toBeTruthy();
-  });
+	it(`should have as title 'memory_leak'`, () => {
+		const fixture = TestBed.createComponent(AppComponent);
+		const app = fixture.componentInstance;
+
+		expect(app.title).toEqual('memory_leak');
+	});
+
+	it('should render content', () => {
+		const fixture = TestBed.createComponent(AppComponent);
+		fixture.detectChanges();
+
+		const compiled = fixture.nativeElement as HTMLElement;
+		
+		expect(compiled.querySelector('body')).toBeTruthy();
+	});
 });

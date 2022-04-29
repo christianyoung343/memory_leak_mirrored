@@ -2,33 +2,29 @@
 	box-sizing: border-box;
 }
 
-section.card-section {
-	padding: 1em;
-}
-
 .centered {
+	-ms-transform: translate(-50%, -50%);
+	left: 50%;
 	margin: 0;
 	padding-top: 5%;
 	position: absolute;
-	left: 50%;
-	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
 
 .card {
-	flex: 0 0 375px;
-	width: 100%;
-	margin: .5rem;
+	align-content: center;
 	border-radius: 10px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
-	align-content: center;
+	flex: 0 0 375px;
+	margin: .5rem;
+	width: 100%;
 }
 
 .card-text {
 	color: black;
 }
 
-.card>.card-header {
+.card > .card-header {
 	background-color: var(--ml-light-blue);
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
@@ -39,19 +35,15 @@ section.card-section {
 }
 
 #questionCards { 
+	background-color: transparent;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	background-color: transparent;
-}
-
-section#card-flow-section.card-section {
-	background-color:transparent;
 }
 
 a, a:hover, a:focus, a:active {
-	text-decoration: none;
 	color: inherit;
+	text-decoration: none;
 }
 
 button {
@@ -63,13 +55,21 @@ div.alr {
 	background-color:transparent;
 }
 
-div>.card>.card-body {
-	background-color:  #54545431;
+div > .card > .card-body {
 	align-content: center;
+	background-color:  #54545431;
 }
 
 h4 {
 	text-align: center;
+}
+
+section#card-flow-section.card-section {
+	background-color:transparent;
+}
+
+section.card-section {
+	padding: 1em;
 }
 
 @media(max-width:320px) {

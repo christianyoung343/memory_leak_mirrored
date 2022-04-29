@@ -1,81 +1,65 @@
 <ng-container>
-	<!--<div *ngIf="userService.user$.admin | async; then isAdmin else isNotAdmin"> -->
-        <!-- template will replace this div -->
-    <!--</div>-->
-	<!--TODO make sure user is an admin before showing them this page-->
-	<!--<ng-template #isAdmin>-->
-		<div *ngIf="userService.user$ | async as user" class="alr">
-			<ng-container>
-				<section id="card-flow-section" class="card-section">
-					<div id="questionCards">
-						<ng-container *ngIf="flaggedQuestions && flaggedQuestions.length > 0; then hasQuestions else noQuestions">
-						</ng-container>
-						
-						<ng-template #hasQuestions>
-							<ng-container *ngFor="let question of flaggedQuestions">
-								<div class="container">
-									<div class="row">
-										<div class="col">
-											<a routerLink="../question/{{ question.uid }}">
-												<div class="card">
-													<div class="card-header">
-														<h5 class="card-title">{{ question.title }}</h5>
-													</div>
-
-													<div class="card-body">
-														<p class="card-text">{{ question.body }}</p>
-													</div>
-
-													<div class="card">
-														<div class="card-header">
-															<h5 class="card-title">Reason for flagging:</h5>
-														</div>
-
-														<ng-container *ngIf="reasons">
-															<div class="card-body">
-																<p class="card-text">{{ reasons[question.flag - 1] }}</p>
-															</div>
-														</ng-container>
-
-														<button (click)="removeQuestion(question)">Remove</button>
-													</div>
-												</div>
-											</a>
-
+	<div *ngIf="userService.user$ | async as user" class="alr">
+		<ng-container>
+			<section id="card-flow-section" class="card-section">
+				<div id="questionCards">
+					<ng-container
+					*ngIf="
+					flaggedQuestions && flaggedQuestions.length > 0;
+					then hasQuestions;
+					else noQuestions
+					"
+					>
+				</ng-container>
+				
+				<ng-template #hasQuestions>
+					<ng-container *ngFor="let question of flaggedQuestions">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<a routerLink="../question/{{ question.uid }}">
+										<div class="card">
+											<div class="card-header">
+												<h5 class="card-title">{{ question.title }}</h5>
+											</div>
 											
+											<div class="card-body">
+												<p class="card-text">{{ question.body }}</p>
+											</div>
+											
+											<div class="card">
+												<div class="card-header">
+													<h5 class="card-title">Reason for flagging:</h5>
+												</div>
+												<ng-container *ngIf="reasons">
+													<div class="card-body">
+														<p class="card-text">
+															{{ reasons[question.flag - 1] }}
+														</p>
+													</div>
+												</ng-container>
+												<button (click)="removeQuestion(question)">
+													Remove
+												</button>
+											</div>
 										</div>
-
-									</div>
+									</a>
 								</div>
-							</ng-container>
-						</ng-template>
-
-						<ng-template #noQuestions>
-							<div class="card">
-								<div class="card-body">
-									<p class="card-text">There are no flagged questions.</p>
-								</div>
-							</div>
-						</ng-template>
-					</div>
-				</section>
-			</ng-container>
-		</div>
-	<!--</ng-template>-->
-
-	<!--<ng-template #isNotAdmin>
-		<div class="alr">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<div class="card">
-							<div class="card-body" style="padding-bottom: 7%;">
-								<h4>You are not authorized to view this page.</h4>
 							</div>
 						</div>
+					</ng-container>
+				</ng-template>
+				
+				<ng-template #noQuestions>
+					<div class="card">
+						<div class="card-body">
+							<p class="card-text">There are no flagged questions.</p>
+						</div>
 					</div>
-				</div>
+				</ng-template>
 			</div>
-		</div>
-	</ng-template>-->
-<ng-container>
+		</section>
+	</ng-container>
+</div>
+<ng-container></ng-container>
+</ng-container>

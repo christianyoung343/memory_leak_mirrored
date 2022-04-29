@@ -1,42 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --ml-dark-blue: #154d9a80;
-    --ml-light-blue: #359de180;
-    --ml-light-blue-solid: #359de1;
-    --ml-dark-blue-solid: #154d9a;
-    --ml-dark-accent: #545454;
-    --ml-light-accent: #e0ffff;
-    /* background-color: #383838; */
+	--ml-dark-accent: #545454;
+	--ml-dark-blue: #154d9a80;
+	--ml-dark-blue-solid: #154d9a;
+	--ml-light-accent: #e0ffff;
+	--ml-light-blue: #359de180;
+	--ml-light-blue-solid: #359de1;
 }
 
-.card{
-    flex: 0 0 375px;
-    width: inherit;
-    background-color: var(--ml-light-blue);
-    /* margin: .5rem; */
-    margin: max(1vw, 1vh);
-    border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
-    align-content: center;
-}
-
-.card-header{
-    background-color: var(--ml-light-blue);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+.card {
+	align-content: center;
+	background-color: var(--ml-light-blue);
+	border-radius: 10px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+	flex: 0 0 375px;
+	margin: max(1vw, 1vh);
+	width: inherit;
 }
 
 .card-body {
-    background-color: #54545460;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: max(1vw, 1vh);
+	background-color: #54545460;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	padding: max(1vw, 1vh);
 }
 
- html {
-    min-height: 100%;
-    /* background-image: url('./assets/img/UWF.jpg'); */
-    background-repeat: no-repeat;
-    background-size:contain;
-    background-position: center;
+.card-header {
+	background-color: var(--ml-light-blue);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+html {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	min-height: 100%;
 }
