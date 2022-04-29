@@ -28,10 +28,6 @@ export class HomeParentComponent implements OnInit {
 		});
 	}
 
-	goToSignUp() {
-		this.router.navigate(['signup']);
-	}
-
 	signIn() {
 		this.userServ.googleSignIn().then(() => {
 			this.questionService.getQuestions().subscribe(questions => {

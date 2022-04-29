@@ -60,6 +60,11 @@ div > .card > .card-body {
 	background-color:  #c8c8c8;
 }
 
+#noQuest {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
 h4 {
 	text-align: center;
 }

@@ -6,23 +6,23 @@ import { Answer } from 'src/models/answer';
 import { Question } from 'src/models/question';
 
 @Injectable({
-	providedIn: 'root'
+    providedIn: 'root'
 })
 export class AnswerService implements OnInit {
-	answerList$: Observable<Answer[]>;
+	public answerList$: Observable<Answer[]>;
 
 	constructor(private angularFirestore: AngularFirestore) {
 		this.answerList$ = this.angularFirestore.collection<Answer>('answers').valueChanges();
 
-	}
+    }
 
-	ngOnInit(): void {
-		throw new Error('Method not implemented.');
-	}
+    ngOnInit(): void {
+        throw new Error('Method not implemented.');
+    }
 
-	getAnswers() {
-		return this.answerList$;
-	}
+    getAnswers() {
+        return this.answerList$;
+    }
 
 	addAnswer(answer: string, question: Question, userID: string) {
 		let ansDoc: Answer = {
@@ -42,7 +42,7 @@ export class AnswerService implements OnInit {
 		});
 	}
 
-	addCommentToAnswer(comment: string, answer: Answer, userID: string) {
+	addCommentToQuestion(comment: string, answer: Answer, userID: string) {
 		answer.comments.push({
 			"userID": userID,
 			"comment": comment
@@ -81,11 +81,14 @@ export class AnswerService implements OnInit {
 		});
     }
 
-    removeAnswer(answer: Answer){
-        //FINISH ME
+    //remove a single answer from a question
+    removeAnswer(answer: Answer) {
+        this.angularFirestore.collection('answers').doc<Answer>(answer.uid).delete();
+        //FIXME: Add removing from question
     }
 
-	voteAnswer(answer: Answer, userID: string, voteType: number) {
+	
+voteAnswer(answer: Answer, userID: string, voteType: number) {
 		if (!answer.votes) {
 			answer.votes = [];
 		}
@@ -129,17 +132,17 @@ export class AnswerService implements OnInit {
 		}
 	}
 
-	getScore(answer: Answer): number {
-		if (!answer) {
-			return 0;
-		}
+    getScore(answer: Answer): number {
+        let upvotes: number = 0;
+        let downvotes: number = 0;
 
-		if (!answer.votes) {
-			answer.votes = [];
-		}
+        if (!answer) {
+            return 0;
+        }
 
-		let upvotes: number = 0;
-		let downvotes: number = 0;
+        if (!answer.votes) {
+            answer.votes = [];
+        }
 
 		for (let voteInfo of answer.votes) {
 			if (voteInfo.voteType === 0) {
@@ -149,27 +152,37 @@ export class AnswerService implements OnInit {
 				upvotes++;
 			}
 		}
+        
 
-		return upvotes - downvotes;
-	}
+        for (let voteInfo of answer.votes) {
+            if (voteInfo.voteType === 0) {
+                downvotes++;
+            }
+            else {
+                upvotes++;
+            }
+        }
 
-	getNumVotes(answer: Answer, voteType: number): number {
-		let numVotes = 0;
+        return upvotes - downvotes;
+    }
 
-		if (!answer) {
-			return 0;
-		}
+    getNumVotes(answer: Answer, voteType: number): number {
+        let numVotes = 0;
 
-		if (!answer.votes) {
-			answer.votes = [];
-		}
+        if (!answer) {
+            return 0;
+        }
 
-		for (let voteInfo of answer.votes) {
-			if (voteInfo.voteType === voteType) {
-				numVotes++;
-			}
-		}
+        if (!answer.votes) {
+            answer.votes = [];
+        }
 
-		return numVotes;
-	}
+        for (let voteInfo of answer.votes) {
+            if (voteInfo.voteType === voteType) {
+                numVotes++;
+            }
+        }
+
+        return numVotes;
+    }
 }
