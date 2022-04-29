@@ -43,4 +43,14 @@ export class QuestionService implements OnInit {
 		this.userService.removeQuestionFromUser(question.uid);
 		this.angularFirestore.collection('questions').doc<Question>(question.uid).delete();
 	}
+
+    removeCommentFromQuestion(question: Question, comment: string, userID: string){
+        for(let i=0;i<question.comments.length;i++){
+            if(question.comments[i].comment == comment && question.comments[i].userID == userID){
+           //     console.log("Location in the comments array: "+ i);
+                question.comments.splice(i,1);
+            }
+        }
+        this.updateQuestion(question.uid, question);
+    }
 }

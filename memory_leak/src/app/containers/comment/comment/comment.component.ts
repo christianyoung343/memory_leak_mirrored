@@ -22,6 +22,7 @@ export class CommentComponent implements OnInit {
   @Input() public commentOnAnswer!: boolean;
   @Input() public askerID!: string;
   @Input() public questionAnonymous!: boolean;
+  @Input() public isAdmin!: boolean;
 
   public uid: string | undefined;
 

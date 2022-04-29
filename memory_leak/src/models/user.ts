@@ -4,6 +4,8 @@ export class User {
     public email: string;
     public displayName: string;
     public askedQuestionIDs?: Array<string>;
+	//! Testing
+	public admin?: boolean;
 
     constructor(userObj:any) {
         this.uid = userObj.uid;

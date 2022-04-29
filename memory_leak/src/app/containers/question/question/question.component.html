@@ -10,9 +10,13 @@
                         <div class="col">
                             <div class="card-header">
                                 <div class="row">
-                                    <div class="col-9">
+                                    <div class="col-7">	
                                         <h5 class="card-title">{{question.title}}</h5>
+										<ng-container *ngIf="user && user.admin">
+											<button class="btn"><i class="bi bi-trash"></i></button>
+										</ng-container>
                                     </div>
+
                                     <div class="col-3">
                                         <div id="userDesktop">
                                             <div *ngIf="question.anonymous; then anonymous else userName"></div>
@@ -32,12 +36,12 @@
                                 <p class="card-text">{{question.body}}</p>
                                 <div class="card">
                                     <div class="card-body">
-                                        <app-comment [comments]="comments" [question]="question" [commentOnAnswer]="false"></app-comment>
+                                        <app-comment *ngIf="user" [comments]="comments" [question]="question" [commentOnAnswer]="false" [isAdmin]="!!user.admin"></app-comment>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
-                                        <app-answer-parent [answers]="answers" [question]="question">
+                                        <app-answer-parent *ngIf="user" [answers]="answers" [question]="question" [isAdmin]="!!user.admin">
                                         </app-answer-parent>
                                     </div>
                                 </div>
