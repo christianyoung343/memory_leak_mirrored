@@ -3,34 +3,35 @@
 		<ng-container>
 			<section id="card-flow-section" class="card-section">
 				<div id="questionCards">
-					<ng-container
-					*ngIf="
+					<ng-container *ngIf="
 					flaggedQuestions && flaggedQuestions.length > 0;
 					then hasQuestions;
 					else noQuestions
-					"
-					>
-				</ng-container>
-				
-				<ng-template #hasQuestions>
-					<ng-container *ngFor="let question of flaggedQuestions">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<a routerLink="../question/{{ question.uid }}">
+					">
+					</ng-container>
+
+					<ng-template #hasQuestions>
+						<ng-container *ngFor="let question of flaggedQuestions">
+							<div class="container">
+								<div class="row">
+									<div class="col">
 										<div class="card">
-											<div class="card-header">
-												<h5 class="card-title">{{ question.title }}</h5>
-											</div>
-											
+											<a routerLink="../question/{{ question.uid }}">
+												<div class="card-header">
+													<h5 class="card-title">{{ question.title }}</h5>
+												</div>
+											</a>
 											<div class="card-body">
 												<p class="card-text">{{ question.body }}</p>
 											</div>
-											
+
 											<div class="card">
 												<div class="card-header">
-													<h5 class="card-title">Reason for flagging:</h5>
+													<h5 class="card-title">
+														Reason for flagging:
+													</h5>
 												</div>
+
 												<ng-container *ngIf="reasons">
 													<div class="card-body">
 														<p class="card-text">
@@ -38,28 +39,33 @@
 														</p>
 													</div>
 												</ng-container>
-												<button (click)="removeQuestion(question)">
-													Remove
-												</button>
+												<div class="row">
+													<div class="col">
+														<button class="btn" (click)="removeQuestion(question)">
+															Remove
+														</button>
+														<button class="btn" (click)="unflagQuestion(question)">
+															Unflag
+														</button>
+													</div>
+												</div>
 											</div>
 										</div>
-									</a>
+									</div>
 								</div>
 							</div>
+						</ng-container>
+					</ng-template>
+
+					<ng-template #noQuestions>
+						<div class="card">
+							<div class="card-body">
+								<p class="card-text">There are no flagged questions.</p>
+							</div>
 						</div>
-					</ng-container>
-				</ng-template>
-				
-				<ng-template #noQuestions>
-					<div class="card">
-						<div class="card-body">
-							<p class="card-text">There are no flagged questions.</p>
-						</div>
-					</div>
-				</ng-template>
-			</div>
-		</section>
-	</ng-container>
-</div>
-<ng-container></ng-container>
+					</ng-template>
+				</div>
+			</section>
+		</ng-container>
+	</div>
 </ng-container>

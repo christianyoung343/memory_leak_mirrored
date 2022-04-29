@@ -48,11 +48,14 @@ export class AdminParentComponent implements OnInit {
 	}
 
 	removeQuestion(questionToRemove: Question) {
-		//! it is outside the scope of this component to deal with firestore; the question service must remove
 		this.questionService.removeQuestion(questionToRemove);
+        alert("Question has been removed.")
 	}
 
-	notifyUser() {
-		//TODO have notifications for users
-	}
+    unflagQuestion(question:Question){
+        question.flag = Number(0);
+        this.questionService.updateQuestion(question.uid,question);
+        alert("Question has been unflagged.")
+        this.router.navigate(['/']);
+    }
 }

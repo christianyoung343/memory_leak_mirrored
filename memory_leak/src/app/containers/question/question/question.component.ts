@@ -69,15 +69,13 @@ export class QuestionComponent implements OnInit {
 		});
 	}
 
-	alertFunction(): void {
-		if (this.question) {
-			if (this.question.flag > 0) {
-				alert("This question has already been flagged. A moderator will review it as soon as possible.");
-			}
-			else {
-				var response = null;
-
-				do {
+    alertFunction(): void {
+        if (this.question) {
+            if (this.question.flag > 0) {
+                alert("This question has already been flagged. A moderator will review it as soon as possible.")
+            } else {
+                var response = null
+                do {
 					response = prompt("Enter the reason for flagging (1-4):\n  1. Question is rude/inappropriate\n  2. Question encourages academic misconduct\n  3. Question has been answered previously\n  4. An answer for this question is rude, inappropriate, and/or encourages academic misconduct\n");
 
 					const valid_responses = [1, 2, 3, 4];
