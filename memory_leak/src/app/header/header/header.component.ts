@@ -24,9 +24,7 @@ export class HeaderComponent implements OnInit {
 	}
 
 	toggleNavCollapsed(): void {
-		console.log("Was " + this.navCollapsed);
 		this.navCollapsed = !this.navCollapsed;
-		console.log("Now " + this.navCollapsed);
 	}
 
 }

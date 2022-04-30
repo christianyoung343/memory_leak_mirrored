@@ -31,8 +31,6 @@ export class QuestionCreationService {
 					uid: docSnapshot.id
 				});
 
-				console.log('q.id: ' + docSnapshot.id);
-
 				this.emptyArray = [];
 
 				if (this.user) {
@@ -42,7 +40,6 @@ export class QuestionCreationService {
 				}
 
 				this.qNum = docSnapshot.id;
-				console.log('qNum: ' + this.qNum);
 
 				this.emptyArray.push(docSnapshot.id);
 

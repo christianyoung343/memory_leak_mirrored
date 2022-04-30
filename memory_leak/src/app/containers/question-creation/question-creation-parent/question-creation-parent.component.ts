@@ -44,10 +44,7 @@ export class QuestionCreationParentComponent implements OnInit {
 			uid: ''
 		};
 
-		console.log(question);
-
 		this.questionCreationService.addQuestion(question).then(() => { }).then(() => {
-			console.log('qid after: ' + this.questionCreationService.getQNum());
 			this.router.navigateByUrl('/question/' + this.questionCreationService.getQNum());
 		});
 	}
