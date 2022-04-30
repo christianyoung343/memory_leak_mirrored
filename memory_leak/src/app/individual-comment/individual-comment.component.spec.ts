@@ -4,24 +4,24 @@ import TestBedExtended from 'src/test_helpers/testBedExtend';
 import { IndividualCommentComponent } from './individual-comment.component';
 
 describe('IndividualCommentComponent', () => {
-  let component: IndividualCommentComponent;
-  let fixture: ComponentFixture<IndividualCommentComponent>;
+	let component: IndividualCommentComponent;
+	let fixture: ComponentFixture<IndividualCommentComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ IndividualCommentComponent ]
-    })
-    .compileComponents();
-  });
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
+			declarations: [IndividualCommentComponent]
+		})
+			.compileComponents();
+	});
 
-  beforeEach(() => {
-    TestBedExtended.preConfigure()
-    fixture = TestBedExtended.createComponent(IndividualCommentComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		TestBedExtended.preConfigure();
+		fixture = TestBedExtended.createComponent(IndividualCommentComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });

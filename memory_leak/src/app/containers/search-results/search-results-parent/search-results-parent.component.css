@@ -1,105 +1,128 @@
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-#card-flow-section{
-    flex: 1;
+.card {
+	flex: 0 0 375px;
+	width: 100%;
+	margin: 0.5rem;
+	border-radius: 10px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+	align-content: center;
 }
 
-section.card-section{
-    padding: 1em;
+.card > .card-header {
+	background-color: var(--ml-light-blue);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.card-body {
+    background-color:  #c8c8c8;
 }
 
 .card-text {
-    color: black;
+	color: black;
 }
-.card {
-    flex: 0 0 375px;
-    /* background-color: #498eaf; */
-    width: 100%;
-    margin: .5rem;
-    border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
-    align-content: center;
+
+.centered {
+	margin: 0;
+	padding-top: 5%;
+	position: absolute;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
-.card>.card-header {
-    background-color: var(--ml-light-blue);
+
+#card-flow-section {
+	flex: 1;
+}
+
+#noResults {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-#questionCards { 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: transparent;
+#questionCards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	background-color: transparent;
 }
 
-section#card-flow-section.card-section {
-    background-color:transparent;
-    /* padding: 1px; */
-}
-div.alr {
-    background-color:transparent;
-    /* width: max-content;
-    align-content: center; */
-}
-
-a, a:hover, a:focus, a:active {
-    text-decoration: none;
-    color: inherit;
-}
-div>.card>.card-body {
-    background-color:  #54545431;
-    align-content: center;
-}
-h4 {
-    text-align: center;
+#term {
+    width: 99%;
+    margin: .25rem;
+    resize: none;
+    word-wrap: normal;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 10px;
 }
 
-.centered {
-    margin: 0;
-    padding-top: 5%;
-    position: absolute;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+a, a:active, a:focus, a:hover {
+	text-decoration: none;
+	color: inherit;
 }
 
 button {
-    align-self: center;
+    margin: .5rem;
 }
 
-label {
-    font-size: 18px;
+div.alr {
+	background-color: transparent;
 }
 
-input {
-    margin: 0.5rem;
+div > .card > .card-body {
+    background-color:  #c8c8c8;
+	align-content: center;
+}
+
+#inputAnswered {
+    height: 1.25rem;
+    width: 1.25rem;
+    vertical-align: middle;
 }
 
 form {
-    align-self: center;
+	align-self: center;
 }
 
-#term{
-    width: 50%;
+h4 {
+	text-align: center;
 }
 
-@media (max-width:320px){
-    .card{
+input {
+	margin: 0.5rem;
+}
+
+label {
+	font-size: 18px;
+}
+
+section.card-section {
+	padding: 1em;
+}
+
+section#card-flow-section.card-section {
+	background-color: transparent;
+}
+
+@media (max-width: 320px) {
+	.card {
 		flex: 0 0 315px;
 	}
 }
 
-@media (min-width:325px) and (max-width: 375px){
-	.card{
+@media (min-width: 325px) and (max-width: 375px) {
+	.card {
 		flex: 0 0 350px;
 	}
 }
 
-@media (min-width:2300px) {
-    #questionCards {
-        flex-direction: column;
-    }
+@media (min-width: 2300px) {
+	#questionCards {
+		flex-direction: column;
+	}
 }

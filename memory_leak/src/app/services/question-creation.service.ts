@@ -10,56 +10,51 @@ import { UserService } from './user.service';
 })
 export class QuestionCreationService {
 	private questionCollection: AngularFirestoreCollection<Question>;
-	private questions: Observable<Question[]>;
-	private userCollection: AngularFirestoreCollection<User>;
 	private emptyArray: Array<string> = [];
-	public qNum: string = '';
+	
+	qNum: string = '';
+
 	private user!: User | null | undefined;
 
-	constructor(private afs: AngularFirestore, private us: UserService) {
-		this.questionCollection = afs.collection<Question>('questions');
-		this.questions = this.questionCollection.valueChanges();
-		this.userCollection = afs.collection<User>('users');
-		this.us.getUser().subscribe((user) => {
+	constructor(private angularFirestore: AngularFirestore, private userService: UserService) {
+		this.questionCollection = angularFirestore.collection<Question>('questions');
+
+		this.userService.getUser().subscribe((user) => {
 			this.user = user;
-		})
+		});
 	}
 
 	addQuestion(question: Question) {
-		// console.log(this.user);
+		return this.questionCollection.add(question).then((docRef) => {
+			return docRef.get().then((docSnapshot) => {
+				this.questionCollection.doc<Question>(docSnapshot.id).update({
+					uid: docSnapshot.id
+				});
 
-		// console.log(question.uid);
-		return this.questionCollection.add(question).then((s) => {
-			return s.get().then((q) => {
-				this.questionCollection.doc<Question>(q.id).update({
-					uid: q.id
-				})
-
-				console.log('q.id: ' + q.id)
+				console.log('q.id: ' + docSnapshot.id);
 
 				this.emptyArray = [];
+
 				if (this.user) {
-					//this.user.toPromise<User | null | undefined>().then((u) => {
 					if (this.user.askedQuestionIDs) {
-						this.emptyArray = this.user.askedQuestionIDs
-					}
-					//})
+						this.emptyArray = this.user.askedQuestionIDs;
+					};
 				}
-				this.qNum = q.id;
-				console.log('qNum: ' + this.qNum)
-				this.emptyArray.push(q.id);
-				let userRef: AngularFirestoreDocument<User> = this.afs.collection('users').doc<User>(question.askerID);
+
+				this.qNum = docSnapshot.id;
+				console.log('qNum: ' + this.qNum);
+
+				this.emptyArray.push(docSnapshot.id);
+
+				let userRef: AngularFirestoreDocument<User> = this.angularFirestore.collection('users').doc<User>(question.askerID);
 				userRef.update({
 					askedQuestionIDs: this.emptyArray
-				})
+				});
 			});
 		});
-		//console.log(this.qNum);
-		//return this.qNum
-		// this.emptyArray.push(question.uid);
 	}
 
 	getQNum() {
-		return this.qNum
+		return this.qNum;
 	}
 }

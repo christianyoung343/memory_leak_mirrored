@@ -4,24 +4,24 @@ import TestBedExtended from 'src/test_helpers/testBedExtend';
 import { QuestionComponent } from './question.component';
 
 describe('QuestionComponent', () => {
-    let component: QuestionComponent;
-    let fixture: ComponentFixture<QuestionComponent>;
+	let component: QuestionComponent;
+	let fixture: ComponentFixture<QuestionComponent>;
 
-    beforeEach(async () => {
-        await TestBed.configureTestingModule({
-            declarations: [QuestionComponent]
-        })
-            .compileComponents();
-    });
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
+			declarations: [QuestionComponent]
+		})
+			.compileComponents();
+	});
 
-    beforeEach(() => {
-        TestBedExtended.preConfigure()
-        fixture = TestBedExtended.createComponent(QuestionComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+	beforeEach(() => {
+		TestBedExtended.preConfigure();
+		fixture = TestBedExtended.createComponent(QuestionComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
-    });
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });

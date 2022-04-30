@@ -1,60 +1,54 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { FormGroup, FormControl } from '@angular/forms';
+
 import { QuestionCreationService } from 'src/app/services/question-creation.service';
 import { UserService } from 'src/app/services/user.service';
+
 import { Question } from 'src/models/question';
-import { User } from 'src/models/user';
 
 @Component({
-  selector: 'app-question-creation-parent',
-  templateUrl: './question-creation-parent.component.html',
-  styleUrls: ['./question-creation-parent.component.css']
+	selector: 'app-question-creation-parent',
+	templateUrl: './question-creation-parent.component.html',
+	styleUrls: ['./question-creation-parent.component.css']
 })
 export class QuestionCreationParentComponent implements OnInit {
-  @Input()
-  //private qcs!: QuestionCreationService;
-  questionForm: any;
-  user: any;
-
-  constructor(private qcs: QuestionCreationService, private us: UserService, private router: Router) {
-      this.questionForm = new FormGroup ({
-      title: new FormControl(""),
-      body: new FormControl(""),
-      anonymous: new FormControl(false)
-    })
-  }
-
-  ngOnInit() {
-    //this.qcs = this.injector.get<QuestionCreationService>(this.source);
-    this.us.getUser().subscribe(u => {
-      this.user = u;
-    })
-  }
-
-  addQuestion(data: any) {
-   //this.questionForm = data;
-
-    let question: Question = {
-      //TODO get user id for askerID
-      acceptedAnswerID: '',
-      anonymous: data.anonymous,
-      askerID: this.user.uid,
-      body: data.body,      
-      comments: [],
-      flag: 0,
-      title: data.title,
-      uid: ''
-    };
-
-    console.log(question);
-
+	@Input() questionForm: any;
 	
+	user: any;
 
-    //console.log(this.user.uid);
-    this.qcs.addQuestion(question).then(() => {}).then(() => {
-		console.log('qid after: ' + this.qcs.getQNum())
-		this.router.navigateByUrl('/question/' + this.qcs.getQNum())
-	})
-  }
+	constructor(private questionCreationService: QuestionCreationService, private userService: UserService, 
+				private router: Router) {
+		this.questionForm = new FormGroup({
+			title: new FormControl(""),
+			body: new FormControl(""),
+			anonymous: new FormControl(false)
+		});
+	}
+
+	ngOnInit() {
+		this.userService.getUser().subscribe(user => {
+			this.user = user;
+		});
+	}
+
+	addQuestion(data: any) {
+		let question: Question = {
+			acceptedAnswerID: '',
+			anonymous: data.anonymous,
+			askerID: this.user.uid,
+			body: data.body,
+			comments: [],
+			flag: 0,
+			title: data.title,
+			uid: ''
+		};
+
+		console.log(question);
+
+		this.questionCreationService.addQuestion(question).then(() => { }).then(() => {
+			console.log('qid after: ' + this.questionCreationService.getQNum());
+			this.router.navigateByUrl('/question/' + this.questionCreationService.getQNum());
+		});
+	}
 }

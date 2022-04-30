@@ -1,69 +1,69 @@
 <ng-container>
-    <div *ngIf="uServ.user$ | async; then authenticated else guest">
-        <!-- template will replace this div -->
-    </div>
-    <ng-template #authenticated>
-        <div *ngIf="uServ.user$ | async as user" class="alr">
-            <ng-container>
-                <section id="card-flow-section" class="card-section">
-                    <div id="questionCards">
-                        <!-- <div class="container-fluid"> -->
-                        <ng-container *ngIf="questions && questions.length > 0; then hasQuestions else noQuestions">
-                        </ng-container>
-                        <ng-template #hasQuestions>
-                            <ng-container *ngFor="let q of questions">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col">
-                                            <a routerLink="question/{{q.uid}}">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        <h5 class="card-title">{{q.title}}</h5>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <p class="card-text">{{q.body}}</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
+	<div *ngIf="userServ.user$ | async; then authenticated; else guest">
+	</div>
 
-                                    </div>
-                                </div>
-                            </ng-container>
-                        </ng-template>
+	<ng-template #authenticated>
+		<div *ngIf="userServ.user$ | async as user" class="alr">
+			<ng-container>
+				<section id="card-flow-section" class="card-section">
+					<div id="questionCards">
+						<ng-container *ngIf="questions && questions.length > 0; then hasQuestions; else noQuestions">
+						</ng-container>
 
-                        <ng-template #noQuestions>
-                            <div class="card">
-                                <div class="card-body">
-                                    <p class="card-text">All questions have been answered.</p>
-                                </div>
-                            </div>
-                        </ng-template>
-                    </div>
-                </section>
-            </ng-container>
-        </div>
-    </ng-template>
+						<ng-template #hasQuestions>
+							<ng-container *ngFor="let q of questions">
+								<div class="container">
+									<div class="row">
+										<div class="col">
+											<a routerLink="question/{{ q.uid }}">
+												<div class="card">
+													<div class="card-header">
+														<h5 class="card-title">{{ q.title }}</h5>
+													</div>
 
-    <ng-template #guest>
-        <div class="alr">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body" style="padding-bottom: 7%;">
-                                <h4>Please Sign in with your UWF Gmail account</h4>
-                                <div class="centered">
-                                    <button class=btnGoogle (click)="signIn()">
-                                        <i class="fa fa-google"></i>Log in with Google
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </ng-template>
+													<div class="card-body">
+														<p class="card-text">{{ q.body }}</p>
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+							</ng-container>
+						</ng-template>
 
+						<ng-template #noQuestions>
+							<div class="card">
+								<div class="card-body">
+									<p class="card-text">All questions have been answered.</p>
+								</div>
+							</div>
+						</ng-template>
+					</div>
+				</section>
+			</ng-container>
+		</div>
+	</ng-template>
+
+	<ng-template #guest>
+		<div class="alr">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="card">
+							<div class="card-body" style="padding-bottom: 7%">
+								<h4>Please Sign in with your UWF Gmail account</h4>
+
+								<div class="centered">
+									<button class="btn btnGoogle" (click)="signIn()">
+										<i class="fa fa-google"></i>Log in with Google
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ng-template>
 </ng-container>

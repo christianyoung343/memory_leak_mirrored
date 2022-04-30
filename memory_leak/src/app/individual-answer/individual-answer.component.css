@@ -1,60 +1,73 @@
-textarea {
-    width: 75%;
-    margin: .25rem;
-    resize: none;
-    word-wrap: normal;
-    padding: 5px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-  }
-  
+.voteNum {
+	font-family: "Andale Mono", AndaleMono, monospace;
+	margin-left: 30px;
+}
+
+.btn {
+	padding: 1px 6px;
+}
+
 .card p {
-    margin: .5rem;
-    width: 80%;
+	margin: 1rem;
 }
 
 .com {
-    margin: .5rem;
-    width: fit-content;
+	margin: 0.5rem;
+	width: fit-content;
 }
+
 .commentCard {
-    flex: 0 0 375px;
-    background-color: #c8c8c8c0;
-    margin: max(1vh, 1vw);
-    border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
-    align-content: center;
-    width: auto;
-    color: black;
+	align-content: center;
+	background-color: #c8c8c8c0;
+	border-radius: 10px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+	color: black;
+	flex: 0 0 375px;
+	margin: max(1vh, 1vw);
+	width: auto;
 }
 
-button {
-    margin: .5rem;
-}
-
-div.accepted {
-   background-color: green;
-   color: white;
+.voteNum {
+	font-family: "Andale Mono", AndaleMono, monospace;
+	margin-left: 30px;
 }
 
 #userDesktop {
-    text-align: right;
-    display: block;
+	display: block;
+	text-align: right;
 }
 
 #userMobile {
-    text-align: right;
-    display: none;
+	display: none;
+	text-align: right;
 }
 
-@media (max-width:800px) {
-    #userDesktop {
-        display: none;
-    }
-    #userMobile {
-        display: block;
-    }
-    
+button {
+	margin: 0.5rem;
+}
+
+div.accepted {
+	background-color: green;
+	color: white;
+}
+
+textarea {
+	border: 2px solid #ccc;
+	border-radius: 10px;
+	box-sizing: border-box;
+	margin: 0.25rem;
+	padding: 12px 20px;
+	resize: none;
+	width: 75%;
+	word-wrap: normal;
+}
+
+@media (max-width: 800px) {
+	#userDesktop {
+		display: none;
+	}
+
+	#userMobile {
+		display: block;
+	}
 }

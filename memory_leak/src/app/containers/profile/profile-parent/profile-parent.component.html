@@ -1,38 +1,41 @@
 <div class="container">
-    <div class="card">
-        <div class="card-header">
-            <div id="spacer">
-                <div id="user">
-                    <h4 id="userLetter">{{userFirstLetter}}</h4>
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
-            <h4>Your Currently Asked Questions</h4>
-            <div *ngFor="let q of questions">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <!-- <a routerLink="../question/{{q.uid}}"> -->
-                                <div class="card">
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <a class="col" routerLink="../question/{{q.uid}}">
-                                              <h5 class="card-title">{{q.title}}</h5>  
-                                            </a>
-                                            <button class="btn col-2" (click)="deleteQuestion(q)">Delete</button>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="card-body" id="question">
-                                        <p class="card-text">{{q.body}}</p>
-                                    </div>
-                                </div>
-                            <!-- </a> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="card">
+		<div class="card-header">
+			<div id="spacer">
+				<div id="user">
+					<h4 id="userLetter">
+						{{userFirstLetter}}
+					</h4>
+				</div>
+			</div>
+		</div>
+		<div class="card-body">
+			<h4>Your Currently Asked Questions</h4>
+			<div *ngFor="let q of questions">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="card innerCard">
+								<div class="card-header">
+									<div class="row">
+										<a class="col" routerLink="../question/{{q.uid}}">
+											<h5 class="card-title">{{q.title}}</h5>
+										</a>
+										<button class="btn col-1" (click)="deleteQuestion(q)">
+											<i class="bi bi-trash"></i>
+										</button>
+									</div>
+								</div>
+								<div class="card-body" id="question">
+									<p class="card-text">
+										{{q.body}}
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

@@ -1,33 +1,35 @@
-textarea {
-    width: 75%;
-    margin: .25rem;
-    resize: none;
-    word-wrap: normal;
-  }
-
 .card p {
-    margin: .5rem;
-    width: 80%;
+    margin: 1rem;
 }
 
+button {
+    margin: .5rem;
+}
 .card.answer {
-    background-color: #58585860;
+	background-color: #58585860;
 }
 
 #userDesktop {
-    text-align: right;
-    display: block;
+	display: block;
+	text-align: right;
 }
 #userMobile {
-    text-align: right;
-    display: none;
+	display: none;
+	text-align: right;
 }
 
-@media (max-width:800px) {
-    #userDesktop {
-        display: none;
-    }
-    #userMobile {
-        display: block;
-    }
+textarea {
+	margin: 0.25rem;
+	resize: none;
+	width: 75%;
+	word-wrap: normal;
+}
+
+@media (max-width: 800px) {
+	#userDesktop {
+		display: none;
+	}
+	#userMobile {
+		display: block;
+	}
 }

@@ -1,6 +1,4 @@
 import { Component } from "@angular/core";
 
-@Component({})
-export class BlankComponent {
-
-}
+@Component({ })
+export class BlankComponent { }

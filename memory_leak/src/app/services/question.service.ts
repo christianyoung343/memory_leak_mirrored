@@ -8,11 +8,11 @@ import { UserService } from 'src/app/services/user.service'
 import { Question } from 'src/models/question';
 
 @Injectable({
-    providedIn: 'root'
+	providedIn: 'root'
 })
 export class QuestionService implements OnInit {
-    public questionsList$: Observable<Question[]>;
-    public question: any;
+	questionsList$: Observable<Question[]>;
+	question: any;
 
 	constructor(private angularFirestore: AngularFirestore, private answerService: AnswerService, private userService: UserService) {
 		this.questionsList$ = this.angularFirestore.collection<Question>('questions').valueChanges();
@@ -30,12 +30,13 @@ export class QuestionService implements OnInit {
 		question.comments.push({
 			"userID": userID,
 			"comment": comment
-		})
+		});
+
 		this.updateQuestion(question.uid, question);
 	}
 
 	updateQuestion(id: string, question: Question) {
-		this.angularFirestore.collection('questions').doc(id).set(question)
+		this.angularFirestore.collection('questions').doc(id).set(question);
 	}
 
 	removeQuestion(question: Question) {
@@ -44,13 +45,13 @@ export class QuestionService implements OnInit {
 		this.angularFirestore.collection('questions').doc<Question>(question.uid).delete();
 	}
 
-    removeCommentFromQuestion(question: Question, comment: string, userID: string){
-        for(let i=0;i<question.comments.length;i++){
-            if(question.comments[i].comment == comment && question.comments[i].userID == userID){
-           //     console.log("Location in the comments array: "+ i);
-                question.comments.splice(i,1);
-            }
-        }
-        this.updateQuestion(question.uid, question);
-    }
+	removeCommentFromQuestion(question: Question, comment: string, userID: string) {
+		for (let i = 0; i < question.comments.length; i++) {
+			if (question.comments[i].comment == comment && question.comments[i].userID == userID) {
+				question.comments.splice(i, 1);
+			}
+		}
+		
+		this.updateQuestion(question.uid, question);
+	}
 }

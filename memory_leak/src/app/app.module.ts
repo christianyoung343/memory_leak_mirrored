@@ -1,7 +1,10 @@
-import { InjectionToken, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat'
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header/header.component';
@@ -12,75 +15,55 @@ import { ProfileParentComponent } from './containers/profile/profile-parent/prof
 import { QuestionCreationParentComponent } from './containers/question-creation/question-creation-parent/question-creation-parent.component';
 import { QuestionViewParentComponent } from './containers/question-view/question-view-parent/question-view-parent.component';
 import { SearchResultsParentComponent } from './containers/search-results/search-results-parent/search-results-parent.component';
-import { SignUpParentComponent } from './containers/sign-up/sign-up-parent/sign-up-parent.component';
-
-import { AngularFireModule } from '@angular/fire/compat'
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
-//import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { QuestionCreationService } from './services/question-creation.service';
-import { UserService } from './services/user.service';
-import { User } from 'src/models/user';
-import { AuthenticateService } from './services/authenticate.service';
-// { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { QuestionComponent } from './containers/question/question/question.component';
 import { AnswerParentComponent } from './containers/answer/answer-parent/answer-parent.component';
 import { CommentComponent } from './containers/comment/comment/comment.component';
 import { IndividualCommentComponent } from './individual-comment/individual-comment.component';
 import { IndividualAnswerComponent } from './individual-answer/individual-answer.component';
 
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { environment } from '../environments/environment';
+import { UserService } from './services/user.service';
+import { AuthenticateService } from './services/authenticate.service';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAXwvR6Ax0ntJ7maFfqKVrjI28MYzaHjsQ",
-  authDomain: "memory-leak-spring2022.firebaseapp.com",
-  projectId: "memory-leak-spring2022",
-  storageBucket: "memory-leak-spring2022.appspot.com",
-  messagingSenderId: "800244229837",
-  appId: "1:800244229837:web:60c44fbdf6686cf53e6b84",
-  measurementId: "G-X5RNZS658W"
+	apiKey: "AIzaSyAXwvR6Ax0ntJ7maFfqKVrjI28MYzaHjsQ",
+	authDomain: "memory-leak-spring2022.firebaseapp.com",
+	projectId: "memory-leak-spring2022",
+	storageBucket: "memory-leak-spring2022.appspot.com",
+	messagingSenderId: "800244229837",
+	appId: "1:800244229837:web:60c44fbdf6686cf53e6b84",
+	measurementId: "G-X5RNZS658W"
 };
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    AdminParentComponent,
-    HomeParentComponent,
-    ProfileParentComponent,
-    QuestionCreationParentComponent,
-    QuestionViewParentComponent,
-    SearchResultsParentComponent,
-    SignUpParentComponent,
-    QuestionComponent,
-    AnswerParentComponent,
-    CommentComponent,
-    IndividualCommentComponent,
-    IndividualAnswerComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-  //  provideFirebaseApp(() => initializeApp(environment.firebase)),
-  //  provideFirestore(() => getFirestore()),
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
-    //provideFirebaseApp(() => initializeApp(environment.firebase)),
-    //provideFirestore(() => getFirestore()),
-  ],
-  providers: [AngularFirestore, UserService, AuthenticateService],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		FooterComponent,
+		AdminParentComponent,
+		HomeParentComponent,
+		ProfileParentComponent,
+		QuestionCreationParentComponent,
+		QuestionViewParentComponent,
+		SearchResultsParentComponent,
+		QuestionComponent,
+		AnswerParentComponent,
+		CommentComponent,
+		IndividualCommentComponent,
+		IndividualAnswerComponent
+	],
+	
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		AngularFireModule.initializeApp(environment.firebase),
+		AngularFirestoreModule,
+		FormsModule,
+		ReactiveFormsModule,
+		HttpClientModule
+	],
+
+	providers: [AngularFirestore, UserService, AuthenticateService],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

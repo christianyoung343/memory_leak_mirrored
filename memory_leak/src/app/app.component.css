@@ -1,24 +1,21 @@
 #main {
-    background-color:transparent;
+	background-color: transparent;
 }
 
- footer {
-    margin-top: auto;
-    width: 100%;
-    /* position: fixed; */
-    bottom: 0;
-    min-height: 5vh;
-}
-
-main {
-    /* min-height:100vh; */
-    display:flex;
-    flex-direction: column;
-    flex-grow: 1;
-    /* padding-bottom: 5vh; */
-    min-height: 82vh;
+footer {
+	margin-top: auto;
+	width: 100%;
+	bottom: 0;
+	min-height: 5vh;
 }
 
 header {
-    min-height: 12vh;
+	min-height: 12vh;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	min-height: 82vh;
 }

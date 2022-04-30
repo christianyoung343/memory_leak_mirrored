@@ -1,18 +1,21 @@
 textarea {
-    width: 75%;
-    margin: .25rem;
-    resize: none;
-    word-wrap: normal;
-    /* letter-spacing: .2rem; */
-    padding: 5px;
-    /* margin: 10px; */
-    padding: 5px 10px;
-    box-sizing: border-box;
-    border: 2px solid var(--ml-light-blue-solid);
-    border-radius: 10px;
-  }
+	width: 75%;
+	margin: .25rem;
+	resize: none;
+	word-wrap: normal;
+	padding: 5px;
+	padding: 5px 10px;
+	box-sizing: border-box;
+	border: 2px solid var(--ml-light-blue-solid);
+	border-radius: 10px;
+	vertical-align: middle;
+}
 
 .card h4 {
-  margin: .5rem;
-  width: 80%;
+	margin: .5rem;
+	width: 80%;
+}
+
+button {
+	margin: .5rem;
 }

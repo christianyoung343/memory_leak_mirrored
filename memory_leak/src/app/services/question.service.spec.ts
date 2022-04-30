@@ -6,75 +6,87 @@ import TestBedExtended from 'src/test_helpers/testBedExtend';
 import { QuestionService } from './question.service';
 
 describe('QuestionService', () => {
-  let service: QuestionService;
+	let service: QuestionService;
 
-  beforeEach(() => {
-    TestBedExtended.preConfigure()
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(QuestionService);
-  });
+	beforeEach(() => {
+		TestBedExtended.preConfigure();
+		TestBed.configureTestingModule({});
+		service = TestBed.inject(QuestionService);
+	});
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+	it('should be created', () => {
+		expect(service).toBeTruthy();
+	});
 
-  it('should access the database', () => {
-    expect(service.getQuestions()).toBeTruthy();
-  })
+	it('should access the database', () => {
+		expect(service.getQuestions()).toBeTruthy();
+	});
 
-  it('should have a working mock', () => {
-    let sut = new FirestoreMock()
-    let collection = sut.collection('questions').valueChanges()
-    let doc1 = collection.doc("test")
-    collection.doc("test")?.set("New value")
-    expect(doc1?.data).toBe("New value")
-  })
+	it('should have a working mock', () => {
+		let sut = new FirestoreMock();
+		let collection = sut.collection('questions').valueChanges();
+		let doc1 = collection.doc("test");
 
-  it('should add/update questions', () => {
-    let sut = new Question("uid", "QuestionServiceTest", "QuestionServiceTest", false, [], "askerID", "", 0)
-    let sut2 = new Question("uid2", "QuestionServiceTest2", "QuestionServiceTest2", false, [], "askerID2", "", 0)
-    let collection: any;
-    collection = service.getQuestions()
+		collection.doc("test")?.set("New value");
+		expect(doc1?.data).toBe("New value");
+	})
 
-    expect(collection.doc("uid").data).toBe("uid")
+	it('should add/update questions', () => {
+		let sut = new Question("uid", "QuestionServiceTest", "QuestionServiceTest", false, [], "askerID", "", 0);
+		let sut2 = new Question("uid2", "QuestionServiceTest2", "QuestionServiceTest2", false, [], "askerID2", "", 0);
+		let collection: any;
 
+		collection = service.getQuestions();
+		expect(collection.doc("uid").data).toBe("uid");
 
-    service.updateQuestion("uid", sut)
+		service.updateQuestion("uid", sut);
+		service.updateQuestion("uid2", sut2);
 
-    service.updateQuestion("uid2", sut2)
+		collection = service.getQuestions();
 
-    collection = service.getQuestions()
+		expect(collection.doc("uid2").data).toBe(sut2);
+		expect(collection.doc("uid").data).toBe(sut);
+	});
 
-    expect(collection.doc("uid2").data).toBe(sut2)
+	it('should append comments to questions', () => {
+		let sut = new Question("uid", "QuestionServiceTest", "QuestionServiceTest", false, [], "askerID", "", 0);
+		expect(sut.comments.length).toBe(0);
 
-    expect(collection.doc("uid").data).toBe(sut)
+		service.addCommentToQuestion("Test Comment", sut, "userID");
+		let collection: any;
+		collection = service.getQuestions();
 
-  })
+		expect(collection.doc("uid").data.comments.length).toBe(1);
+	});
 
-  it('should append comments to questions', () => {
-    let sut = new Question("uid", "QuestionServiceTest", "QuestionServiceTest", false, [], "askerID", "", 0)
-    expect(sut.comments.length).toBe(0);
+	it('should remove questions', () => {
+		let sut = new Question("uid", "QuestionServiceTest", "QuestionServiceTest", false, [], "askerID", "", 0);
 
-    service.addCommentToQuestion("Test Comment", sut, "userID")
-    let collection: any;
-    collection = service.getQuestions()
+		service.updateQuestion("uid", sut);
+		let collection: any;
+		collection = service.getQuestions();
 
-    expect(collection.doc("uid").data.comments.length).toBe(1)
-  })
+		expect(collection.doc("uid").data).toBe(sut);
 
-  it('should remove questions', () => {
-    let sut = new Question("uid", "QuestionServiceTest", "QuestionServiceTest", false, [], "askerID", "", 0)
+		service.removeQuestion(sut);
+		collection = service.getQuestions();
 
-    service.updateQuestion("uid", sut)
-    let collection: any;
-    collection = service.getQuestions()
+		expect(collection.doc("uid").data).toBeUndefined();
+	});
 
-    expect(collection.doc("uid").data).toBe(sut)
+	
+	it('should remove a comment from an answer', () => {
+		let sut = new Question("uid", "QuestionServiceTest", "QuestionServiceTest", false, [], "askerID", "", 0);
+		expect(sut.comments.length).toBe(0);
 
+		service.addCommentToQuestion("Test Comment", sut, "userID");
+		let collection: any;
+		collection = service.getQuestions();
 
-    service.removeQuestion(sut)
-    collection = service.getQuestions()
+		expect(collection.doc("uid").data.comments.length).toBe(1);
 
-    expect(collection.doc("uid").data).toBeUndefined()
-  })
+		service.removeCommentFromQuestion(sut, "Test Comment", "userID");
+
+		expect(collection.doc("uid").data.comments.length).toBe(0);
+	});
 });
