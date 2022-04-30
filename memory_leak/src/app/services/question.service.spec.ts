@@ -72,5 +72,21 @@ describe('QuestionService', () => {
 		collection = service.getQuestions();
 
 		expect(collection.doc("uid").data).toBeUndefined();
-	})
+	});
+
+	
+	it('should remove a comment from an answer', () => {
+		let sut = new Question("uid", "QuestionServiceTest", "QuestionServiceTest", false, [], "askerID", "", 0);
+		expect(sut.comments.length).toBe(0);
+
+		service.addCommentToQuestion("Test Comment", sut, "userID");
+		let collection: any;
+		collection = service.getQuestions();
+
+		expect(collection.doc("uid").data.comments.length).toBe(1);
+
+		service.removeCommentFromQuestion(sut, "Test Comment", "userID");
+
+		expect(collection.doc("uid").data.comments.length).toBe(0);
+	});
 });
