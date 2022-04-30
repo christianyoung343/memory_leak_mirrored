@@ -39,7 +39,7 @@ export default class MockDoc<T> {
 		}
 
 		for (const [k, v] of Object.entries(changes)) {
-			if (this.data) { //&& this.data[k]
+			if (this.data) {
 				this.data[k] = v;
 			}
 		}
