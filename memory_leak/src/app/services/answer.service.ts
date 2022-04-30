@@ -93,7 +93,7 @@ export class AnswerService implements OnInit {
     }
 
 	
-voteAnswer(answer: Answer, userID: string, voteType: number) {
+	voteAnswer(answer: Answer, userID: string, voteType: number) {
 		if (!answer.votes) {
 			answer.votes = [];
 		}
@@ -149,24 +149,8 @@ voteAnswer(answer: Answer, userID: string, voteType: number) {
             answer.votes = [];
         }
 
-		for (let voteInfo of answer.votes) {
-			if (voteInfo.voteType === 0) {
-				downvotes++;
-			}
-			else {
-				upvotes++;
-			}
-		}
-        
-
-        for (let voteInfo of answer.votes) {
-            if (voteInfo.voteType === 0) {
-                downvotes++;
-            }
-            else {
-                upvotes++;
-            }
-        }
+		upvotes = this.getNumVotes(answer, 1);
+		downvotes = this.getNumVotes(answer, 0);
 
         return upvotes - downvotes;
     }

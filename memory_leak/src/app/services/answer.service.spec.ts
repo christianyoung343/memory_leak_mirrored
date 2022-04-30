@@ -107,7 +107,7 @@ describe('AnswerService', () => {
 		expect(collection.doc("uid").data.comments.length).toBe(1);
 	});
 
-	it('should remove answers', () => {
+	it('should remove answers for a question', () => {
 		let sut = new Answer({
 			uid: "uid",
 			body: "AnswerServiceTest",
@@ -141,4 +141,157 @@ describe('AnswerService', () => {
 		expect(collection.doc("uid").data).toBeUndefined();
 		expect(collection.doc("uid2").data).toStrictEqual(sut2);
 	});
+
+	it('should remove a comment from an answer', () => {
+		let sut = new Answer({
+			uid: "uid",
+			body: "AnswerServiceTest",
+			comments: [],
+			answererID: "answererID",
+			questionID: "questionID"
+		});
+
+		service.addCommentToAnswer("Test Comment", sut, "userID");
+
+		let collection: any;
+		collection = service.getAnswers();
+
+		expect(collection.doc("uid").data.comments.length).toBe(1);
+
+		service.removeCommentFromAnswer(collection.doc("uid").data, "Test Comment", "userID");
+
+		collection = service.getAnswers();
+
+		expect(collection.doc("uid").data.comments.length).toBe(0);
+	});
+
+	it('should remove an answer', () => {
+		let q = new Question("uid", "QuestionServiceTest", "QuestionServiceTest", false, [], "askerID", "", 0);
+		let mock = jest.fn(() => { service.addAnswer("New answer", q, "userID") });
+
+		mock();
+		expect(mock).toHaveReturned();
+
+		let ansDoc: Answer = {
+			answererID: "userID",
+			body: "New answer",
+			comments: [],
+			questionID: q.uid,
+			uid: ''
+		};
+
+		let collection: any;
+		collection = service.getAnswers();
+
+		expect(collection.doc("Add0").data).toStrictEqual(ansDoc);
+
+		//not set by mock
+		ansDoc.uid = "Add0";
+
+		service.removeAnswer(ansDoc, q)
+
+		collection = service.getAnswers();
+		expect(collection.doc("Add0").data).toBeUndefined()
+
+	});
+
+	it('should allow voting', () => {
+		let q = new Question("uid", "QuestionServiceTest", "QuestionServiceTest", false, [], "askerID", "", 0);
+		let mock = jest.fn(() => { service.addAnswer("New answer", q, "userID") });
+
+		mock();
+		expect(mock).toHaveReturned();
+
+		let ansDoc: Answer = {
+			answererID: "userID",
+			body: "New answer",
+			comments: [],
+			questionID: q.uid,
+			uid: ''
+		};
+
+		let collection: any;
+		collection = service.getAnswers();
+
+		expect(collection.doc("Add0").data).toStrictEqual(ansDoc);
+
+		//not set by mock
+		ansDoc.uid = "Add0";
+
+		service.voteAnswer(ansDoc, "userID", 1)
+		service.voteAnswer(ansDoc, "userID2", 0)
+
+		collection = service.getAnswers();
+
+		expect(collection.doc("Add0").data.votes.length).toBe(2);
+	});
+
+	it('should get the number of votes', () => {
+		let q = new Question("uid", "QuestionServiceTest", "QuestionServiceTest", false, [], "askerID", "", 0);
+		let mock = jest.fn(() => { service.addAnswer("New answer", q, "userID") });
+
+		mock();
+		expect(mock).toHaveReturned();
+
+		let ansDoc: Answer = {
+			answererID: "userID",
+			body: "New answer",
+			comments: [],
+			questionID: q.uid,
+			uid: ''
+		};
+
+		let collection: any;
+		collection = service.getAnswers();
+
+		expect(collection.doc("Add0").data).toStrictEqual(ansDoc);
+
+		//not set by mock
+		ansDoc.uid = "Add0";
+
+		service.voteAnswer(ansDoc, "userID", 1)
+		service.voteAnswer(ansDoc, "userID2", 0)
+
+		collection = service.getAnswers();
+
+		expect(collection.doc("Add0").data.votes.length).toBe(2);
+
+		expect(service.getNumVotes(ansDoc, 1)).toBe(1);
+		expect(service.getNumVotes(ansDoc, 0)).toBe(1);
+
+	})
+
+	it('should get the score for the answer', () => {
+		let q = new Question("uid", "QuestionServiceTest", "QuestionServiceTest", false, [], "askerID", "", 0);
+		let mock = jest.fn(() => { service.addAnswer("New answer", q, "userID") });
+
+		mock();
+		expect(mock).toHaveReturned();
+
+		let ansDoc: Answer = {
+			answererID: "userID",
+			body: "New answer",
+			comments: [],
+			questionID: q.uid,
+			uid: ''
+		};
+
+		let collection: any;
+		collection = service.getAnswers();
+
+		expect(collection.doc("Add0").data).toStrictEqual(ansDoc);
+
+		//not set by mock
+		ansDoc.uid = "Add0";
+
+		service.voteAnswer(ansDoc, "userID", 1)
+		service.voteAnswer(ansDoc, "userID2", 0)
+
+		collection = service.getAnswers();
+
+		expect(collection.doc("Add0").data.votes.length).toBe(2);
+		
+		expect(service.getScore(ansDoc)).toBe(0);
+	});
+
 });
