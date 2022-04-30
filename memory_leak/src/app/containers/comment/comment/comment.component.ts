@@ -25,13 +25,16 @@ export class CommentComponent implements OnInit {
 	@Input() askerID!: string;
 	@Input() questionAnonymous!: boolean;
 	@Input() isAdmin!: boolean;
+  @Input() uniqueID: string;
 
 	uid: string | undefined;
 
-	constructor(private questionService: QuestionService, private userService: UserService, private answerService: AnswerService) { }
+  constructor(private qs:QuestionService, private us: UserService, private as: AnswerService) { 
+    this.uniqueID = 'label' + Date.now();
+  }
 
 	ngOnInit(): void {
-		this.userService.getUser().subscribe(user => {
+		this.us.getUser().subscribe(user => {
 			if (user != undefined && user != null) {
 				this.user = user;
 			}
@@ -40,11 +43,11 @@ export class CommentComponent implements OnInit {
 
 	addComment(comment: string) {
 		if (this.commentOnAnswer) {
-			this.answerService.addCommentToAnswer(comment, this.answer, this.user.uid);
+			this.as.addCommentToAnswer(comment, this.answer, this.user.uid);
 			this.newCommentText = "";
 		}
 		else {
-			this.questionService.addCommentToQuestion(comment, this.question, this.user.uid);
+			this.qs.addCommentToQuestion(comment, this.question, this.user.uid);
 			this.newCommentText = "";
 		}
 	}

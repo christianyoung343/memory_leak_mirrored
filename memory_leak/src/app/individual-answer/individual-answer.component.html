@@ -47,7 +47,7 @@
 			<button class="btn" (click)="unacceptAnswer()">Unaccept The Above Answer</button>
 		</ng-template>
 		<ng-container *ngIf="isAdmin">
-			<button class="btn" (click)="removeAnswer()"><i class="bi bi-trash"></i></button>
+			<button class="btn" (click)="removeAnswer()"><i class="bi bi-trash"><p class="sr-only">Delete</p></i></button>
 		</ng-container>
 	</div>
 </ng-template>
@@ -100,7 +100,7 @@
 			<button class="btn" (click)="updateAcceptedAnswer()">Accept The Above Answer</button>
 		</ng-template>
 		<ng-container *ngIf="isAdmin">
-			<button class="btn" (click)="removeAnswer()"><i class="bi bi-trash"></i></button>
+			<button class="btn" (click)="removeAnswer()"><i class="bi bi-trash"><p class="sr-only">Delete</p></i></button>
 		</ng-container>
 	</div>
 </ng-template>
