@@ -42,7 +42,7 @@ export class AnswerService implements OnInit {
 		});
 	}
 
-	addCommentToQuestion(comment: string, answer: Answer, userID: string) {
+	addCommentToAnswer(comment: string, answer: Answer, userID: string) {
 		answer.comments.push({
 			"userID": userID,
 			"comment": comment
@@ -82,9 +82,14 @@ export class AnswerService implements OnInit {
     }
 
     //remove a single answer from a question
-    removeAnswer(answer: Answer) {
-        this.angularFirestore.collection('answers').doc<Answer>(answer.uid).delete();
-        //FIXME: Add removing from question
+    removeAnswer(answer: Answer, question: Question) {
+		if (answer && answer.uid) {
+			this.angularFirestore.collection('answers').doc<Answer>(answer.uid).delete();
+			if (question.uid == answer.questionID && question.acceptedAnswerID == answer.uid) {
+				question.acceptedAnswerID = "";
+				this.angularFirestore.collection('questions').doc(answer.questionID).set(question);
+			}
+		}
     }
 
 	

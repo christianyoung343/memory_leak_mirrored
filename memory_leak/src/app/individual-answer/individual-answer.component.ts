@@ -68,7 +68,7 @@ export class IndividualAnswerComponent implements OnInit {
 
     removeAnswer(){
         if(this.answer){
-          this.answerService.removeAnswer(this.answer);  
+          this.answerService.removeAnswer(this.answer, this.question);
         }
     }
 }
